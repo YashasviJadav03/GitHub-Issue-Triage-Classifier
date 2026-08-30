@@ -1,0 +1,2 @@
+run_id,timestamp,model_name,epochs,batch_size,learning_rate,lora_r,lora_alpha,lora_dropout,max_length,eval_micro_f1,eval_macro_f1,eval_loss,train_runtime_sec
+lora_r8_lr3e4_ep3,2026-08-30 13:29:24,distilbert-base-uncased,3,16,0.0003,8,16,0.1,256,0.2975,0.097,0.3611,592.86
