@@ -1,0 +1,2931 @@
+text,bug,feature_request,documentation,question,duplicate,needs_more_info,critical
+"Title: Duplicate of previous report: panic during spawning worker process
+
+Body: Same crash during spawning worker process as previously tracked bug report.",1,0,0,0,1,0,0
+"Title: Same as #5421: font rendering glitch
+
+Body: Closing as duplicate since this is already tracked under active milestone.",0,0,0,0,1,0,0
+"Title: Duplicate: Nil pointer dereference in VirtualDOM
+
+Body: Same crash during dynamic graph execution as previously tracked bug report.",1,0,0,0,1,0,0
+"Title: Duplicate bug: Extension auto-update deletes custom configuration without warning
+
+Body: Settings get wiped when extensions update. Duplicate of #99812. Urgent fix needed.",1,0,0,0,1,0,1
+"Title: Terminal cursor blinking stops working after waking from sleep
+
+Body: Same issue as #188204. Terminal renderer loses focus timer when display sleeps on Wayland Linux.",0,0,0,0,1,0,0
+"Title: Duplicate of previous report: panic during concurrent state update
+
+Body: This panic was already reported and resolved in previous issue. Marking as duplicate bug.",1,0,0,0,1,0,0
+"Title: Same as #5421: font rendering glitch
+
+Body: Duplicate of #5421. Closing this issue to keep discussion consolidated.",0,0,0,0,1,0,0
+"Title: Fatal assertion failure in Scheduler during concurrent rendering
+
+Body: Assertion failed: index < capacity in Scheduler. Complete denial of service.",1,0,0,0,0,0,1
+"Title: Memory corruption during resizing panel in production
+
+Body: Assertion failed: index < capacity in LanguageServer. Complete denial of service.",1,0,0,0,0,0,1
+"Title: Buffer overflow in MemoryPool parser causes immediate crash
+
+Body: Assertion failed: index < capacity in MemoryPool. Complete denial of service.",1,0,0,0,0,0,1
+"Title: Fatal crash: NullPointerException in ConcurrentMode render loop
+
+Body: When switching routes under heavy load with Suspense active, the renderer crashes unconditionally with `Uncaught TypeError: Cannot read properties of null (reading 'stateNode')`. This completely breaks the production UI and requires a full page reload.",1,0,0,0,0,0,1
+"Title: Severe regression in WorkspaceWatcher gradient computation
+
+Body: Gradients computed by WorkspaceWatcher are mathematically incorrect under specific tensor shapes, corrupting weights during backpropagation.",0,0,0,0,0,0,1
+"Title: CUDA out of memory error and segmentation fault during backward pass with torch.compile
+
+Body: Running forward and backward pass on A100 GPU triggers immediate memory leak and segfault when using `torch.compile(mode='max-autotune')`. System logs show illegal memory access at kernel dispatch.",1,0,0,0,0,0,1
+"Title: How to use MemoryPool with new concurrent features? Missing docs
+
+Body: Could the team clarify how Activation Checkpointing should be configured? The current documentation lacks detailed code examples.",0,0,1,1,0,0,0
+"Title: Best strategy for caching responses in LanguageServer?
+
+Body: We are investigating how to optimize render performance. Does LanguageServer support memoization across subtrees?",0,0,0,1,0,0,0
+"Title: Best strategy for caching responses in WorkspaceWatcher?
+
+Body: We are investigating how to optimize render performance. Does WorkspaceWatcher support memoization across subtrees?",0,0,0,1,0,0,0
+"Title: uncanect to the server telegram
+
+Body: Type: Performance Issue 
+
+i try with many way to conect my code to the bot telegram bot this eror give me ---------------------------------------------------------------------------
+ConnectionRefusedError Traceback (most recent call last)
+File d:\my_env\faradars_telegram_bot_env\Lib\site-packages\urllib3\connection.py:204, in HTTPConnection._new_conn(self)
+ 203 try:
+--> 204 sock = connection.create_connection(
+ 205 (self._dns_host, self.port),
+ 206 self.timeout,
+ 207 source_address=self.source_address,
+ 208 socket_options=self.socket_options,
+ 209 )
+ 210 except socket.gaierror as e:
+
+File d:\my_env\faradars_telegram_bot_env\Lib\site-packages\urllib3\util\connection.py:85, in create_connection(address, timeout, source_address, socket_options)
+ 84 try:
+---> 85 raise err
+ 86 finally:
+ 87 # Break explicitly a reference cycle
+
+File d:\my_env\faradars_telegram_bot_env\Lib\site-packages\urllib3\util\connection.py:73, in create_connection(address, timeout, source_address, socket_options)
+ 72 sock.bind(source_address)
+---> 73 sock.connect(sa)
+ 74 # Break explicitly a reference cycle
+
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+...
+--> 729 raise ConnectionError(e, request=request)
+ 731 except ClosedPoolError as e:
+ 732 raise ConnectionError(e, request=request)
+
+ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8588080119:AAHXT8i_Mc8B_7XBlbFfvmG8ZArJtNG5UFU/getMe (Caused by NewConnectionError(""HTTPSConnection(host='api.telegram.org', port=443): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it""))
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+
+VS Code version: Code 1.135.0 (08d4889f9ec4a1685d257b9b95de036c8e1ce1e5, 2026-08-25T14:26:52Z)
+OS version: Windows_NT x64 10.0.19045
+Modes:
+
+ 
+ System Info 
+
+|Item|Value|
+|---|---|
+|CPUs|Intel(R) Core(TM) i5-7300U CPU @ 2.60GHz (4 x 2712)|
+|GPU Status|2d_canvas: enabled GPU0: VENDOR= 0x8086, DEVICE=0x5916 [Intel(R) HD Graphics 620], DRIVER_VENDOR=Intel, DRIVER_VERSION=23.20.16.4973 *ACTIVE* GPU1: VENDOR= 0x1414, DEVICE=0x008c [Microsoft Basic Render Driver], DRIVER_VERSION=10.0.19041.5794 Machine model name: Machine model version: direct_rendering_display_compositor: disabled_off_ok gpu_compositing: enabled multiple_raster_threads: enabled_on opengl: enabled_on rasterization: enabled raw_draw: disabled_off_ok skia_graphite: disabled_off trees_in_viz: disabled_off video_decode: enabled video_encode: enabled webgl: enabled webgpu: enabled webnn: disabled_off|
+|Load (avg)|undefined|
+|Memory (System)|7.88GB (1.32GB free)|
+|Process Argv|--crash-reporter-id 36f3ee84-1e7f-47b6-99a0-e9c52e2ebb5f|
+|Screen Reader|no|
+|VM|0%|
+ 
+ Process Info 
+
+ [CODE_BLOCK] CPU % Mem MB PID Process
+ 1 151 6124 code
+ 0 108 3688 pty-host
+ 0 81 1428 C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command ""try { . \""c:\Program Files\Microsoft VS Code\08d4889f9e\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1\"" } catch {}""
+ 0 79 1624 C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command ""try { . \""c:\Program Files\Microsoft VS Code\08d4889f9e\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1\"" } catch {}""
+ 0 8 1856 ""c:\Program Files\Microsoft VS Code\08d4889f9e\resources\app\node_modules.asar.unpacked\node-pty\build\Release\conpty\OpenConsole.exe"" --headless --inheritcursor --width 100 --height 26 --signal 0x510 --server 0x450
+ 0 8 7108 ""c:\Program Files\Microsoft VS Code\08d4889f9e\resources\app\node_modules.asar.unpacked\node-pty\build\Release\conpty\OpenConsole.exe"" --headless --inheritcursor --width 80 --height 30 --signal 0x4a0 --server 0x480
+ 0 85 14072 C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command ""try { . \""c:\Program Files\Microsoft VS Code\08d4889f9e\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1\"" } catch {}""
+ 0 8 17000 ""c:\Program Files\Microsoft VS Code\08d4889f9e\resources\app\node_modules.asar.unpacked\node-pty\build\Release\conpty\OpenConsole.exe"" --headless --width 80 --height 30 --signal 0x5fc --server 0x5f4
+ 11 352 4048 window [1] (● Section01 (1).ipynb - faradars_telegram_bot_env - Visual Studio Code)
+ 0 31 4488 crashpad-handler
+ 0 120 6540 agent-host
+ 0 209 12156 electron-nodejs (index.js)
+ 0 445 6852 extension-host [1]
+ 0 8 8636 c:\Users\lenovo\.vscode\extensions\ms-python.vscode-python-envs-1.36.0-win32-x64\python-env-tools\bin\pet.exe server
+ 0 11 6584 C:\Windows\system32\conhost.exe 0x4
+ 0 3 8832 d:\my_env\faradars_telegram_bot_env\Scripts\python.exe -m ipykernel_launcher --f=c:\Users\lenovo\AppData\Roaming\jupyter\runtime\kernel-v326d63727b5d0ba068ce334643532677669496dd7.json
+ 0 11 10112 C:\Windows\system32\conhost.exe 0x4
+ 0 96 11820 d:\my_env\faradars_telegram_bot_env\Scripts\python.exe -m ipykernel_launcher --f=c:\Users\lenovo\AppData\Roaming\jupyter\runtime\kernel-v326d63727b5d0ba068ce334643532677669496dd7.json
+ 0 519 9596 electron-nodejs (bundle.js)
+ 0 20 11672 c:\Users\lenovo\AppData\Local\Programs\Python\Python314\python.exe c:\Users\lenovo\.vscode\extensions\ms-toolsai.jupyter-2025.9.1-win32-x64\pythonFiles\vscode_datascience_helpers\kernel_interrupt_daemon.py --ppid 6852
+ 0 11 14452 C:\Windows\system32\conhost.exe 0x4
+ 0 56 12592 ""C:\Program Files\Microsoft VS Code\Code.exe"" ""c:\Program Files\Microsoft VS Code\08d4889f9e\resources\app\extensions\json-language-features\server\dist\node\jsonServerMain"" --node-ipc --clientProcessId=6852
+ 0 98 16552 electron-nodejs (serverMain.js)
+ 0 46 8524 utility-network-service
+ 0 188 10700 window
+ 0 89 11040 file-watcher [1]
+ 0 127 14920 shared-process
+ 0 208 17064 gpu-process
+ [/CODE_BLOCK] 
+
+ 
+ 
+ Workspace Info 
+
+ [CODE_BLOCK] | Window (● Section01 (1).ipynb - faradars_telegram_bot_env - Visual Studio Code)
+| Folder (faradars_telegram_bot_env): 19704 files
+| File types: pyi(11091) py(3846) pyc(3846) txt(137) typed(81) exe(50)
+| h(22) hpp(20) pyd(20) pxd(20) other(571)
+| Conf files:;
+ [/CODE_BLOCK] 
+
+ 
+ Extensions (17) 
+
+Name|Identifier|Author|Version
+---|---|---|---
+HTML CSS Support|ecmel.vscode-html-css|ecmel|2.0.14
+Debugger for Firefox|firefox-devtools.vscode-firefox-debug|firefox-devtools|2.15.0
+Auto Close Tag|formulahendry.auto-close-tag|formulahendry|0.5.15
+Auto Complete Tag|formulahendry.auto-complete-tag|formulahendry|0.1.0
+Auto Rename Tag|formulahendry.auto-rename-tag|formulahendry|0.1.10
+Container Tools|ms-azuretools.vscode-containers|ms-azuretools|2.5.0
+Python Debugger|ms-python.debugpy|ms-python|2026.6.0
+Python|ms-python.python|ms-python|2026.4.0
+Pylance|ms-python.vscode-pylance|ms-python|2026.3.1
+Python Environments|ms-python.vscode-python-envs|ms-python|1.36.0
+Jupyter|ms-toolsai.jupyter|ms-toolsai|2025.9.1
+Jupyter Keymap|ms-toolsai.jupyter-keymap|ms-toolsai|1.1.2
+Jupyter Notebook Renderers|ms-toolsai.jupyter-renderers|ms-toolsai|1.3.0
+Jupyter Cell Tags|ms-toolsai.vscode-jupyter-cell-tags|ms-toolsai|0.1.9
+Jupyter Slide Show|ms-toolsai.vscode-jupyter-slideshow|ms-toolsai|0.1.6
+WSL|ms-vscode-remote.remote-wsl|ms-vscode-remote|0.104.3
+Live Server|ritwickdey.liveserver|ritwickdey|5.7.9
+
+ 
+ A/B Experiments 
+
+ [CODE_BLOCK] vsliv368cf:30146710
+vswsl492:30256859
+binariesv615:30325510
+nativeloc1:31344060
+dwcopilot:31170013
+471b6256:31263136
+dwoutputs:31242946
+copilot_t_ci:31333650
+e5gg6876:31282496
+pythonrdcb7:31342333
+6518g693:31463988
+aj953862:31281341
+4f60g487:31327383
+envsactivate1:31551504
+editstats-enabled:31346257
+cloudbuttont:31379625
+3efgi100_wstrepl:31403338
+ec5jj548:31422691
+diffpatch-lysithea-0014-prod-ctrl:31574142
+cp_cls_t_966_ss:31526232
+4je02754:31466945
+c3h7c220:31478652
+cp_cls_c_1081:31454833
+conptydll_true:31498968
+e9c30283:31461165
+46204921:31447328
+capico_a_098a3278:31555650
+ei9d7968:31496641
+nes-extended-on:31455476
+chat:31457767
+8hig5102:31480529
+89g7j272:31518289
+i2gc6536:31499202
+52612955:31516516
+h08i8180_copy:31475368
+ec1eg703:31520046
+ddid_c:31478207
+hmra_i5g22:31518061
+7df3h592:31512476
+cp_cls_t_1082:31535311
+logging_enabled_new:31498466
+db5d2638:31499441
+jb_cp_cls_t_632:31543129
+56dj4588:31512888
+32d76977:31512328
+ha629193:31508444
+a1ije391_t:31540920
+jbcp_cls_pctr_t:31531130
+61138546:31518536
+cp_intellij_t_nes:31548657
+gf14b233:31526830
+ahp-both-windows:31556933
+session_8:31532895
+ihg5j128:31534457
+f412h606:31551416
+9gg7f176:31542112
+enable_editor_pane_layout:31569726
+allow-none:31555437
+ac562147:31564510
+c7c27ce7:31554789
+1h923230:31564177
+0dg73464:31554319
+treatment-23-1:31555779
+unuse_dynamic_mcp:31555281
+0d8dfbc3:31570291
+switchtoauto:31559321
+0c1h4866:31566224
+vrbsty_tr:31561058
+session-mark-done:31558131
+5b8j3302:31564601
+mangle-name-control:31572633
+allow-signed-out:31574473
+lunaclean:31573760
+39a5d156:31574986
+permission_prompt_control:1332567
+ccr_pr_nudge_adoption:1319471
+vsc_wsm_c:1340633
+eh853263:1355661
+auto_mode_control:1359303
+
+ [/CODE_BLOCK]",0,0,0,1,0,0,0
+"Title: What is the recommended timeout for saving file?
+
+Body: We are investigating how to optimize render performance. Does TerminalEmulator support memoization across subtrees?",0,0,0,1,0,0,0
+"Title: cmd/compile: reverse bounds check elimination
+
+Body: This code has two bounds checks but I think it should only need one. This is not entirely obvious but seems within the realm of possibility:
+
+ [CODE_BLOCK] package p
+
+func f(a []uint32, u uint64) {
+ i := len(a) // i >= 0, i 0 {
+ // 0 = 0
+ a[i+1] = d2 // 0 = 0
+ for u > 0 {
+ // 0 = 0
+ for u > 0 {
+ // 0 <= i <= len(a)
+ var d1 uint32
+ var d2 uint32
+ u, d1 = u/10, uint32(u%10)
+ u, d2 = u/10, uint32(u%10)
+ if 0 <= i {
+ a[i+1] = d2 // need to check i+1 <= len(a)-1
+ a[i] = d1 // now 0 <= i < len(a)-2, no check needed
+ i += 2 // i <= len(a), has not wrapped negative
+ }
+ }
+}
+ [/CODE_BLOCK] 
+
+In the first example I have not yet found an obvious test to add that explains the problem. :-)",0,0,0,1,0,1,0
+"Title: API `registerCallHierarchyProvider` does not work as expected and flakily
+
+Body: Report Issue to prefill these. -->
+- VSCode Version: 1.52.1
+- OS Version: MacOs 10.15.6
+
+Steps to Reproduce:
+I have an extension (repo here:[URL] that use `vscode.languages.registerCallHierarchyProvider` to process the JSX tree in a file. When I call the 'peekHierarchyCall' action in a `plaintext` file it works stably and always jump to the breakpoint of `TestHierarchyProvider` (path: `src/vscode-components/test-hierachy-provider.ts`).
+
+But in the context of `ts/tsx/js/jsx` files, **about half of the time** it use another unexpected Hierarchy Provider and does not jump to code of the `test-hierachy-provider.ts` file. I wonder if this is a buggy behaviour or is there any default provider in VsCode app that run on some conditions that I am not aware of.
+
+ 
+Does this issue occur when all extensions are disabled?: Yes",0,0,0,1,0,0,0
+"Title: Is it possible to decouple FiberTree from parent context?
+
+Body: Looking for guidance on how to avoid unnecessary re-renders when concurrent state update is triggered.",0,0,0,1,0,0,0
+"Title: Is it possible to decouple VirtualDOM from parent context?
+
+Body: Looking for guidance on how to avoid unnecessary re-renders when saving file is triggered.",0,0,0,1,0,0,0
+"Title: Documentation: Missing schema definitions for devcontainer.json custom properties
+
+Body: The JSON schema documentation for devcontainer customization properties is missing customizations.vscode.settings descriptions in the public API reference docs.",0,0,1,0,0,0,0
+"Title: RFC: Native zero-copy buffer sharing integration and developer documentation
+
+Body: We propose adding zero-copy buffer sharing to improve model efficiency. This should also include full documentation and usage guides in docs/notes.",0,1,1,0,0,0,0
+"Title: Fix broken hyperlinks and typo in TerminalEmulator reference docs
+
+Body: The documentation for TerminalEmulator is missing clear parameter definitions and return type contracts.",0,0,1,0,0,0,0
+"Title: Proposal: Implement distributed sharding with end-to-end user guide
+
+Body: We propose adding distributed sharding to improve model efficiency. This should also include full documentation and usage guides in docs/notes.",0,1,1,0,0,0,0
+"Title: Proposal: Implement async AST parsing with end-to-end user guide
+
+Body: We propose adding async AST parsing to improve model efficiency. This should also include full documentation and usage guides in docs/notes.",0,1,1,0,0,0,0
+"Title: Add architectural diagram for LanguageServer internals in documentation
+
+Body: The documentation for LanguageServer is missing clear parameter definitions and return type contracts.",0,0,1,0,0,0,0
+"Title: RFC: Native auto-batching optimizer integration and developer documentation
+
+Body: We propose adding auto-batching optimizer to improve model efficiency. This should also include full documentation and usage guides in docs/notes.",0,1,1,0,0,0,0
+"Title: Optimize outline view
+
+Body: Distinguish static and non-static properties in the Outline view",0,1,0,0,0,0,0
+"Title: Add vectorized batch implementation for VirtualDOM
+
+Body: It would be very helpful to expose customizable forward hooks in VirtualDOM.",0,1,0,0,0,0,0
+"Title: [Explorer/Outline] Add filter to show only exported members
+
+Body: In Outline view, I need a filter that ""Show only exported members""(functions, constants or whatever), as if I were using a developer tool to inspect a library from a caller's perspective.
+
++ For module js, the filter should find members modified by `export` keyword.
++ For classic js (if supported), the filter should find function/variables exposed to global scope, those including top-level functions/vars. consider also eslint `/* exported xxx */` and jsdoc `/** @global */`.
++ For wasm/wat (if supported), the filter should find exports; see example [URL]
++ For lib files of other languages, this filter may find members that are public, public static or modified by other keyword of the same concept.",0,1,0,0,0,0,0
+"Title: proposal: decouple export data formats used by compiler and x/tools
+
+Body: This is @cherrymui's idea.
+
+**Background:** Export data is the compact binary notation for serialized type information: conceptually it is a serialized types.Package. There are two different formats today: the unified (u) format written and read by the compiler, and the indexed (i) format written and read by x/tools (incl. gopls). However, the x/tools reader must also be capable of reading u format because `go list -export` runs the compiler to generate export data files. This creates a complex and inconvenient coupling between the compiler and x/tools.
+
+**Proposal:** Let's split the two formats apart. The compiler would read and write only `u` format written by the exact same version of the toolchain. This would allow it to evolve independently: any commit on any given day would be free to change the reader and writer. We would provide no supported way to read the compiler's format; even its existence would be an internal implementation detail.
+
+The x/tools format would read and write only `i` format; however, it would still need to retain the ability to read files produced by `go list -export`. So, we could change `go list -export` to run not cmd/compile but a new frontend tool, cmd/export, based on go/ast + go/types + vendor/x/tools, that simply reads, parses, and type-checks Go source files, reading export data for dependencies and writing it out for the current package. (The cmd/export tool should be straightforward to write: it's basically unitchecker with the analysis parts ripped out, accepting its command-line arguments in cmd/compile not cmd/vet form).
+
+The only unknown quantity is the go/importer package. Today it may be used to read files named by `go list -export`; since these would in future be produced by cmd/export, go/importer would use the vendored x/tools reader. But it's possible that some users are also using it to parse .a files produced by the compiler that they found some other way. (I vaguely recall seeing such file names in the output of `go list -json` but I cannot now find them. `go help install` talks about package files being installed, but I don't know exactly what that implies.) We need to investigate who would be broken if we stopped making go/importer support compiler export data files.
+
+When a language change affects exported types, the process would be:
+1. add support to go/types{,2}. Now you can use the feature in single-package tests of go/types and/or the compiler.
+2. add support to the compiler and its export data reader/writer. Now you can use the feature in multi-package tests of the compiler.
+3. add support to x/tools reader and writer.
+4. vendor x/tools into GOROOT. Now Go developers' `go list -export` would be emitting the new format (whether or not the package actually uses new language features). Any x/tools-based commands installed on their $PATH would need to be re-built with a version of x/tools later than step 3.
+5. Go release. At this point all users of the new toolchain would be using the new format. Tools binaries on their PATH would need updating.
+
+Several people have asked why not guarantee backward compatibility of the x/tools file format so that installed x/tools-based tools are not broken by each toolchain update. This is appealing, but in general it is impossible: if a package makes use of a new language feature that cannot yet be written, there is really nothing sound that the reader can do other than report a version skew error. It might seem gentler to the user not to report an error until we actually encounter a usage of the new language feature (not just the newer file version number), but typically the new feature will be quickly adopted in low-level packages, so there is little practical benefit to reporting the error lazily.
+
+@griesemer @mrkfrmn",0,1,0,0,0,0,0
+"Title: Add vectorized batch implementation for MemoryPool
+
+Body: Adding vectorized support will significantly accelerate inference throughput for transformer backbones.",0,1,0,0,0,0,0
+"Title: Support displaying inherited members in outline view
+
+Body: In most programming languages like Java, a class usually have inherited members. Popular Java IDEs can show those inherited members in the outline views (with a switch button to control whether to display those inherited members):
+
+While this is not feasible in VS Code because the type DocumentSymbol only has the field to specify range, but no uri. Seems that there is no way to point to a location which is out of current active document.",0,1,0,0,0,0,0
+"Title: [Inductor][CPU] Full-buffer clone for generalized_scatter followed by index_put and input copy-back
+
+Body: ## Human commentary
+
+After reviewing the prior GMES analysis and benchmark results, I asked Codex to file this issue. The latest PyTorch nightly still reproduces the full-buffer clone, and the isolated result is large enough that I believe a narrowly scoped Inductor fix is worth discussing upstream. I would especially appreciate guidance on whether this should be a focused follow-up or coordinated with #190548.
+
+ 
+ AI-assisted technical report 
+
+> **AI assistance disclosure:** Codex ran the reproducer, inspected the relevant Inductor source and existing issues/PRs, and drafted the technical report below. The submitting human reviewed the summarized diagnosis and measurements before authorizing this issue.
+
+## 🐛 Describe the bug
+
+When a compiled function composes a normal slice mutation with an indexed mutation of the same graph input, functionalization produces a graph shaped like:
+
+ [CODE_BLOCK] generalized_scatter(input, ...)
+ -> index_put/index_copy
+ -> copy_(input, ...)
+ [/CODE_BLOCK] 
+
+Inductor leaves the `generalized_scatter` functional, cloning the entire input buffer on every invocation. The two mutations are allocation-free or nearly allocation-free when compiled separately; the full-buffer clone appears only when they are composed.
+
+The latest nightly's `should_reinplace_scatter()` recognizes a direct `generalized_scatter -> copy_(input)` relationship, but not the case where an inplaceable indexed mutation is between the scatter and the final copy-back:
+
+[URL]
+
+### Minimal operation pattern
+
+ [CODE_BLOCK] import torch
+
+FIELD_ELEMENTS = 51_520
+INDEXED_ELEMENTS = 99
+
+def composed(field, delta, indices, gain):
+ field[1:-1].add_(delta)
+ values = torch.index_select(field, 0, indices) * gain
+ field.index_copy_(0, indices, values)
+
+torch.set_num_threads(1)
+torch.set_num_interop_threads(1)
+
+base = torch.linspace(0.25, 1.25, FIELD_ELEMENTS, dtype=torch.float64)
+delta = torch.linspace(-0.01, 0.01, FIELD_ELEMENTS - 2, dtype=torch.float64)
+indices = torch.arange(0, 2 * INDEXED_ELEMENTS, 2, dtype=torch.int64)
+gain = torch.linspace(0.99, 1.01, INDEXED_ELEMENTS, dtype=torch.float64)
+
+compiled = torch.compile(composed, fullgraph=True)
+
+expected = base.clone()
+actual = base.clone()
+for _ in range(5):
+ composed(expected, delta, indices, gain)
+ compiled(actual, delta, indices, gain)
+
+torch.testing.assert_close(actual, expected, rtol=0, atol=0)
+ [/CODE_BLOCK] 
+
+A standalone reproducer with allocation tracing, timing, exact-equivalence checks, isolated ablations, and a public `as_strided` comparison is available here:
+
+[URL]
+
+Example commands:
+
+ [CODE_BLOCK] OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+python torch_inductor_composed_mutation.py \
+ --assert-affected \
+ --profile-calls 5 \
+ --timing-repeats 5 \
+ --timing-calls 100 \
+ --equivalence-calls 5
+ [/CODE_BLOCK] 
+
+The script also has a private diagnostic `--force-reinplace` switch. It replaces the scatter profitability predicate with `True` only to isolate the missed reinplace decision; it is **not** a proposed or safe general-purpose fix.
+
+## Results
+
+Measured on an M1 Pro with one CPU thread using `torch==2.15.0.dev20260829` (`5b77b6ed10d79b06e978168940350a2a998eb9ce`):
+
+| Variant | Median time | Positive allocation per call | Full-field allocation |
+| --- | ---: | ---: | ---: |
+| Current composed graph | 61.33 us | 412,160 bytes | 1 x 412,160 bytes |
+| Diagnostic forced reinplace | 24.70 us | 792 bytes | 0 |
+| Public `as_strided` formulation | 23.93 us | 792 bytes | 0 |
+
+The diagnostic removes the full-field clone and reduces the isolated kernel time by about 59.7% (2.48x). Eager and compiled results remained bitwise equal after five repeated mutations.
+
+Useful ablations from the same run:
+
+- Slice/stencil mutation alone: no positive allocation.
+- Indexed material mutation alone: 792 bytes per call, no full-field allocation.
+- Composed ordinary-slice mutation: 412,160-byte full-field allocation per call.
+- Equivalent public `as_strided` composition: no full-field allocation.
+
+This is an isolated-kernel result, not a claim of a 59.7% end-to-end GMES speedup.
+
+## Expected behavior
+
+When alias/liveness analysis establishes that reinplacing is safe, Inductor should avoid the full-buffer clone for a `generalized_scatter` whose result flows through a known inplaceable indexed mutation and is finally copied back to the same graph input.
+
+A deliberately narrow first implementation could:
+
+1. Follow a single-user chain from `_generalized_scatter`.
+2. Initially allow only already-known inplaceable `aten.index_put.default` / corresponding indexed-update forms.
+3. Require the final result to be copied back to the original placeholder or `get_attr`.
+4. Preserve the existing alias and liveness checks as the safety gate.
+5. Include negative tests for an additional consumer, copy-back to a different input, and metadata/alias mismatch.
+
+## Related work / possible overlap
+
+- #184542 / #184263 handle a layout-preserving `graph input -> view -> index_put -> inverse view -> copy_` pattern. The pattern here has a `_generalized_scatter` feeding the indexed mutation instead.
+- #190548 handles `copy_(base, _generalized_scatter(base, getitem(triton_kernel_wrapper_functional(...)), views))` for read-write Triton view arguments. It touches the same reinplace machinery, but does not cover `_generalized_scatter -> index_put -> copy_(original input)`.
+- Search terms including `generalized_scatter index_put copy_`, `reinplace scatter index_put`, and `full-buffer clone reinplace` did not find an exact existing issue.
+
+Would maintainers prefer this as a focused follow-up to #190548, or should the recognition be generalized in that PR's infrastructure?
+
+## Versions
+
+ [CODE_BLOCK] PyTorch version: 2.15.0.dev20260829
+PyTorch git version: 5b77b6ed10d79b06e978168940350a2a998eb9ce
+Is debug build: False
+CUDA used to build PyTorch: None
+ROCM used to build PyTorch: N/A
+
+OS: macOS 26.5.2 (arm64)
+CPU: Apple M1 Pro
+Clang version: 21.0.0 (clang-2100.1.1.101)
+CMake version: 4.0.3
+
+Python version: 3.14.2 (64-bit runtime)
+Python platform: macOS-26.5.2-arm64-arm-64bit-Mach-O
+Is CUDA available: False
+Is XPU available: False
+ [/CODE_BLOCK] 
+
+ 
+
+cc @chauhang @penguinwu @voznesenskym @EikanWang @jgong5 @Guobing-Chen @XiaobingSuper @zhuhaozhe @blzheng @wenzhe-nrv @jiayisunx @ipiszy @kadeng @muchulee8 @amjames @aakhundov @coconutruben @jataylo",0,1,0,0,0,0,0
+"Title: Add file exclusion support to Call Hierarchy
+
+Body: ## Add file exclusion support to Call Hierarchy
+
+**Requirements:**
+
+* Allow users to configure files or patterns that should be excluded from Call Hierarchy.
+* Ensure excluded files do not appear in Call Hierarchy results.
+* Reuse existing VS Code file-exclusion configuration where appropriate.
+* Add tests covering file and pattern-based exclusions.
+* Document the new configuration option.
+
+**Acceptance Criteria:**
+
+* A user can configure a file/pattern to be excluded.
+* The excluded file is not shown in Call Hierarchy results.
+* Existing Call Hierarchy behavior remains unchanged when no exclusions are configured.",0,1,0,0,0,0,0
+"Title: [BUG]: VSCode incorrect syntax highlighting problem
+
+Body: Does this issue occur when all extensions are disabled?: ** N/A **
+
+ 
+ Report Issue' dialog can assist with this. -->
+- VS Code Version: 1.108.0-insider 01586ca5669ef4506d22ddc05b55dd9892571a42 x64 
+- OS Version: Linux Siren 6.17.9-1-cachyos-bore x86_64 GNU/Linux 
+
+Steps to Reproduce:
+
+1. Create a huge VSCode theme targetting close to all individual scopes and **_ semantic tokens _**(`the main issue`) of individual languages.
+2. Theme source for reproduction: [URL] 
+3. Testing with Clangd or CMake Extensions that provide semantic tokens will glitch up the syntax higlighting.
+4. Examples:
+ - Glitch 1 [CMake]:
+ #Extensions - ""[CMakeTools"" , ""CMake IntelliSence"" ]
+ - > 
+
+ - Glitch 2 [C++]:
+ #Extensions - ""[Clangd"" , ""Better C++ Syntax"" ]
+ - > 
+5. The boxes and Arrows in Red are correct. but boxes and arrows in other colors represent the errored value.
+6. The json files are correct and has no issues at all. the file ** [URL] **
+7. It is not an extension issue. The issue presists even on latest vscode-insiders build.
+
+From all of the above & from my investigations, it seems to be an issue with the semantic highlighting of vscode regardless of extensions.",0,1,0,0,0,0,0
+"Title: Support custom activation functions in TerminalEmulator
+
+Body: It would be very helpful to expose customizable forward hooks in TerminalEmulator.",0,1,0,0,0,0,0
+"Title: Support custom activation functions in Scheduler
+
+Body: It would be very helpful to expose customizable forward hooks in Scheduler.",0,1,0,0,0,0,0
+"Title: proposal: x/crypto/openpgp: isolate, tag, delete
+
+Body: ### Proposal Details
+
+x/crypto/openpgp has been frozen / deprecated since #44226 (2021).
+If you open it on pkg.go.dev: [URL]
+There's the warning for GO-2026-5932: [URL]
+where we say: ""unsafe by design, has numerous known security issues, is not maintained, and should not be used"".
+
+We also reject reports or fixes, e.g. #79841
+
+However we still have the code in the x/crypto repo, 
+and some not very good scanners like those in #80347 or [URL] have issues with that.
+
+We should just follow through with our deprecation, and remove the code in the standard fashion of carving out a module, tagging it, and deleting the code.",0,1,0,0,0,0,0
+"Title: Incorrect syntax highlighting in MemoryPool for template literals
+
+Body: Syntax tokenization produces wrong color tokens for nested multiline strings.",1,0,0,0,0,0,0
+"Title: `tf.image.non_max_suppression` causes `SIGABRT` (Check Failure) with negative `max_output_size`
+
+Body: ### Issue type
+
+Bug
+
+### Have you reproduced the bug with TensorFlow Nightly?
+
+Yes
+
+### Source
+
+binary
+
+### TensorFlow version
+
+2.21.0-dev20260128
+
+### Custom code
+
+Yes
+
+### OS platform and distribution
+
+Linux Ubuntu 24.04
+
+### Mobile device
+
+_No response_
+
+### Python version
+
+3.12
+
+### Bazel version
+
+_No response_
+
+### GCC/compiler version
+
+_No response_
+
+### CUDA/cuDNN version
+
+_No response_
+
+### GPU model and memory
+
+_No response_
+
+### Current behavior?
+
+When calling `tf.image.non_max_suppression` with a negative `max_output_size` (e.g., -1), the process triggers a Fatal Check Failure in the C++ backend and aborts (`SIGABRT`).
+
+Instead of raising a Python-level `InvalidArgumentError` that can be caught by the user, the entire Python process is terminated immediately. This creates a potential Denial of Service (DoS) vulnerability if this parameter is exposed to user input.
+
+Here's a gist.
+
+### Standalone code to reproduce the issue
+
+ [CODE_BLOCK] import tensorflow as tf
+print(f""Tensorflow version: {tf.__version__}"", flush=True)
+
+nms_indices = tf.image.non_max_suppression(
+ boxes=tf.ones(shape=(2,4), dtype=tf.float32),
+ scores=tf.ones(shape=(2,), dtype=tf.float32),
+ max_output_size=tf.constant(-1, dtype=tf.int32),
+ iou_threshold=0.5,
+ score_threshold=0.5
+)
+
+print(""Print this if code runs without crashing."", flush=True)
+ [/CODE_BLOCK] 
+
+### Relevant log output
+
+ [CODE_BLOCK] Tensorflow version: 2.21.0-dev20260128
+I0000 00:00:1769697200.538638 2281335 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 21944 MB memory: -> device: 0, name: NVIDIA GeForce RTX 4090, pci bus id: 0000:01:00.0, compute capability: 8.9
+F0000 00:00:1769697200.735826 2281425 tensor_shape.cc:204] Check failed: (::tsl::TfCheckOkDeprecationMarker(), InitDims(dim_sizes)) is OK (INVALID_ARGUMENT: Expected shape dimensions to be non-negative, got -1) 
+*** Check failure stack trace: ***
+ @ 0x7ea225f028f4 absl::lts_20250814::log_internal::LogMessage::SendToLog()
+ @ 0x7ea225f02876 absl::lts_20250814::log_internal::LogMessage::Flush()
+ @ 0x7ea225b2b7b1 tensorflow::TensorShapeBase<>::TensorShapeBase()
+ @ 0x7ea20aa05fa2 tensorflow::(anonymous namespace)::DoNMS()
+ @ 0x7ea20aa0bbfd tensorflow::(anonymous namespace)::NonMaxSuppressionV3GPUOp::Compute()
+ @ 0x7ea225f6cc9c tensorflow::BaseGPUDevice::Compute()
+ @ 0x7ea224f328c9 tensorflow::(anonymous namespace)::ExecutorState<>::Process()
+ @ 0x7ea225b8dc44 Eigen::ThreadPoolTempl<>::WorkerLoop()
+ @ 0x7ea225b8dac1 std::__invoke_impl<>()
+ @ 0x7ea225b7a69f tsl::(anonymous namespace)::PThread::ThreadFn()
+ @ 0x7ea227094ac3 (unknown)
+Aborted (core dumped)
+ [/CODE_BLOCK]",1,0,0,0,0,0,0
+"Title: fatal error: invalid runtime symbol table
+
+Body: ### Go version
+
+go version go1.24.4 linux/amd64
+
+### Output of `go env` in your module/workspace:
+
+ [CODE_BLOCK] AR='ar'
+CC='gcc'
+CGO_CFLAGS='-O2 -g'
+CGO_CPPFLAGS=''
+CGO_CXXFLAGS='-O2 -g'
+CGO_ENABLED='1'
+CGO_FFLAGS='-O2 -g'
+CGO_LDFLAGS='-O2 -g'
+CXX='g++'
+GCCGO='gccgo'
+GO111MODULE=''
+GOAMD64='v1'
+GOARCH='amd64'
+GOAUTH='netrc'
+GOBIN=''
+GOCACHE='/root/.cache/go-build'
+GOCACHEPROG=''
+GODEBUG=''
+GOENV='/root/.config/go/env'
+GOEXE=''
+GOEXPERIMENT=''
+GOFIPS140='off'
+GOFLAGS=''
+GOGCCFLAGS='-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build3012167891=/tmp/go-build -gno-record-gcc-switches'
+GOHOSTARCH='amd64'
+GOHOSTOS='linux'
+GOINSECURE=''
+GOMOD='/dev/null'
+GOMODCACHE='/root/go/pkg/mod'
+GONOPROXY=''
+GONOSUMDB=''
+GOOS='linux'
+GOPATH='/root/go'
+GOPRIVATE=''
+GOPROXY='[URL]
+GOROOT='/usr/local/go'
+GOSUMDB='sum.golang.org'
+GOTELEMETRY='local'
+GOTELEMETRYDIR='/root/.config/go/telemetry'
+GOTMPDIR=''
+GOTOOLCHAIN='auto'
+GOTOOLDIR='/usr/local/go/pkg/tool/linux_amd64'
+GOVCS=''
+GOVERSION='go1.24.4'
+GOWORK=''
+PKG_CONFIG='pkg-config'
+ [/CODE_BLOCK] 
+
+### What did you do?
+
+My app running on amazon linux 2023 arm64, It crashes every week or so.
+
+### What did you see happen?
+
+`runtime: invalid pc-encoded table f=bi.(*IntArgRegBitmap).Get pc=0x12161 targetpc=0x28d7f0 tab=[0/0]0x0 
+ value=-1 until pc=0x11f71 
+ value=1 until pc=0x11fe9 
+ value=2 until pc=0x12019 
+ value=3 until pc=0x12089 
+ value=1 until pc=0x120e1 
+ value=2 until pc=0x12131 
+ value=-1 until pc=0x12161 
+fatal error: invalid runtime symbol table 
+ 
+runtime stack: 
+runtime.throw({0x1ca780d?, 0x0?}) 
+ /usr/local/go/src/runtime/panic.go:1101 +0x38 fp=0x400031fb00 sp=0x400031fad0 pc=0x88728 
+runtime.pcvalue({0x400031fc18?, 0x35a3c?}, 0xbc419, 0x28d7f0, 0x1) 
+ /usr/local/go/src/runtime/symtab.go:1105 +0x4f8 fp=0x400031fbd0 sp=0x400031fb00 pc=0x71158 
+runtime.funcspdelta(...) 
+ /usr/local/go/src/runtime/symtab.go:1174 
+runtime.(*unwinder).resolveInternal(0x400031fd20, 0x0, 0x78?) 
+ /usr/local/go/src/runtime/traceback.go:326 +0x1b0 fp=0x400031fc50 sp=0x400031fbd0 pc=0x76830 
+runtime.(*unwinder).next(0x400031fd20) 
+ /usr/local/go/src/runtime/traceback.go:513 +0x15c fp=0x400031fce0 sp=0x400031fc50 pc=0x76b3c 
+runtime.scanstack(0x400213e380, 0x4000072150) 
+ /usr/local/go/src/runtime/mgcmark.go:904 +0x28c fp=0x400031fe00 sp=0x400031fce0 pc=0x34cac 
+runtime.markroot.func1() 
+ /usr/local/go/src/runtime/mgcmark.go:240 +0xa8 fp=0x400031fe50 sp=0x400031fe00 pc=0x335d8 
+runtime.markroot(0x4000072150, 0x74a, 0x1) 
+ /usr/local/go/src/runtime/mgcmark.go:214 +0x1c0 fp=0x400031ff00 sp=0x400031fe50 pc=0x332b0 
+runtime.gcDrain(0x4000072150, 0x7) 
+ /usr/local/go/src/runtime/mgcmark.go:1186 +0x434 fp=0x400031ff70 sp=0x400031ff00 pc=0x35674 
+runtime.gcDrainMarkWorkerIdle(...) 
+ /usr/local/go/src/runtime/mgcmark.go:1100 
+runtime.gcBgMarkWorker.func2() 
+ /usr/local/go/src/runtime/mgc.go:1519 +0x68 fp=0x400031ffc0 sp=0x400031ff70 pc=0x31478 
+runtime.systemstack(0x400031c000) 
+ /usr/local/go/src/runtime/asm_arm64.s:244 +0x6c fp=0x400031ffd0 sp=0x400031ffc0 pc=0x8e68c 
+ 
+goroutine 23 gp=0x4000103180 m=6 mp=0x4000100808 [GC worker (active)]: 
+runtime.systemstack_switch() 
+ /usr/local/go/src/runtime/asm_arm64.s:201 +0x8 fp=0x400007a710 sp=0x400007a700 pc=0x8e608 
+runtime.gcBgMarkWorker(0x400011e150) 
+ /usr/local/go/src/runtime/mgc.go:1483 +0x200 fp=0x400007a7b0 sp=0x400007a710 pc=0x31140 
+runtime.gcBgMarkStartWorkers.gowrap1() 
+ /usr/local/go/src/runtime/mgc.go:1339 +0x28 fp=0x400007a7d0 sp=0x400007a7b0 pc=0x30f08 
+runtime.goexit({}) 
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400007a7d0 sp=0x400007a7d0 pc=0x909d4 
+created by runtime.gcBgMarkStartWorkers in goroutine 1 
+ /usr/local/go/src/runtime/mgc.go:1339 +0x140 
+ 
+goroutine 1 gp=0x40000021c0 m=nil [IO wait, 2295 minutes]: 
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?) 
+
+/usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000413160 sp=0x4000413140 pc=0x88848 
+runtime.netpollblock(0x7000000000?, 0x6?, 0x0?) 
+ /usr/local/go/src/runtime/netpoll.go:575 +0x158 fp=0x40004131a0 sp=0x4000413160 pc=0x4b868
+internal/poll.runtime_pollWait(0xffff5ae25e20, 0x72) 
+ /usr/local/go/src/runtime/netpoll.go:351 +0xa0 fp=0x40004131d0 sp=0x40004131a0 pc=0x87a00
+internal/poll.(*pollDesc).wait(0x4000563280?, 0x108668?, 0x0) 
+ /usr/local/go/src/internal/poll/fd_poll_runtime.go:84 +0x28 fp=0x4000413200 sp=0x40004131d0 pc=0x101c18
+internal/poll.(*pollDesc).waitRead(...) 
+ /usr/local/go/src/internal/poll/fd_poll_runtime.go:89 
+internal/poll.(*FD).Accept(0x4000563280) 
+ /usr/local/go/src/internal/poll/fd_unix.go:620 +0x24c fp=0x40004132b0 sp=0x4000413200 pc=0x1064ec
+net.(*netFD).accept(0x4000563280) 
+ /usr/local/go/src/unique/handle.go:172 +0x28 fp=0x4000413370 sp=0x40004132b0 pc=0x273b78
+net.(*TCPListener).accept(0x40004492c0) 
+ /usr/local/go/src/sync/mutex.go:159 +0x24 fp=0x40004133c0 sp=0x4000413370 pc=0x28a164
+net.(*TCPListener).Accept(0x40004492c0) 
+ /usr/local/go/src/unique/handle.go:380 +0x2c fp=0x4000413400 sp=0x40004133c0 pc=0x2893fc
+google.golang.org/grpc.(*Server).Serve(0x400052aa00, {0x1fa0cc8, 0x40004492c0})
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/server.go:890 +0x42c fp=0x4000413570 sp=0x4000413400 pc=0x5784ac
+github.com/zeromicro/go-zero/zrpc/internal.(*rpcServer).Start(0x4000335ce0, 0x4000144d50)
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/zrpc/internal/rpcserver.go:78 +0x340 fp=0x4000413650 sp=0x4000413570
+ pc=0x163f240
+github.com/zeromicro/go-zero/zrpc/internal.keepAliveServer.Start({0x4000221da0?, {0x1fb3620?, 0x4000335ce0?}}, 0x4000144d50)
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/zrpc/internal/rpcpubserver.go:53 +0x60 fp=0x4000413680 sp=0x40004136
+50 pc=0x163eae0
+github.com/zeromicro/go-zero/zrpc/internal.(*keepAliveServer).Start(0x27?, 0x4000413f08?)
+ :1 +0x40 fp=0x40004136b0 sp=0x4000413680 pc=0x163ffc0
+github.com/zeromicro/go-zero/zrpc.(*RpcServer).Start(0x1f8db48?) 
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/trace.go:89 +0x30 fp=0x4000413700 sp=0x40004136b0 pc=0x167acc0
+er.SetHeader()
+ /jack/atmpay/payment-channel/CashPay/channel.go:37 +0x230 fp=0x4000413f40 sp=0x4000413700 pc=0x168f7f0
+runtime.main()
+ /usr/local/go/src/runtime/proc.go:283 +0x284 fp=0x4000413fd0 sp=0x4000413f40 pc=0x52b94
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000413fd0 sp=0x4000413fd0 pc=0x909d4
+
+goroutine 17 gp=0x4000102380 m=nil [force gc (idle), 13648 minutes]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000078790 sp=0x4000078770 pc=0x88848
+runtime.goparkunlock(...)
+ /usr/local/go/src/runtime/proc.go:441 
+runtime.forcegchelper()
+ /usr/local/go/src/runtime/proc.go:348 +0xb8 fp=0x40000787d0 sp=0x4000078790 pc=0x52ee8
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x40000787d0 sp=0x40000787d0 pc=0x909d4
+created by runtime.init.7 in goroutine 1 
+ /usr/local/go/src/runtime/proc.go:336 +0x24 
+
+goroutine 18 gp=0x4000102540 m=nil [GC sweep wait]: 
+runtime.gopark(0x311ad01?, 0x0?, 0x0?, 0x0?, 0x0?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000078f60 sp=0x4000078f40 pc=0x88848
+runtime.goparkunlock(...)
+ /usr/local/go/src/runtime/proc.go:441 
+runtime.bgsweep(0x4000118000)
+ /usr/local/go/src/runtime/mgcsweep.go:316 +0x108 fp=0x4000078fb0 sp=0x4000078f60 pc=0x3ad48
+runtime.gcenable.gowrap1()
+ /usr/local/go/src/runtime/mgc.go:204 +0x28 fp=0x4000078fd0 sp=0x4000078fb0 pc=0x2eb88
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000078fd0 sp=0x4000078fd0 pc=0x909d4
+
+created by runtime.gcenable in goroutine 1 
+ /usr/local/go/src/runtime/mgc.go:204 +0x6c 
+
+goroutine 19 gp=0x4000102700 m=nil [GC scavenge wait]: 
+runtime.gopark(0x10000?, 0x1637ffd?, 0x0?, 0x0?, 0x0?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000079760 sp=0x4000079740 pc=0x88848
+runtime.goparkunlock(...)
+ /usr/local/go/src/runtime/proc.go:441 
+runtime.(*scavengerState).park(0x31242e0) 
+ /usr/local/go/src/runtime/mgcscavenge.go:425 +0x5c fp=0x4000079790 sp=0x4000079760 pc=0x3881c
+runtime.bgscavenge(0x4000118000) 
+ /usr/local/go/src/runtime/mgcscavenge.go:658 +0xac fp=0x40000797b0 sp=0x4000079790 pc=0x38d9c
+runtime.gcenable.gowrap2()
+ /usr/local/go/src/runtime/mgc.go:205 +0x28 fp=0x40000797d0 sp=0x40000797b0 pc=0x2eb28
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x40000797d0 sp=0x40000797d0 pc=0x909d4
+created by runtime.gcenable in goroutine 1 
+ /usr/local/go/src/runtime/mgc.go:205 +0xac 
+
+goroutine 20 gp=0x40001028c0 m=nil [finalizer wait, 46 minutes]: 
+runtime.gopark(0x0?, 0x40006d4d50?, 0x0?, 0x0?, 0x1000000010?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x400007c590 sp=0x400007c570 pc=0x88848
+runtime.runfinq()
+ /usr/local/go/src/runtime/mfinal.go:196 +0x108 fp=0x400007c7d0 sp=0x400007c590 pc=0x2db88
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400007c7d0 sp=0x400007c7d0 pc=0x909d4
+created by runtime.createfing in goroutine 1 
+ /usr/local/go/src/runtime/mfinal.go:166 +0x80 
+
+goroutine 2 gp=0x4000003c00 m=nil [chan receive, 13648 minutes]: 
+runtime.gopark(0x4000122e78?, 0x235ad0?, 0x1?, 0xaa?, 0x4000304000?)
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000122e50 sp=0x4000122e30 pc=0x88848
+runtime.chanrecv(0x4000300000, 0x4000122f78, 0x1) 
+ /usr/local/go/src/runtime/chan.go:664 +0x42c fp=0x4000122ed0 sp=0x4000122e50 pc=0x1ff9c
+runtime.chanrecv1(0x4000300000?, 0x400007cf88?) 
+ /usr/local/go/src/runtime/chan.go:506 +0x14 fp=0x4000122f00 sp=0x4000122ed0 pc=0x1fb34
+github.com/zeromicro/go-zero/core/proc.init.1.func1() 
+ /usr/local/go/src/internal/runtime/maps/runtime_fast64_swiss.go:28 +0x98 fp=0x4000122fd0 sp=0x4000122f00 pc=0x239d68
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000122fd0 sp=0x4000122fd0 pc=0x909d4
+created by github.com/zeromicro/go-zero/core/proc.init.1 in goroutine 1
+ /usr/local/go/src/internal/runtime/maps/runtime_fast64_swiss.go:22 +0x24
+
+goroutine 33 gp=0x400030c000 m=nil [select, 13648 minutes, locked to thread]:
+runtime.gopark(0x400007cfa0?, 0x2?, 0x98?, 0xce?, 0x400007cf8c?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x400007ce10 sp=0x400007cdf0 pc=0x88848
+runtime.selectgo(0x400007cfa0, 0x400007cf88, 0x0?, 0x0, 0x0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x400007cf40 sp=0x400007ce10 pc=0x66594
+runtime.ensureSigM.func1()
+ /usr/local/go/src/runtime/signal_unix.go:1085 +0x194 fp=0x400007cfd0 sp=0x400007cf40 pc=0x82b54
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400007cfd0 sp=0x400007cfd0 pc=0x909d4
+created by runtime.ensureSigM in goroutine 2 
+ /usr/local/go/src/runtime/signal_unix.go:1068 +0xd8 
+
+goroutine 3 gp=0x4000003dc0 m=nil [chan receive]: 
+runtime.gopark(0x40002a94a0?, 0x400076cb28?, 0x48?, 0xd7?, 0x24b128?)
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x400056d6f0 sp=0x400056d6d0 pc=0x88848
+runtime.chanrecv(0x400005ab60, 0x0, 0x1) 
+
+runtime.chanrecv1(0x0?, 0x0?)
+ /usr/local/go/src/runtime/chan.go:506 +0x14 fp=0x400056d7a0 sp=0x400056d770 pc=0x1fb34
+runtime.unique_runtime_registerUniqueMapCleanup.func2(...) 
+ /usr/local/go/src/runtime/mgc.go:1796 
+runtime.unique_runtime_registerUniqueMapCleanup.gowrap1() 
+ /usr/local/go/src/runtime/mgc.go:1799 +0x3c fp=0x400056d7d0 sp=0x400056d7a0 pc=0x31dac
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400056d7d0 sp=0x400056d7d0 pc=0x909d4
+created by unique.runtime_registerUniqueMapCleanup in goroutine 1
+ /usr/local/go/src/runtime/mgc.go:1794 +0x78 
+
+goroutine 34 gp=0x400030c540 m=3 mp=0x4000083008 [syscall, 13648 minutes]:
+runtime.notetsleepg(0x314eec0, 0xffffffffffffffff) 
+ /usr/local/go/src/runtime/lock_futex.go:123 +0x34 fp=0x4000328790 sp=0x4000328760 pc=0x250b4
+os/signal.signal_recv()
+ /usr/local/go/src/runtime/sigqueue.go:152 +0x30 fp=0x40003287b0 sp=0x4000328790 pc=0x8aa30
+os/signal.loop()
+ /usr/local/go/src/bytes/buffer.go:23 +0x1c fp=0x40003287d0 sp=0x40003287b0 pc=0x2365ac
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x40003287d0 sp=0x40003287d0 pc=0x909d4
+created by os/signal.Notify.func1.1 in goroutine 2 
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/logx/lesswriter.go:152 +0x28
+
+goroutine 21 gp=0x4000382700 m=nil [select]: 
+runtime.gopark(0x4000125f78?, 0x2?, 0x38?, 0x5e?, 0x4000125f64?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000125df0 sp=0x4000125dd0 pc=0x88848
+runtime.selectgo(0x4000125f78, 0x4000125f60, 0x0?, 0x0, 0x2?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000125f20 sp=0x4000125df0 pc=0x66594
+github.com/zeromicro/go-zero/core/stat.init.1.func1() 
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/stat/usage.go:31 +0xcc fp=0x4000125fd0 sp=0x4000125f20 pc=0x490
+cdc
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000125fd0 sp=0x4000125fd0 pc=0x909d4
+created by github.com/zeromicro/go-zero/core/stat.init.1 in goroutine 1
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/stat/usage.go:24 +0x24
+
+goroutine 22 gp=0x4000102fc0 m=nil [GC worker (idle)]: 
+runtime.gopark(0x681d1debbb520?, 0x3?, 0x9c?, 0xb3?, 0x0?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x40006b1f10 sp=0x40006b1ef0 pc=0x88848
+runtime.gcBgMarkWorker(0x400011e150) 
+ /usr/local/go/src/runtime/mgc.go:1423 +0xdc fp=0x40006b1fb0 sp=0x40006b1f10 pc=0x3101c
+runtime.gcBgMarkStartWorkers.gowrap1() 
+ /usr/local/go/src/runtime/mgc.go:1339 +0x28 fp=0x40006b1fd0 sp=0x40006b1fb0 pc=0x30f08
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x40006b1fd0 sp=0x40006b1fd0 pc=0x909d4
+created by runtime.gcBgMarkStartWorkers in goroutine 1 
+ /usr/local/go/src/runtime/mgc.go:1339 +0x140 
+
+goroutine 5 gp=0x4000382c40 m=nil [GC worker (idle)]: 
+runtime.gopark(0x681d1debbc7c7?, 0x3?, 0x2d?, 0xc?, 0x0?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x400007df10 sp=0x400007def0 pc=0x88848
+runtime.gcBgMarkWorker(0x400011e150) 
+ /usr/local/go/src/runtime/mgc.go:1423 +0xdc fp=0x400007dfb0 sp=0x400007df10 pc=0x3101c
+runtime.gcBgMarkStartWorkers.gowrap1() 
+ /usr/local/go/src/runtime/mgc.go:1339 +0x28 fp=0x400007dfd0 sp=0x400007dfb0 pc=0x30f08
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400007dfd0 sp=0x400007dfd0 pc=0x909d4
+created by runtime.gcBgMarkStartWorkers in goroutine 1 
+ /usr/local/go/src/runtime/mgc.go:1339 +0x140 
+goroutine 50 gp=0x4000404380 m=nil [GC worker (idle)]: 
+runtime.gopark(0x681d1debbc20b?, 0x3?, 0x21?, 0xc8?, 0x0?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000324710 sp=0x40003246f0 pc=0x88848
+runtime.gcBgMarkWorker(0x400011e150) 
+ /usr/local/go/src/runtime/mgc.go:1423 +0xdc fp=0x40003247b0 sp=0x4000324710 pc=0x3101c
+runtime.gcBgMarkStartWorkers.gowrap1() 
+ /usr/local/go/src/runtime/mgc.go:1339 +0x28 fp=0x40003247d0 sp=0x40003247b0 pc=0x30f08
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x40003247d0 sp=0x40003247d0 pc=0x909d4
+created by runtime.gcBgMarkStartWorkers in goroutine 1 
+ /usr/local/go/src/runtime/mgc.go:1339 +0x140 
+
+goroutine 29 gp=0x4000103340 m=nil [chan receive, 1 minutes]: 
+runtime.gopark(0x400029a0f0?, 0x1804280?, 0x70?, 0x32?, 0x4000f37900?)
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000477e00 sp=0x4000477de0 pc=0x88848
+runtime.chanrecv(0x400029a070, 0x4000477f00, 0x1) 
+ /usr/local/go/src/runtime/chan.go:664 +0x42c fp=0x4000477e80 sp=0x4000477e00 pc=0x1ff9c
+runtime.chanrecv2(0x1cf9eac?, 0x3?) 
+ /usr/local/go/src/runtime/chan.go:511 +0x14 fp=0x4000477eb0 sp=0x4000477e80 pc=0x1fb54
+github.com/zeromicro/go-zero/core/load.(*SheddingStat).loop(0x4000335d40, 0x400029a070)
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/load/sheddingstat.go:52 +0x40 fp=0x4000477f70 sp=0x4000477eb0 p
+c=0x1637840
+github.com/zeromicro/go-zero/core/load.(*SheddingStat).run(0x4000335d40)
+ /usr/local/go/src/io/io.go:82 +0x60 fp=0x4000477fb0 sp=0x4000477f70 pc=0x1637b00
+github.com/zeromicro/go-zero/core/load.NewSheddingStat.gowrap1() 
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/load/sheddingstat.go:32 +0x28 fp=0x4000477fd0 sp=0x4000477fb0 p
+c=0x1637708
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000477fd0 sp=0x4000477fd0 pc=0x909d4
+created by github.com/zeromicro/go-zero/core/load.NewSheddingStat in goroutine 1
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/load/sheddingstat.go:32 +0x9c
+
+goroutine 30 gp=0x400030c8c0 m=nil [select]: 
+runtime.gopark(0x4000206fa0?, 0x2?, 0x0?, 0x0?, 0x4000206f54?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000206de0 sp=0x4000206dc0 pc=0x88848
+runtime.selectgo(0x4000206fa0, 0x4000206f50, 0x251?, 0x0, 0x2?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000206f10 sp=0x4000206de0 pc=0x66594
+github.com/zeromicro/go-zero/core/logx.(*RotateLogger).startWorker.func1()
+ /usr/local/go/src/encoding/hex/hex.go:383 +0xb4 fp=0x4000206fd0 sp=0x4000206f10 pc=0x2307f4
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000206fd0 sp=0x4000206fd0 pc=0x909d4
+created by github.com/zeromicro/go-zero/core/logx.(*RotateLogger).startWorker in goroutine 1
+ /usr/local/go/src/encoding/hex/hex.go:379 +0x6c 
+
+goroutine 31 gp=0x400030ca80 m=nil [select, 2 minutes]: 
+runtime.gopark(0x4000478fa0?, 0x2?, 0x0?, 0x0?, 0x4000478f54?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000478de0 sp=0x4000478dc0 pc=0x88848
+runtime.selectgo(0x4000478fa0, 0x4000478f50, 0x2c4?, 0x0, 0x0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000478f10 sp=0x4000478de0 pc=0x66594
+github.com/zeromicro/go-zero/core/logx.(*RotateLogger).startWorker.func1()
+ /usr/local/go/src/encoding/hex/hex.go:383 +0xb4 fp=0x4000478fd0 sp=0x4000478f10 pc=0x2307f4
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000478fd0 sp=0x4000478fd0 pc=0x909d4
+created by github.com/zeromicro/go-zero/core/logx.(*RotateLogger).startWorker in goroutine 1
+ /usr/local/go/src/encoding/hex/hex.go:379 +0x6c 
+
+goroutine 32 gp=0x400030cc40 m=nil [select, 13648 minutes]: 
+runtime.gopark(0x400007b7a0?, 0x2?, 0x0?, 0x0?, 0x400007b754?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x400007b5e0 sp=0x400007b5c0 pc=0x88848
+runtime.selectgo(0x400007b7a0, 0x400007b750, 0x0?, 0x0, 0x0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x400007b710 sp=0x400007b5e0 pc=0x66594
+github.com/zeromicro/go-zero/core/logx.(*RotateLogger).startWorker.func1()
+ /usr/local/go/src/encoding/hex/hex.go:383 +0xb4 fp=0x400007b7d0 sp=0x400007b710 pc=0x2307f4
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400007b7d0 sp=0x400007b7d0 pc=0x909d4
+created by github.com/zeromicro/go-zero/core/logx.(*RotateLogger).startWorker in goroutine 1
+ /usr/local/go/src/encoding/hex/hex.go:379 +0x6c 
+
+goroutine 65 gp=0x400030ce00 m=nil [select]: 
+runtime.gopark(0x40006b3fa0?, 0x2?, 0x0?, 0x0?, 0x40006b3f54?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x40006b3de0 sp=0x40006b3dc0 pc=0x88848
+runtime.selectgo(0x40006b3fa0, 0x40006b3f50, 0x263?, 0x0, 0x0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x40006b3f10 sp=0x40006b3de0 pc=0x66594
+github.com/zeromicro/go-zero/core/logx.(*RotateLogger).startWorker.func1()
+ /usr/local/go/src/encoding/hex/hex.go:383 +0xb4 fp=0x40006b3fd0 sp=0x40006b3f10 pc=0x2307f4
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x40006b3fd0 sp=0x40006b3fd0 pc=0x909d4
+created by github.com/zeromicro/go-zero/core/logx.(*RotateLogger).startWorker in goroutine 1
+ /usr/local/go/src/encoding/hex/hex.go:379 +0x6c 
+
+goroutine 66 gp=0x400030cfc0 m=nil [select]: 
+runtime.gopark(0x4000204fa0?, 0x2?, 0x0?, 0x0?, 0x4000204f54?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000204de0 sp=0x4000204dc0 pc=0x88848
+runtime.selectgo(0x4000204fa0, 0x4000204f50, 0xda?, 0x0, 0x2?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000204f10 sp=0x4000204de0 pc=0x66594
+github.com/zeromicro/go-zero/core/logx.(*RotateLogger).startWorker.func1()
+ /usr/local/go/src/encoding/hex/hex.go:383 +0xb4 fp=0x4000204fd0 sp=0x4000204f10 pc=0x2307f4
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000204fd0 sp=0x4000204fd0 pc=0x909d4
+created by github.com/zeromicro/go-zero/core/logx.(*RotateLogger).startWorker in goroutine 1
+ /usr/local/go/src/encoding/hex/hex.go:379 +0x6c 
+
+goroutine 67 gp=0x400030d180 m=nil [select, 13648 minutes]: 
+runtime.gopark(0x400007ef50?, 0x2?, 0x0?, 0x0?, 0x400007ef14?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x400007eda0 sp=0x400007ed80 pc=0x88848
+runtime.selectgo(0x400007ef50, 0x400007ef10, 0x0?, 0x0, 0x0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x400007eed0 sp=0x400007eda0 pc=0x66594
+google.golang.org/grpc/internal/grpcsync.(*CallbackSerializer).run(0x4000117b30, {0x1fb0040, 0x4000222af0})
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/grpcsync/callback_serializer.go:88 +0xc4 fp=0x400007efa0 sp=0x40
+0007eed0 pc=0x49ba94
+google.golang.org/grpc/internal/grpcsync.NewCallbackSerializer.gowrap1()
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/grpcsync/callback_serializer.go:52 +0x30 fp=0x400007efd0 sp=0x40
+0007efa0 pc=0x49b8d0
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400007efd0 sp=0x400007efd0 pc=0x909d4
+created by google.golang.org/grpc/internal/grpcsync.NewCallbackSerializer in goroutine 1
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/grpcsync/callback_serializer.go:52 +0x118
+
+goroutine 68 gp=0x400030d340 m=nil [select, 13648 minutes]: 
+runtime.gopark(0x4000553f50?, 0x2?, 0x1?, 0xa5?, 0x4000553f14?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000123da0 sp=0x4000123d80 pc=0x88848
+runtime.selectgo(0x4000123f50, 0x4000553f10, 0x0?, 0x0, 0x0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000123ed0 sp=0x4000123da0 pc=0x66594
+google.golang.org/grpc/internal/grpcsync.(*CallbackSerializer).run(0x4000117b60, {0x1fb0040, 0x4000222b40})
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/grpcsync/callback_serializer.go:88 +0xc4 fp=0x4000123fa0 sp=0x40
+00123ed0 pc=0x49ba94
+
+google.golang.org/grpc/internal/grpcsync.NewCallbackSerializer.gowrap1() [734/1090]
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/grpcsync/callback_serializer.go:52 +0x30 fp=0x4000123fd0 sp=0x40
+00123fa0 pc=0x49b8d0
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000123fd0 sp=0x4000123fd0 pc=0x909d4
+created by google.golang.org/grpc/internal/grpcsync.NewCallbackSerializer in goroutine 1
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/grpcsync/callback_serializer.go:52 +0x118
+
+goroutine 69 gp=0x400030d880 m=nil [select]: 
+runtime.gopark(0x400035df50?, 0x2?, 0x1?, 0x0?, 0x400035df14?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x400064dda0 sp=0x400064dd80 pc=0x88848
+runtime.selectgo(0x400064df50, 0x400035df10, 0x0?, 0x0, 0x0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x400064ded0 sp=0x400064dda0 pc=0x66594
+google.golang.org/grpc/internal/grpcsync.(*CallbackSerializer).run(0x4000117b90, {0x1fb0040, 0x4000222cd0})
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/grpcsync/callback_serializer.go:88 +0xc4 fp=0x400064dfa0 sp=0x40
+0064ded0 pc=0x49ba94
+google.golang.org/grpc/internal/grpcsync.NewCallbackSerializer.gowrap1()
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/grpcsync/callback_serializer.go:52 +0x30 fp=0x400064dfd0 sp=0x40
+0064dfa0 pc=0x49b8d0
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400064dfd0 sp=0x400064dfd0 pc=0x909d4
+created by google.golang.org/grpc/internal/grpcsync.NewCallbackSerializer in goroutine 1
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/grpcsync/callback_serializer.go:52 +0x118
+
+goroutine 10 gp=0x400030da40 m=nil [select, 13648 minutes]: 
+runtime.gopark(0x4000324f50?, 0x3?, 0x0?, 0x0?, 0x4000324ef2?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000324d80 sp=0x4000324d60 pc=0x88848
+runtime.selectgo(0x4000324f50, 0x4000324eec, 0x0?, 0x0, 0x0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000324eb0 sp=0x4000324d80 pc=0x66594
+go.etcd.io/etcd/client/v3.(*lessor).keepAliveCtxCloser(0x4000138b40, {0x1fb0040, 0x4000222a50}, 0x694d97f7ebd4c7b4, 0x4000576460)
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:332 +0x88 fp=0x4000324f90 sp=0x4000324eb0 pc=0x7cd4d8
+go.etcd.io/etcd/client/v3.(*lessor).KeepAlive.gowrap1() 
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:298 +0x38 fp=0x4000324fd0 sp=0x4000324f90 pc=0x7cd268
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000324fd0 sp=0x4000324fd0 pc=0x909d4
+created by go.etcd.io/etcd/client/v3.(*lessor).KeepAlive in goroutine 1
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:298 +0x54c
+
+goroutine 52 gp=0x400030dc00 m=nil [select]: 
+runtime.gopark(0x400054ff88?, 0x2?, 0x40?, 0x57?, 0x400054fedc?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x400064fd70 sp=0x400064fd50 pc=0x88848
+runtime.selectgo(0x400064ff88, 0x400054fed8, 0x4000384000?, 0x0, 0x40001f5808?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x400064fea0 sp=0x400064fd70 pc=0x66594
+go.etcd.io/etcd/client/v3.(*Client).autoSync(0x400020a000) 
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/client.go:202 +0x94 fp=0x400064ffb0 sp=0x400064fea0 pc=0x7c7114
+go.etcd.io/etcd/client/v3.newClient.gowrap1() 
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/client.go:466 +0x28 fp=0x400064ffd0 sp=0x400064ffb0 pc=0x7c9ca8
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400064ffd0 sp=0x400064ffd0 pc=0x909d4
+created by go.etcd.io/etcd/client/v3.newClient in goroutine 1 
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/client.go:466 +0xe24
+
+goroutine 53 gp=0x400030ddc0 m=nil [select, 13648 minutes]: 
+runtime.gopark(0x400056e718?, 0x2?, 0x0?, 0x0?, 0x400056e70c?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x400056e5a0 sp=0x400056e580 pc=0x88848
+runtime.selectgo(0x400056e718, 0x400056e708, 0x1?, 0x0, 0x2?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x400056e6d0 sp=0x400056e5a0 pc=0x66594
+google.golang.org/grpc.(*ClientConn).WaitForStateChange(0x400043b408, {0x1faffd0, 0x314db00}, 0x2)
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/clientconn.go:659 +0x8c fp=0x400056e740 sp=0x400056e6d0 pc=0x56a51c
+github.com/zeromicro/go-zero/core/discov/internal.(*stateWatcher).watch(0x4000526cc0, {0x1f98100, 0x400043b408})
+
+github.com/zeromicro/go-zero/core/discov/internal.(*cluster).watchConnState(0x400030fb00, {0x1fbab80, 0x400020a000})
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/discov/internal/registry.go:456 +0xbc fp=0x400056e7a0 sp=0x4000
+56e770 pc=0x7e826c
+github.com/zeromicro/go-zero/core/discov/internal.(*cluster).newClient.gowrap1()
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/discov/internal/registry.go:345 +0x30 fp=0x400056e7d0 sp=0x4000
+56e7a0 pc=0x7e7630
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400056e7d0 sp=0x400056e7d0 pc=0x909d4
+created by github.com/zeromicro/go-zero/core/discov/internal.(*cluster).newClient in goroutine 1
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/discov/internal/registry.go:345 +0xa0
+
+goroutine 54 gp=0x4000103500 m=nil [select, 13648 minutes]: 
+runtime.gopark(0x400007ffa0?, 0x2?, 0x8?, 0xb0?, 0x400007ff84?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x400007fe10 sp=0x400007fdf0 pc=0x88848
+runtime.selectgo(0x400007ffa0, 0x400007ff80, 0x40001f4c08?, 0x0, 0x0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x400007ff40 sp=0x400007fe10 pc=0x66594
+google.golang.org/grpc.newClientStreamWithParams.func4() 
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/stream.go:398 +0x8c fp=0x400007ffd0 sp=0x400007ff40 pc=0x5839bc
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400007ffd0 sp=0x400007ffd0 pc=0x909d4
+created by google.golang.org/grpc.newClientStreamWithParams in goroutine 11
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/stream.go:397 +0xb40
+
+goroutine 11 gp=0x4000383180 m=nil [select]: 
+runtime.gopark(0x4000555808?, 0x2?, 0xf8?, 0x56?, 0x4000555804?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000555680 sp=0x4000555660 pc=0x88848
+runtime.selectgo(0x4000555808, 0x4000555800, 0x4000555878?, 0x0, 0x4000a36700?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x40005557b0 sp=0x4000555680 pc=0x66594
+google.golang.org/grpc/internal/transport.(*recvBufferReader).readMessageHeaderClient(0x4000336000, {0x40005270f0, 0x5, 0x5})
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/transport.go:197 +0x78 fp=0x4000555870 sp=0x40005557b0
+ pc=0x50d778
+google.golang.org/grpc/internal/transport.(*recvBufferReader).ReadMessageHeader(0x4000336000, {0x40005270f0?, 0x40004fdd48?, 0x40
+002d7e00?})
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/transport.go:143 +0x3c fp=0x40005558a0 sp=0x4000555870
+ pc=0x50d2ac
+google.golang.org/grpc/internal/transport.(*transportReader).ReadMessageHeader(0x40002c46a0, {0x40005270f0?, 0x40005559b8?, 0x2b9
+8cc?})
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/transport.go:417 +0x28 fp=0x40005558e0 sp=0x40005558a0
+ pc=0x50e108
+google.golang.org/grpc/internal/transport.(*Stream).ReadMessageHeader(0x4000308240, {0x40005270f0, 0x5, 0x5})
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/transport.go:360 +0xa4 fp=0x4000555940 sp=0x40005558e0
+ pc=0x50dd94
+google.golang.org/grpc.(*parser).recvMsg(0x40005270e0, 0x7fffffff)
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/rpc_util.go:690 +0x40 fp=0x40005559c0 sp=0x4000555940 pc=0x573c60
+google.golang.org/grpc.recvAndDecompress(0x40005270e0, {0x1f8df60, 0x40002d7e00}, {0x0, 0x0}, 0x7fffffff, 0x0, {0x0, 0x0}, 0x0)
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/rpc_util.go:850 +0x60 fp=0x4000555ab0 sp=0x40005559c0 pc=0x574ab0
+google.golang.org/grpc.recv(0x4000555b98?, {0xffff5ae37cc8, 0x314db00}, {0x1f8df60?, 0x40002d7e00?}, {0x0?, 0x0?}, {0x1b83ae0, 0x
+4000a36740}, 0x0?, ...)
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/rpc_util.go:933 +0x78 fp=0x4000555b60 sp=0x4000555ab0 pc=0x575558
+google.golang.org/grpc.(*csAttempt).recvMsg(0x400052c680, {0x1b83ae0, 0x4000a36740}, 0x0?)
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/stream.go:1136 +0x24c fp=0x4000555cf0 sp=0x4000555b60 pc=0x5877bc
+google.golang.org/grpc.(*clientStream).RecvMsg.func1(0x40001784c0?)
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/stream.go:976 +0x28 fp=0x4000555d20 sp=0x4000555cf0 pc=0x586928
+google.golang.org/grpc.(*clientStream).withRetry(0x40004d0240, 0x4000555e70, 0x4000555e60)
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/stream.go:780 +0x500 fp=0x4000555da0 sp=0x4000555d20 pc=0x5857d0
+google.golang.org/grpc.(*clientStream).RecvMsg(0x40004d0240, {0x1b83ae0?, 0x4000a36740?})
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/stream.go:975 +0xe0 fp=0x4000555ea0 sp=0x4000555da0 pc=0x586760
+go.etcd.io/etcd/api/v3/etcdserverpb.(*leaseLeaseKeepAliveClient).Recv(0x40002ca7c0)
+
+go.etcd.io/etcd/client/v3.(*lessor).recvKeepAliveLoop(0x4000138b40)
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:458 +0x204 fp=0x4000555fb0 sp=0x4000555ed0 pc=0x7ce3d4
+go.etcd.io/etcd/client/v3.(*lessor).KeepAlive.func1.gowrap1() 
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:301 +0x28 fp=0x4000555fd0 sp=0x4000555fb0 pc=0x7cd1f8
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000555fd0 sp=0x4000555fd0 pc=0x909d4
+created by go.etcd.io/etcd/client/v3.(*lessor).KeepAlive.func1 in goroutine 1
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:301 +0x60
+
+goroutine 8 gp=0x4000404540 m=nil [IO wait]: 
+runtime.gopark(0x4000207b08?, 0x4000404540?, 0x8?, 0x7b?, 0x4fa230?)
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000207a90 sp=0x4000207a70 pc=0x88848
+runtime.netpollblock(0x0?, 0xffffffff?, 0xff?) 
+ /usr/local/go/src/runtime/netpoll.go:575 +0x158 fp=0x4000207ad0 sp=0x4000207a90 pc=0x4b868
+internal/poll.runtime_pollWait(0xffff5ae25f38, 0x72) 
+ /usr/local/go/src/runtime/netpoll.go:351 +0xa0 fp=0x4000207b00 sp=0x4000207ad0 pc=0x87a00
+internal/poll.(*pollDesc).wait(0x40001aec00?, 0x400042c000?, 0x0) 
+ /usr/local/go/src/internal/poll/fd_poll_runtime.go:84 +0x28 fp=0x4000207b30 sp=0x4000207b00 pc=0x101c18
+internal/poll.(*pollDesc).waitRead(...) 
+ /usr/local/go/src/internal/poll/fd_poll_runtime.go:89 
+internal/poll.(*FD).Read(0x40001aec00, {0x400042c000, 0x8000, 0x8000})
+ /usr/local/go/src/internal/poll/fd_unix.go:165 +0x1fc fp=0x4000207bd0 sp=0x4000207b30 pc=0x102ecc
+net.(*netFD).Read(0x40001aec00, {0x400042c000?, 0x4000207c68?, 0x4000d01bc0?})
+ /usr/local/go/src/internal/sync/mutex.go:55 +0x28 fp=0x4000207c20 sp=0x4000207bd0 pc=0x272148
+net.(*conn).Read(0x400041a010, {0x400042c000?, 0x100000000?, 0xffff5ac7be48?})
+ ?:194 +0x34 fp=0x4000207c70 sp=0x4000207c20 pc=0x281704 
+bufio.(*Reader).Read(0x40003cc480, {0x40002d43c0, 0x9, 0x40000a79b0?})
+ /usr/local/go/src/bufio/bufio.go:245 +0x1b0 fp=0x4000207cb0 sp=0x4000207c70 pc=0x1b6a40
+io.ReadAtLeast({0x1f8e5c0, 0x40003cc480}, {0x40002d43c0, 0x9, 0x9}, 0x9)
+ /usr/local/go/src/io/io.go:335 +0xa0 fp=0x4000207d00 sp=0x4000207cb0 pc=0xf7be0
+io.ReadFull(...)
+ /usr/local/go/src/io/io.go:354 
+golang.org/x/net/http2.readFrameHeader({0x40002d43c0, 0x9, 0x4000445260?}, {0x1f8e5c0?, 0x40003cc480?})
+ /root/go/pkg/mod/golang.org/x/net@v0.42.0/http2/frame.go:242 +0x58 fp=0x4000207d50 sp=0x4000207d00 pc=0x4c9f48
+golang.org/x/net/http2.(*Framer).ReadFrame(0x40002d4380) 
+ /root/go/pkg/mod/golang.org/x/net@v0.42.0/http2/frame.go:506 +0x74 fp=0x4000207e40 sp=0x4000207d50 pc=0x4ca614
+google.golang.org/grpc/internal/transport.(*http2Client).reader(0x40004fdd48, 0x4000300070)
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/http2_client.go:1662 +0x158 fp=0x4000207fb0 sp=0x40002
+07e40 pc=0x4feef8
+google.golang.org/grpc/internal/transport.NewHTTP2Client.gowrap4()
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/http2_client.go:414 +0x2c fp=0x4000207fd0 sp=0x4000207
+fb0 pc=0x4f5b9c
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000207fd0 sp=0x4000207fd0 pc=0x909d4
+created by google.golang.org/grpc/internal/transport.NewHTTP2Client in goroutine 70
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/http2_client.go:414 +0x16a8
+
+goroutine 55 gp=0x4000103c00 m=nil [select]: 
+runtime.gopark(0x4000128ef8?, 0x4?, 0x8?, 0x28?, 0x4000128e90?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000128d00 sp=0x4000128ce0 pc=0x88848
+runtime.selectgo(0x4000128ef8, 0x4000128e88, 0x3124160?, 0x0, 0x2e8d0617bc7bb?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000128e30 sp=0x4000128d00 pc=0x66594
+go.etcd.io/etcd/client/v3.(*lessor).sendKeepAliveLoop(0x4000138b40, {0x1fb9f58, 0x40002ca7c0})
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:590 +0x1d8 fp=0x4000128fa0 sp=0x4000128e30 pc=0x7cf4a8
+go.etcd.io/etcd/client/v3.(*lessor).resetRecv.gowrap2() 
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:500 +0x30 fp=0x4000128fd0 sp=0x4000128fa0 pc=0x7cea70
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000128fd0 sp=0x4000128fd0 pc=0x909d4
+
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:500 +0x278
+
+goroutine 9 gp=0x4000404700 m=nil [select]: 
+runtime.gopark(0x4000202ec8?, 0x2?, 0x0?, 0x0?, 0x4000202e94?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000202d20 sp=0x4000202d00 pc=0x88848
+runtime.selectgo(0x4000202ec8, 0x4000202e90, 0x4000202ea8?, 0x0, 0x400041a010?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000202e50 sp=0x4000202d20 pc=0x66594
+google.golang.org/grpc/internal/transport.(*controlBuffer).get(0x40000d03c0, 0x1)
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/controlbuf.go:412 +0x144 fp=0x4000202ef0 sp=0x4000202e
+50 pc=0x4ec484
+google.golang.org/grpc/internal/transport.(*loopyWriter).run(0x40001aed00)
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/controlbuf.go:575 +0x70 fp=0x4000202f50 sp=0x4000202ef
+0 pc=0x4ecce0
+google.golang.org/grpc/internal/transport.NewHTTP2Client.func6() 
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/http2_client.go:472 +0xb8 fp=0x4000202fd0 sp=0x4000202
+f50 pc=0x4f5a98
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000202fd0 sp=0x4000202fd0 pc=0x909d4
+created by google.golang.org/grpc/internal/transport.NewHTTP2Client in goroutine 70
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/http2_client.go:470 +0x1b34
+
+goroutine 12 gp=0x4000103dc0 m=nil [select]: 
+runtime.gopark(0x4000475f28?, 0x2?, 0x8?, 0xb8?, 0x4000475ee4?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000475d70 sp=0x4000475d50 pc=0x88848
+runtime.selectgo(0x4000475f28, 0x4000475ee0, 0x3124160?, 0x0, 0x2e8d05e601e92?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000475ea0 sp=0x4000475d70 pc=0x66594
+go.etcd.io/etcd/client/v3.(*lessor).deadlineLoop(0x4000138b40) 
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:550 +0x68 fp=0x4000475fb0 sp=0x4000475ea0 pc=0x7cf0f8
+go.etcd.io/etcd/client/v3.(*lessor).KeepAlive.func1.gowrap2() 
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:302 +0x28 fp=0x4000475fd0 sp=0x4000475fb0 pc=0x7cd198
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000475fd0 sp=0x4000475fd0 pc=0x909d4
+created by go.etcd.io/etcd/client/v3.(*lessor).KeepAlive.func1 in goroutine 1
+ /root/go/pkg/mod/go.etcd.io/etcd/client/v3@v3.5.15/lease.go:302 +0xa0
+
+goroutine 13 gp=0x40004048c0 m=nil [select]: 
+runtime.gopark(0x4000124f40?, 0x3?, 0x0?, 0x0?, 0x4000124ec2?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000124d40 sp=0x4000124d20 pc=0x88848
+runtime.selectgo(0x4000124f40, 0x4000124ebc, 0x0?, 0x0, 0x3?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000124e70 sp=0x4000124d40 pc=0x66594
+eromicro/go-zero/core/syncx.(*DoneChan).Done() 
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/syncx/resourcemanager.go:129 +0x98 fp=0x4000124f90 sp=0x4000124
+e70 pc=0x7e9778
+github.com/zeromicro/go-zero/core/threading.RunSafe(0x0?) 
+ /usr/local/go/src/internal/abi/map_swiss.go:38 +0x40 fp=0x4000124fb0 sp=0x4000124f90 pc=0x2371a0
+github.com/zeromicro/go-zero/core/threading.GoSafe.gowrap1() 
+ /usr/local/go/src/internal/abi/map_swiss.go:14 +0x28 fp=0x4000124fd0 sp=0x4000124fb0 pc=0x237128
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000124fd0 sp=0x4000124fd0 pc=0x909d4
+created by github.com/zeromicro/go-zero/core/threading.GoSafe in goroutine 1
+ /usr/local/go/src/internal/abi/map_swiss.go:14 +0x5c 
+
+goroutine 42 gp=0x4000003500 m=nil [select]: 
+runtime.gopark(0x400071ff60?, 0x2?, 0x4b?, 0x3?, 0x400071ff24?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000c2ddb0 sp=0x4000c2dd90 pc=0x88848
+runtime.selectgo(0x4000c2df60, 0x400071ff20, 0x3124160?, 0x0, 0x4000002fc0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000c2dee0 sp=0x4000c2ddb0 pc=0x66594
+github.com/zeromicro/go-zero/core/executors.(*PeriodicalExecutor).backgroundFlush.func1()
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/executors/periodicalexecutor.go:129 +0x124 fp=0x4000c2dfd0 sp=0
+x4000c2dee0 pc=0x3f3b34
+
+/usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000c2dfd0 sp=0x4000c2dfd0 pc=0x909d4 [492/1090]
+created by github.com/zeromicro/go-zero/core/executors.(*PeriodicalExecutor).backgroundFlush in goroutine 40
+ /root/go/pkg/mod/github.com/zeromicro/go-zero@v1.8.4/core/executors/periodicalexecutor.go:119 +0x5c
+
+goroutine 21852911 gp=0x4000a16e00 m=nil [select]: 
+runtime.gopark(0x40009a9ee8?, 0x6?, 0x58?, 0x9c?, 0x40009a9d84?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x4000474be0 sp=0x4000474bc0 pc=0x88848
+runtime.selectgo(0x4000474ee8, 0x40009a9d78, 0x1c8428e?, 0x0, 0x0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x4000474d10 sp=0x4000474be0 pc=0x66594
+net/http.(*http2clientStream).writeRequest(0x40009d2a80, 0x40009df7c0, 0x0)
+ /usr/local/go/src/net/http/h2_bundle.go:9044 +0x9ec fp=0x4000474f70 sp=0x4000474d10 pc=0x43dddc
+net/http.(*http2clientStream).doRequest(0x40009d2a80, 0x40009db190?, 0x4000479f90?)
+ /usr/local/go/src/net/http/h2_bundle.go:8901 +0x58 fp=0x4000474fa0 sp=0x4000474f70 pc=0x43d3b8
+net/http.(*http2ClientConn).roundTrip.gowrap1() 
+ /usr/local/go/src/net/http/h2_bundle.go:8806 +0x30 fp=0x4000474fd0 sp=0x4000474fa0 pc=0x43d320
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x4000474fd0 sp=0x4000474fd0 pc=0x909d4
+created by net/http.(*http2ClientConn).roundTrip in goroutine 21852910
+ /usr/local/go/src/net/http/h2_bundle.go:8806 +0x380 
+
+goroutine 17879580 gp=0x4000c8e1c0 m=nil [select, 3 minutes]: 
+runtime.gopark(0x400056c728?, 0x4?, 0x98?, 0xc5?, 0x400056c6a8?) 
+ /usr/local/go/src/runtime/proc.go:435 +0xc8 fp=0x400056c520 sp=0x400056c500 pc=0x88848
+runtime.selectgo(0x400056c728, 0x400056c6a0, 0x3124160?, 0x0, 0x0?, 0x1)
+ /usr/local/go/src/runtime/select.go:351 +0x6c4 fp=0x400056c650 sp=0x400056c520 pc=0x66594
+google.golang.org/grpc/internal/transport.(*http2Server).keepalive(0x4000168b60)
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/http2_server.go:1198 +0x164 fp=0x400056c7b0 sp=0x40005
+6c650 pc=0x507e64
+google.golang.org/grpc/internal/transport.NewServerTransport.gowrap1()
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/http2_server.go:358 +0x28 fp=0x400056c7d0 sp=0x400056c
+7b0 pc=0x501558
+runtime.goexit({})
+ /usr/local/go/src/runtime/asm_arm64.s:1223 +0x4 fp=0x400056c7d0 sp=0x400056c7d0 pc=0x909d4
+created by google.golang.org/grpc/internal/transport.NewServerTransport in goroutine 17879578
+ /root/go/pkg/mod/google.golang.org/grpc@v1.73.0/internal/transport/http2_server.go:358 +0x1398
+
+...has more
+`
+
+### What did you expect to see?
+
+Hope to help find the cause",1,0,0,0,0,0,0
+"Title: Cursor jump bug when typing fast in Scheduler
+
+Body: Syntax tokenization produces wrong color tokens for nested multiline strings.",1,0,0,0,0,0,0
+"Title: Unexpected error thrown during dynamic graph execution
+
+Body: Error message appeared once but cannot reproduce consistently. Need reproduction repo.",1,0,0,0,0,1,0
+"Title: Intermittent rendering glitch in MemoryPool
+
+Body: The UI becomes unresponsive after hot reloading. Please provide extension bisect logs and system information.",1,0,0,0,0,1,0
+"Title: Unexpected error thrown during concurrent state update
+
+Body: Error message appeared once but cannot reproduce consistently. Need reproduction repo.",1,0,0,0,0,1,0
+"Title: XLA rewrites exp(a) * exp(b) to exp(a + b), changing NaN to 1.0
+
+Body: ### Issue type
+
+Bug
+
+### Have you reproduced the bug with TensorFlow Nightly?
+
+Yes
+
+### Source
+
+binary
+
+### TensorFlow version
+
+`tf-nightly 2.22.0-dev20260713` (`v1.12.1-142315-gfb9cdf75cf2`)
+
+### Custom code
+
+Yes
+
+### OS platform and distribution
+
+Ubuntu 20.04.4 LTS (x86_64)
+
+### Mobile device
+
+No response
+
+### Python version
+
+3.11.15
+
+### Bazel version
+
+No response
+
+### GCC/compiler version
+
+No response
+
+### CUDA/cuDNN version
+
+CPU-only reproducer
+
+### GPU model and memory
+
+CPU-only reproducer
+
+### Current behavior?
+
+With `jit_compile=True`, XLA returns `1.0` for `exp(100.0) * exp(-100.0)`, while eager execution and a non-XLA `tf.function` both return `NaN`.
+
+The optimized HLO rewrites the expression from two exponentials followed by a multiply:
+
+ [CODE_BLOCK] %exponential.3 = f32[1]{0} exponential(%arg0.1)
+%exponential.4 = f32[1]{0} exponential(%arg1.1)
+ROOT %multiply.5 = f32[1]{0} multiply(%exponential.3, %exponential.4)
+ [/CODE_BLOCK] 
+
+to one addition followed by one exponential:
+
+ [CODE_BLOCK] %add.1 = f32[1]{0} add(%param_0.1, %param_1)
+ROOT %exponential.1 = f32[1]{0} exponential(%add.1)
+ [/CODE_BLOCK] 
+
+This corresponds to the AlgebraicSimplifier rule `exp(LHS) * exp(RHS) => exp(LHS + RHS)`. The transformation is not equivalent at floating-point overflow/underflow boundaries: the original expression evaluates as an overflowing exponential multiplied by an underflowed exponential, whereas the rewritten expression evaluates as `exp(0)`.
+
+As a control, setting `XLA_FLAGS=--xla_disable_hlo_passes=algsimp` makes the XLA result `NaN` and preserves the two exponentials and multiply in optimized HLO.
+
+I expected the XLA-compiled function to preserve the observable eager/graph result for this expression, or for this rewrite to be guarded when it changes non-finite behavior.
+
+### Standalone code to reproduce the issue
+
+ [CODE_BLOCK] import os
+
+os.environ[""CUDA_VISIBLE_DEVICES""] = """"
+os.environ[""TF_CPP_MIN_LOG_LEVEL""] = ""2""
+
+import tensorflow as tf
+
+def expression(left, right):
+ return tf.exp(left) * tf.exp(right)
+
+left = tf.constant([100.0], dtype=tf.float32)
+right = tf.constant([-100.0], dtype=tf.float32)
+
+graph_expression = tf.function(expression)
+xla_expression = tf.function(expression, jit_compile=True)
+
+print(""TensorFlow:"", tf.__version__)
+print(""eager:"", expression(left, right).numpy())
+print(""graph:"", graph_expression(left, right).numpy())
+print(""xla: "", xla_expression(left, right).numpy())
+ [/CODE_BLOCK] 
+
+### Relevant log output
+
+ [CODE_BLOCK] TensorFlow: 2.22.0-dev20260713
+eager: [nan]
+graph: [nan]
+xla: [1.]
+ [/CODE_BLOCK] 
+
+The rewrite is implemented in `AlgebraicSimplifierVisitor::HandleMultiply`:
+[URL]",1,0,0,0,0,1,0
+"Title: Code Agent Host client protocol and server protocol version mismatch (0.7.0 vs ^0.8.0)
+
+Body: Does this issue occur when all extensions are disabled?: Yes
+
+ 
+ Report Issue' dialog can assist with this. -->
+- VS Code Version: 1.134.0 (110a328ea54b42367b803ec53ee0bf52ef26b419)
+- OS Version: Windows 11 Enterprise 25H2 26200.9106
+
+Steps to Reproduce:
+
+1. Run `code agent host`
+2. Run `code agent ps`
+
+I get the following error:
+
+[2026-08-25 14:29:13] warn Could not query agent host standalone (pid 39224, 127.0.0.1:59190) [stable]: AHP initialize failed: rpc error -32005: Client offered protocol versions [0.7.0], none of which are compatible with this server's version 0.8.0 (server accepts ^0.8.0).
+
+ΓöÇΓöÇ standalone (pid 39224, 127.0.0.1:59190) [stable] ΓöÇΓöÇ
+ ΓÜá AHP initialize failed: rpc error -32005: Client offered protocol versions [0.7.0], none of which are compatible with this server's version 0.8.0 (server accepts ^0.8.0).
+[2026-08-25 14:29:13] error no agent host could be reached: no discovered agent host could be queried",1,0,0,0,0,0,0
+"Title: Troubles installing dictation functionality manually
+
+Body: Does this issue occur when all extensions are disabled?: Yes
+
+ 
+ Report Issue' dialog can assist with this. -->
+- VS Code Version: 1.134.0
+- OS Version: Windows 11
+
+# Description
+This issue is regarding the newly introduced dictation function in VS Code. I have no specific steps on how to reproduce this unfortunately.
+
+My company blocks automatic downloading of the Nemotron resulting in the following error message:
+`Could not download the nemotron-3.5-asr-streaming-0.6b speech-to-text model, which can happen on networks that block the model registry. You can install it from a downloaded package instead.`
+
+The VS Code website mentions the following:
+`If network restrictions prevent VS Code from downloading the on-device model, download the official CPU model package separately. Then run Chat: Install Dictation Model from Local Package... and select the ZIP file or prepared model folder.`
+
+It is, however, not that trivial as to how to get this up and running manually. Maybe the documentation could be improved a bit in this regard. In any case, I'll describe how I got it to work eventually in case it is useful to others. I am not sure whether I have missed something completely that would simplify manual installation, but that would in any case then be useful to add to the documentation.
+
+# Manual installation & issues
+The first minor issue is that when browsing for the model, VS Code does not allow to select "".zip"" files.
+
+When searching for this model online, you'll only find the Hugging Face repository of this model and the NVIDIA webpage, which refers to the same Hugging Face page. The problem is that the Hugging Face version of the model is not accepted by VS Code as it must be a specific ONNX version of the model. It was a bit difficult to find out how to obtain a suitable model. I now found a Microsoft blogpost on live transcriptions that provided some guidance. The code I now use to download the model:
+ [CODE_BLOCK] """"""
+This script downloads a streaming speech model using Foundry Local.
+
+Requirements:
+ pip install foundry-local-sdk
+""""""
+
+from pathlib import Path
+
+from foundry_local_sdk import Configuration, FoundryLocalManager
+
+# ---------------------------------------------------------------------------
+# 1. Initialize Foundry Local
+# ---------------------------------------------------------------------------
+
+cache_dir = Path(""."") / ""nemotron""
+config = Configuration(
+ app_name=""fetch-vscode-dictation-model"",
+ model_cache_dir=str(cache_dir),
+)
+FoundryLocalManager.initialize(config)
+manager = FoundryLocalManager.instance
+
+# ---------------------------------------------------------------------------
+# 2. Download and load the streaming speech model
+# ---------------------------------------------------------------------------
+
+model = manager.catalog.get_model(""nemotron-3.5-asr-streaming-0.6b"")
+
+if not model.is_cached:
+ print(""Downloading model..."")
+ model.download(lambda progress: print(f""\r Progress: {progress:.1f}%"", end="""", flush=True))
+ print(""\n Download complete."")
+
+print(f""Model: {model.id}"")
+print(f""Prepared model folder: {model.get_path()}"")
+ [/CODE_BLOCK] 
+
+Selecting the cache directory of this model is accepted by VS Code and its files are saved to `%APPDATA%\Code\chatDictationModels\`. However, dictation still would not work as the same error message kept popping up. I found out that VS Code also needs a Foundry Local runtime that might be downloaded together with the model normally, which I cannot check myself. VS Code will, misleadingly, keep showing the error that the model must first be downloaded manually instead.
+
+I now circumvented this by also downloading the runtime files manually here:
+[URL]
+And extracting the files, such that:
+ [CODE_BLOCK] %APPDATA%\Code\chatDictationRuntime\1.2.3\
+├── .complete-win32-x64
+├── prebuilds\win32-x64\foundry_local_napi.node
+└── foundry-local-core\win32-x64\ (Foundry Local + onnxruntime DLLs)
+ [/CODE_BLOCK] 
+Finally, the `.complete-win32-x64` file must be added manually to the directory above. It's contents must be set to `1.2.3`. After that, the dictation function started working for me.",1,0,0,0,0,0,0
+"Title: tf.raw.ops.SparseSegmentSumGrad triggers GPU illegal memory access in gpuprim::DeviceRadixSort::SortPairs
+
+Body: ### Issue type
+
+Bug
+
+### Have you reproduced the bug with TensorFlow Nightly?
+
+No
+
+### Source
+
+source
+
+### TensorFlow version
+
+tf 2.21.0
+
+### Custom code
+
+Yes
+
+### OS platform and distribution
+
+Ubuntu 24.04.3 LTS x86_64
+
+### Mobile device
+
+_No response_
+
+### Python version
+
+3.10.20
+
+### Bazel version
+
+_No response_
+
+### GCC/compiler version
+
+_No response_
+
+### CUDA/cuDNN version
+
+_No response_
+
+### GPU model and memory
+
+4 x NVIDIA GeForce RTX 2080 Ti, 11264 MiB each
+
+### Current behavior?
+
+## Current behavior
+
+I verified this issue locally on 2026-03-24 by running the original reproducer in the `tf_test` conda environment.
+
+`tf.raw_ops.SparseSegmentSumGrad` triggers a GPU illegal memory access during kernel execution. The first clear error reported is:
+
+`INTERNAL: Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered`
+
+After that, the CUDA context appears poisoned and the process eventually aborts with a fatal CHECK failure. The process terminates with `Aborted (core dumped)` / exit code `134`.
+
+This looks like a strong GPU kernel bug rather than a normal input-validation failure.
+
+## Expected behavior
+
+`tf.raw_ops.SparseSegmentSumGrad` should either handle malformed inputs with a regular TensorFlow exception or fail safely, but it should not trigger GPU illegal memory access or poison the process state.
+
+## Minimal reproducer
+
+ [CODE_BLOCK] import tensorflow as tf
+
+output_dim0 = 2
+indices = tf.constant([0, 1], dtype=tf.int32)
+segment_ids = tf.constant([0, 1], dtype=tf.int32)
+
+grad = tf.random.uniform(shape=[0], minval=0, maxval=1, dtype=tf.float16)
+
+tf.raw_ops.SparseSegmentSumGrad(
+ grad=grad,
+ indices=indices,
+ segment_ids=segment_ids,
+ output_dim0=output_dim0,
+)
+
+### Standalone code to reproduce the issue
+
+ [/CODE_BLOCK] shell
+Environment
+Ubuntu 24.04.3 LTS x86_64
+Python 3.10
+TensorFlow 2.21.0
+GPU-enabled TensorFlow runtime
+Reproduced in local conda environment: tf_test
+Reproduced on 4 x NVIDIA GeForce RTX 2080 Ti
+
+conda run --no-capture-output -n tf_test python repro.py
+ [CODE_BLOCK] 
+### Relevant log output
+
+ [/CODE_BLOCK] shell
+(tf_test) user@user-Standard-PC-Q35-ICH9-2009:/home/lhj$ python /home/lhj/callChainBuild/src_tensorflow/output_tensorflow/targeted_mutation/generated_code/tf/tf_raw_ops_SparseSegmentSumGrad/1.py
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1774341680.096204 3804133 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1774341680.152063 3804133 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1774341681.530375 3804133 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1774341682.720742 3804133 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 667 MB memory: -> device: 0, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:01:00.0, compute capability: 7.5
+I0000 00:00:1774341682.722232 3804133 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 9450 MB memory: -> device: 1, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:02:00.0, compute capability: 7.5
+I0000 00:00:1774341682.723596 3804133 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 9450 MB memory: -> device: 2, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:03:00.0, compute capability: 7.5
+I0000 00:00:1774341682.725027 3804133 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 9450 MB memory: -> device: 3, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:04:00.0, compute capability: 7.5
+E0000 00:00:1774341682.783672 3804133 util.cc:131] oneDNN supports DT_HALF only on platforms with AVX-512. Falling back to the default Eigen-based implementation if present.
+Error for grad shape [0] and dtype : CUDA error: Could not synchronize CUDA stream: CUDA_ERROR_ILLEGAL_ADDRESS: an illegal memory access was encountered
+W0000 00:00:1774341682.821991 3804133 op_kernel.cc:1858] OP_REQUIRES failed at segment_reduction_ops_gpu.cu.h:1034 : INTERNAL: Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered
+W0000 00:00:1774341682.822037 3804133 local_rendezvous.cc:412] Local rendezvous is aborting with status: INTERNAL: Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered
+Error for grad shape [0] and dtype : {{function_node __wrapped__SparseSegmentSumGrad_device_/job:localhost/replica:0/task:0/device:GPU:0}} Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered [Op:SparseSegmentSumGrad] name: 
+W0000 00:00:1774341682.824054 3804133 op_kernel.cc:1858] OP_REQUIRES failed at segment_reduction_ops_gpu.cu.h:1034 : INTERNAL: Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered
+W0000 00:00:1774341682.824094 3804133 local_rendezvous.cc:412] Local rendezvous is aborting with status: INTERNAL: Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered
+Error for grad shape [0] and dtype : {{function_node __wrapped__SparseSegmentSumGrad_device_/job:localhost/replica:0/task:0/device:GPU:0}} Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered [Op:SparseSegmentSumGrad] name: 
+W0000 00:00:1774341682.824426 3804133 op_kernel.cc:1858] OP_REQUIRES failed at segment_reduction_ops_gpu.cu.h:1034 : INTERNAL: Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered
+Error for grad shape [0, 0] and dtype : {{function_node __wrapped__SparseSegmentSumGrad_device_/job:localhost/replica:0/task:0/device:GPU:0}} Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered [Op:SparseSegmentSumGrad] name: 
+W0000 00:00:1774341682.824714 3804133 op_kernel.cc:1858] OP_REQUIRES failed at segment_reduction_ops_gpu.cu.h:1034 : INTERNAL: Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered
+W0000 00:00:1774341682.824740 3804133 local_rendezvous.cc:412] Local rendezvous is aborting with status: INTERNAL: Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered
+Error for grad shape [0, 0] and dtype : {{function_node __wrapped__SparseSegmentSumGrad_device_/job:localhost/replica:0/task:0/device:GPU:0}} Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered [Op:SparseSegmentSumGrad] name: 
+W0000 00:00:1774341682.825035 3804133 op_kernel.cc:1858] OP_REQUIRES failed at segment_reduction_ops_gpu.cu.h:1034 : INTERNAL: Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered
+Error for grad shape [0, 0] and dtype : {{function_node __wrapped__SparseSegmentSumGrad_device_/job:localhost/replica:0/task:0/device:GPU:0}} Failed to launch gpuprim::DeviceRadixSort::SortPairs, temp_storage_bytes: 1status: an illegal memory access was encountered [Op:SparseSegmentSumGrad] name: 
+F0000 00:00:1774341682.827049 3804133 random_op_gpu.h:247] Check failed: (::tsl::TfCheckOkDeprecationMarker(), GpuLaunchKernel(FillPhiloxRandomKernelLaunch , num_blocks, block_size, 0, d.stream(), key, counter, gen, data, size, dist)) is OK (INTERNAL: an illegal memory access was encountered) 
+*** Check failure stack trace: ***
+ @ 0x7d4be1b1d314 absl::lts_20250814::log_internal::LogMessage::SendToLog()
+ @ 0x7d4be1b1d296 absl::lts_20250814::log_internal::LogMessage::Flush()
+ @ 0x7d4bc640faeb tensorflow::functor::FillPhiloxRandom<>::operator()()
+ @ 0x7d4bc640c840 tensorflow::(anonymous namespace)::PhiloxRandomOp<>::Compute()
+ @ 0x7d4be1b876bc tensorflow::BaseGPUDevice::Compute()
+ @ 0x7d4bdf60e778 tensorflow::(anonymous namespace)::SingleThreadedExecutorImpl::Run()
+ @ 0x7d4bdf5db99d tensorflow::FunctionLibraryRuntimeImpl::RunSync()
+ @ 0x7d4bdf5e6c26 tensorflow::ProcessFunctionLibraryRuntime::RunMultiDeviceSync()
+ @ 0x7d4bdf5ecc60 tensorflow::ProcessFunctionLibraryRuntime::RunSync()
+ @ 0x7d4bd81f119d tensorflow::KernelAndDeviceFunc::Run()
+ @ 0x7d4bd81a00fb tensorflow::EagerKernelExecute()
+ @ 0x7d4bd81a981e tensorflow::ExecuteNode::Run()
+ @ 0x7d4bd876f7b4 tensorflow::EagerExecutor::SyncExecute()
+ @ 0x7d4bd819faa1 tensorflow::(anonymous namespace)::EagerLocalExecute()
+ @ 0x7d4bd819d1d0 tensorflow::DoEagerExecute()
+ @ 0x7d4bd81a0b2b tensorflow::EagerExecute()
+ @ 0x7d4bd7cce247 tensorflow::EagerOperation::Execute()
+ @ 0x7d4bd81edbb7 tensorflow::CustomDeviceOpHandler::Execute()
+ @ 0x7d4bd53004e5 TFE_Execute
+ @ 0x7d4ba509f910 TFE_Py_FastPathExecute_C()
+ @ 0x7d4ba3bdcc53 pybind11::detail::argument_loader<>::call<>()
+ @ 0x7d4ba3bdcb8c pybind11::cpp_function::initialize<>()::{lambda()#1}::__invoke()
+ @ 0x7d4ba3bb3fdd pybind11::cpp_function::dispatcher()
+ @ 0x62766a1ca0c6 cfunction_call
+Aborted (core dumped)
+```",1,0,0,0,0,1,0
+"Title: Need to constantly approve edits twice
+
+Body: * AHP Copilot Harness
+* Edit things outside the folder
+* upstream issue at [URL]
+
+[URL]
+
+ [CODE_BLOCK] Version: 1.128.0-insider
+Commit: 86df0e5dc86a78298b5ffce1c6f6793ad79c3e93
+Date: 2026-07-06T05:12:47Z
+Electron: 42.5.0
+ElectronBuildId: 14525058
+Chromium: 148.0.7778.271
+Node.js: 24.17.0
+V8: 14.8.178.33-electron.0
+OS: Darwin arm64 25.5.0
+ [/CODE_BLOCK]",1,0,0,0,0,0,0
+"Title: net: TestLookupCNAME failures
+
+Body: [CODE_BLOCK] #!watchflakes
+default 129.70.161.2:53: i/o timeout
+ lookup_test.go:363: backoff 5s after failure lookup [URL] on 129.70.161.2:53: server misbehaving
+ lookup_test.go:363: backoff 30s after failure lookup [URL] on 129.70.161.2:53: server misbehaving
+ lookup_test.go:369: lookup [URL] on 129.70.161.2:53: server misbehaving
+ --- FAIL: TestLookupCNAME (76.00s)
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: runtime/pprof: TestProfilerStackDepth/goroutine failures
+
+Body: [CODE_BLOCK] #!watchflakes
+default <- pkg == ""runtime/pprof"" && test == ""TestProfilerStackDepth/goroutine""
+ [/CODE_BLOCK] 
+
+Issue created automatically to collect these failures.
+
+Example (log):
+
+ === RUN TestProfilerStackDepth/goroutine
+ *** Test killed: ran too long (11m0s).
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: x/sys: does not build on linux/sparc64, stuck on porting attempt
+
+Body: ### What version of Go are you using (`go version`)?
+
+ 
+$ go version
+go version unknown linux/sparc64
+$ gcc --version
+gcc 12.2.0
+ 
+
+### Does this issue reproduce with the latest release?
+Yes on git master branch
+
+### What operating system and processor architecture are you using (`go env`)?
+
+ go env Output 
+$ go env
+GO111MODULE=""""
+GOARCH=""sparc64""
+GOBIN=""""
+GOCACHE=""/root/.cache/go-build""
+GOENV=""/root/.config/go/env""
+GOEXE=""""
+GOEXPERIMENT=""fieldtrack""
+GOFLAGS=""""
+GOHOSTARCH=""sparc64""
+GOHOSTOS=""linux""
+GOINSECURE=""""
+GOMODCACHE=""/root/go/pkg/mod""
+GONOPROXY=""""
+GONOSUMDB=""""
+GOOS=""linux""
+GOPATH=""/root/go""
+GOPRIVATE=""""
+GOPROXY=""[URL]
+GOROOT=""/usr""
+GOSUMDB=""sum.golang.org""
+GOTMPDIR=""""
+GOTOOLDIR=""/usr/libexec/gcc/sparc64-unknown-linux-gnu/12.2.0""
+GOVCS=""""
+GOVERSION=""unknown"" 
+GCCGO=""/usr/sparc64-unknown-linux-gnu/gcc-bin/12.2.0/gccgo"" 
+AR=""ar"" 
+CC=""gcc"" 
+CXX=""g++"" 
+CGO_ENABLED=""1"" 
+GOMOD=""/var/tmp/tmp/sys-sparc64/go.mod"" 
+GOWORK="""" 
+CGO_CFLAGS=""-g -O2"" 
+CGO_CPPFLAGS="""" 
+CGO_CXXFLAGS=""-g -O2""
+CGO_FFLAGS=""-g -O2""
+CGO_LDFLAGS=""-g -O2""
+PKG_CONFIG=""pkg-config""
+GOGCCFLAGS=""-fPIC -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build878311104=/tmp/go-build -gno-record-gcc-switches -funwind-tables""
+ 
+
+### What did you do?
+
+Running with no changes, I get:
+```
+golang.org/x/sys/cpu
+golang.org/x/sys/unix
+# golang.org/x/sys/cpu
+/root/go/pkg/mod/golang.org/x/sys@v0.0.0-20200615200032-f1bc736245b1/cpu/cpu.go:17:30: error: reference to undefined name ‘cacheLineSize’
+ 17 | type CacheLinePad struct{ _ [cacheLineSize]byte }
+ | ^
+github.com/matrix-org/dendrite/cmd/kafka-producer
+# golang.org/x/sys/unix
+/root/go/pkg/mod/golang.org/x/sys@v0.0.0-20200615200032-f1bc736245b1/unix/dirent.go:16:12: error: reference to undefined name ‘isBigEndian’
+ 16 | if isBigEndian {
+ | ^
+```
+
+After this commit, and trying to write `unix/asm_linux_sparc64.s`(started with just copying over loong64's), I get this error:
+
+```
+# golang.org/x/sys/unix
+unix/asm_linux_sparc64.s:9:10: fatal error: textflag.h: No such file or directory
+ 9 | #include ""textflag.h""
+ | ^~~~~~~~~~~~
+compilation terminated.
+```
+
+I assume this is why there was a `gc` requirement. On sparc64, gccgo is the only option.
+
+So, how would I get an assembly file compileable with gccgo? Is there a way to make it work with `textflag.h`, or a way to make it work without it?
+
+Thanks for your time, I am really excited about getting x/sys running on my sparcbox, and hopefully soon everyone elses =^D",0,0,0,0,0,1,0
+"Title: cmd/go: in workspace mode, version selection depends on whether requirements are consistent
+
+Body: ### Go version
+
+go1.27.0
+
+### Output of `go env` in your module/workspace:
+
+ [CODE_BLOCK] AR='ar'
+CC='clang'
+CGO_CFLAGS='-O2 -g'
+CGO_CPPFLAGS=''
+CGO_CXXFLAGS='-O2 -g'
+CGO_ENABLED='1'
+CGO_FFLAGS='-O2 -g'
+CGO_LDFLAGS='-O2 -g'
+CXX='clang++'
+GCCGO='gccgo'
+GO111MODULE=''
+GOARCH='arm64'
+GOARM64='v8.0'
+GOAUTH='netrc'
+GOBIN='/Users/jay/go/bin'
+GOCACHE='/Users/jay/Library/Caches/go-build'
+GOCACHEPROG=''
+GODEBUG=''
+GOENV='/Users/jay/Library/Application Support/go/env'
+GOEXE=''
+GOEXPERIMENT=''
+GOFIPS140='off'
+GOFLAGS=''
+GOGCCFLAGS='-fPIC -arch arm64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -ffile-prefix-map=/var/folders/b6/39br66f9039f5jl0hp0xz72h0000gn/T/go-build3736710206=/tmp/go-build -gno-record-gcc-switches -fno-common'
+GOHOSTARCH='arm64'
+GOHOSTOS='darwin'
+GOINSECURE=''
+GOMOD='/dev/null'
+GOMODCACHE='/Users/jay/go/pkg/mod'
+GONOPROXY='github.com/EngFlow/engflow,github.com/engflow/engflow'
+GONOSUMDB='github.com/EngFlow/engflow,github.com/engflow/engflow'
+GOOS='darwin'
+GOPACKAGESDRIVER=''
+GOPATH='/Users/jay/go'
+GOPRIVATE='github.com/EngFlow/engflow,github.com/engflow/engflow'
+GOPROXY='[URL]
+GOROOT='/opt/go/installed'
+GOSUMDB='sum.golang.org'
+GOTELEMETRY='local'
+GOTELEMETRYDIR='/Users/jay/Library/Application Support/go/telemetry'
+GOTMPDIR=''
+GOTOOLCHAIN='auto'
+GOTOOLDIR='/opt/go/installed/pkg/tool/darwin_arm64'
+GOVCS=''
+GOVERSION='go1.27.0'
+GOWORK='/Users/jay/Code/scratch/repro/go.work'
+PKG_CONFIG='pkg-config'
+ [/CODE_BLOCK] 
+
+### What did you do?
+
+This is reproduced most easily in the txtar example below.
+
+Let's say I have a `go.work` workspace with two modules:
+
+- `./a` requires `github.com/pmezard/go-difflib v1.0.0`. It also requires `google.golang.org/grpc v1.67.3`.
+- `./b` requires `google.golang.org/grpc v1.79.3`
+
+Example:
+
+ 
+go list -m github.com/pmezard/go-difflib
+
+want: v1.0.0
+got: v1.0.1-0.20181226105442-5d4384ee4fb2
+
+-- go.work --
+go 1.27.0
+
+use (
+ ./a
+ ./b
+)
+-- go.work.sum --
+cel.dev/expr v0.25.1/go.mod h1:hrXvqGP6G6gyx8UAHSHJ5RGk//1Oj5nXQ2NI02Nrsg4=
+cloud.google.com/go/compute/metadata v0.9.0/go.mod h1:E0bWwX5wTnLPedCKqk3pJmVgCBSM6qQI1yTBdEb3C10=
+codeberg.org/go-fonts/liberation v0.5.0/go.mod h1:zS/2e1354/mJ4pGzIIaEtm/59VFCFnYC7YV6YdGl5GU=
+codeberg.org/go-latex/latex v0.1.0/go.mod h1:LA0q/AyWIYrqVd+A9Upkgsb+IqPcmSTKc9Dny04MHMw=
+codeberg.org/go-pdf/fpdf v0.10.0/go.mod h1:Y0DGRAdZ0OmnZPvjbMp/1bYxmIPxm0ws4tfoPOc4LjU=
+git.sr.ht/~sbinet/gg v0.6.0/go.mod h1:uucygbfC9wVPQIfrmwM2et0imr8L7KQWywX0xpFMm94=
+github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp v1.30.0/go.mod h1:P4WPRUkOhJC13W//jWpyfJNDAIpvRbAUIYLX/4jtlE0=
+github.com/Microsoft/go-winio v0.6.2/go.mod h1:yd8OoFMLzJbo9gZq8j5qaps8bJ9aShtEA8Ipt1oGCvU=
+github.com/ajstarks/svgo v0.0.0-20211024235047-1546f124cd8b/go.mod h1:1KcenG0jGWcpt8ov532z81sp/kMMUG485J2InIOyADM=
+github.com/campoy/embedmd v1.0.0/go.mod h1:oxyr9RCiSXg0M3VJ3ks0UGfp98BpSSGr0kpiX3MzVl8=
+github.com/census-instrumentation/opencensus-proto v0.4.1/go.mod h1:4T9NM4+4Vw91VeyqjLS6ao50K5bOcLKN6Q42XnYaRYw=
+github.com/cespare/xxhash/v2 v2.3.0/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
+github.com/cncf/xds/go v0.0.0-20251210132809-ee656c7534f5/go.mod h1:KdCmV+x/BuvyMxRnYBlmVaq4OLiKW6iRQfvC62cvdkI=
+github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/envoyproxy/go-control-plane v0.14.0/go.mod h1:NcS5X47pLl/hfqxU70yPwL9ZMkUlwlKxtAohpi2wBEU=
+github.com/envoyproxy/go-control-plane/envoy v1.36.0/go.mod h1:ty89S1YCCVruQAm9OtKeEkQLTb+Lkz0k8v9W0Oxsv98=
+github.com/envoyproxy/go-control-plane/ratelimit v0.1.0/go.mod h1:Wk+tMFAFbCXaJPzVVHnPgRKdUdwW/KdbRt94AzgRee4=
+github.com/envoyproxy/protoc-gen-validate v1.3.0/go.mod h1:HvYl7zwPa5mffgyeTUHA9zHIH36nmrm7oCbo4YKoSWA=
+github.com/go-jose/go-jose/v4 v4.1.3/go.mod h1:x4oUasVrzR7071A4TnHLGSPpNOm2a21K9Kf04k1rs08=
+github.com/go-logr/logr v1.2.2/go.mod h1:jdQByPbusPIv2/zmleS9BjJVeZ6kBagPoEUsqbVz/1A=
+github.com/go-logr/logr v1.4.3/go.mod h1:9T104GzyrTigFIr8wt5mBrctHMim0Nb2HLGrmQ40KvY=
+github.com/go-logr/stdr v1.2.2/go.mod h1:mMo/vtBO5dYbehREoey6XUKy/eSumjCCveDpRre4VKE=
+github.com/goccmack/gocc v0.0.0-20230228185258-2292f9e40198/go.mod h1:DTh/Y2+NbnOVVoypCCQrovMPDKUGp4yZpSbWg5D0XIM=
+github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0/go.mod h1:E/TSTwGwJL78qG/PmXZO1EjYhfJinVAhrmmHX6Z8B9k=
+github.com/golang/glog v1.2.5/go.mod h1:6AhwSGph0fcJtXVM/PEHPqZlFeoLxhs7/t5UDAwmO+w=
+github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=
+github.com/golang/protobuf v1.5.4/go.mod h1:lnTiLA8Wa4RWRcIUkrtSVa5nRhsEGBg48fD6rSs7xps=
+github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
+github.com/google/go-cmp v0.7.0/go.mod h1:pXiqmnSA92OHEEa9HXL2W4E7lf9JzCmGVUdgjX3N/iU=
+github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+github.com/iancoleman/strcase v0.3.0/go.mod h1:iwCmte+B7n89clKwxIoIXy/HfoL7AsD47ZCWhYzw7ho=
+github.com/kr/pretty v0.3.1/go.mod h1:hoEshYVHaxMs3cyo3Yncou5ZscifuDolrwPKZanG3xk=
+github.com/kr/text v0.2.0/go.mod h1:eLer722TekiGuMkidMxC/pM04lWEeraHUUmBw8l2grE=
+github.com/lyft/protoc-gen-star/v2 v2.0.4-0.20230330145011-496ad1ac90a4/go.mod h1:amey7yeodaJhXSbf/TlLvWiqQfLOSpEk//mLlc+axEk=
+github.com/planetscale/vtprotobuf v0.6.1-0.20240319094008-0393e58bdf10/go.mod h1:t/avpk3KcrXxUnYOhZhMXJlSEyie6gQbtLq5NM3loB8=
+github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/prometheus/client_model v0.6.2/go.mod h1:y3m2F6Gdpfy6Ut/GBsUqTWZqCUvMVzSfMLjcu6wAwpE=
+github.com/rogpeppe/go-internal v1.14.1/go.mod h1:MaRKkUm5W0goXpeCfT7UZI6fk/L7L7so1lCWt35ZSgc=
+github.com/spf13/afero v1.10.0/go.mod h1:UBogFpq8E9Hx+xc5CNTTEpTnuHVmXDwZcZcE1eb/UhQ=
+github.com/spiffe/go-spiffe/v2 v2.6.0/go.mod h1:gm2SeUoMZEtpnzPNs2Csc0D/gX33k1xIx7lEzqblHEs=
+github.com/stretchr/testify v1.11.1/go.mod h1:wZwfW3scLgRK+23gO65QZefKpKQRnfz6sD981Nm4B6U=
+github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
+go.opentelemetry.io/auto/sdk v1.2.1/go.mod h1:KRTj+aOaElaLi+wW1kO/DZRXwkF4C5xPbEe3ZiIhN7Y=
+go.opentelemetry.io/contrib/detectors/gcp v1.39.0/go.mod h1:t/OGqzHBa5v6RHZwrDBJ2OirWc+4q/w2fTbLZwAKjTk=
+go.opentelemetry.io/otel v1.39.0/go.mod h1:kLlFTywNWrFyEdH0oj2xK0bFYZtHRYUdv1NklR/tgc8=
+go.opentelemetry.io/otel/metric v1.39.0/go.mod h1:jrZSWL33sD7bBxg1xjrqyDjnuzTUB0x1nBERXd7Ftcs=
+go.opentelemetry.io/otel/sdk v1.39.0/go.mod h1:vDojkC4/jsTJsE+kh+LXYQlbL8CgrEcwmt1ENZszdJE=
+go.opentelemetry.io/otel/sdk/metric v1.39.0/go.mod h1:xq9HEVH7qeX69/JnwEfp6fVq5wosJsY1mt4lLfYdVew=
+go.opentelemetry.io/otel/trace v1.39.0/go.mod h1:88w4/PnZSazkGzz/w84VHpQafiU4EtqqlVdxWy+rNOA=
+go.opentelemetry.io/proto/otlp v1.7.1/go.mod h1:b2rVh6rfI/s2pHWNlB7ILJcRALpcNDzKhACevjI+ZnE=
+go.uber.org/goleak v1.3.0/go.mod h1:CoHD4mav9JJNrW/WLlf7HGZPjdw8EucARQHekz1X6bE=
+golang.org/x/crypto v0.46.0/go.mod h1:Evb/oLKmMraqjZ2iQTwDwvCtJkczlDuTmdJXoZVzqU0=
+golang.org/x/image v0.25.0/go.mod h1:tCAmOEGthTtkalusGp1g3xa2gke8J6c2N565dTyl9Rs=
+golang.org/x/mod v0.30.0/go.mod h1:lAsf5O2EvJeSFMiBxXDki7sCgAxEUcZHXoXMKT4GJKc=
+golang.org/x/oauth2 v0.34.0/go.mod h1:lzm5WQJQwKZ3nwavOZ3IS5Aulzxi68dUSgRHujetwEA=
+golang.org/x/sync v0.19.0/go.mod h1:9KTHXmSnoGruLpwFjVSX0lNNA75CykiMECbovNTZqGI=
+golang.org/x/telemetry v0.0.0-20251111182119-bc8e575c7b54/go.mod h1:hKdjCMrbv9skySur+Nek8Hd0uJ0GuxJIoIX2payrIdQ=
+golang.org/x/term v0.38.0/go.mod h1:bSEAKrOT1W+VSu9TSCMtoGEOUcKxOKgl3LE5QEF/xVg=
+golang.org/x/tools v0.39.0/go.mod h1:JnefbkDPyD8UU2kI5fuf8ZX4/yUeh9W877ZeBONxUqQ=
+golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
+gonum.org/v1/gonum v0.16.0/go.mod h1:fef3am4MQ93R2HHpKnLk4/Tbh/s0+wqD5nfa6Pnwy4E=
+gonum.org/v1/plot v0.15.2/go.mod h1:DX+x+DWso3LTha+AdkJEv5Txvi+Tql3KAGkehP0/Ubg=
+google.golang.org/genproto/googleapis/api v0.0.0-20251202230838-ff82c1b0f217/go.mod h1:+rXWjjaukWZun3mLfjmVnQi18E1AsFbDN9QdJ5YXLto=
+google.golang.org/grpc/examples v0.0.0-20250407062114-b368379ef8f6/go.mod h1:6ytKWczdvnpnO+m+JiG9NjEDzR1FJfsnmJdG7B8QVZ8=
+google.golang.org/protobuf v1.26.0-rc.1/go.mod h1:jlhhOSvTdKEhbULTjvd4ARK9grFBp09yW+WbY/TyQbw=
+google.golang.org/protobuf v1.33.0/go.mod h1:c6P6GXX6sHbq/GpV6MGZEdwhWPcYBgnhAHhKbcUYpos=
+gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c/go.mod h1:JHkPIbrfpd72SG/EVd6muEfDQjcINNoR0C8j2r3qZ4Q=
+gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+rsc.io/pdf v0.1.1/go.mod h1:n8OzWcQ6Sp37PL01nO98y4iUCRdTGarVfzxY20ICaU4=
+-- a/go.mod --
+module example.com/repro/a
+
+go 1.27.0
+
+require (
+ github.com/pmezard/go-difflib v1.0.0 // indirect
+ golang.org/x/net v0.48.0 // indirect
+ golang.org/x/sys v0.39.0 // indirect
+ golang.org/x/text v0.32.0 // indirect
+ google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217 // indirect
+ google.golang.org/grpc v1.67.3 // indirect
+ google.golang.org/protobuf v1.36.10 // indirect
+)
+-- a/go.sum --
+github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
+github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+golang.org/x/net v0.28.0 h1:a9JDOJc5GMUJ0+UDqmLT86WiEy7iWyIhz8gz8E4e5hE=
+golang.org/x/net v0.28.0/go.mod h1:yqtgsTWOOnlGLG9GFRrK3++bGOUEkNBoHZc8MEDWPNg=
+golang.org/x/net v0.48.0 h1:zyQRTTrjc33Lhh0fBgT/H3oZq9WuvRR5gPC70xpDiQU=
+golang.org/x/net v0.48.0/go.mod h1:+ndRgGjkh8FGtu1w1FGbEC31if4VrNVMuKTgcAAnQRY=
+golang.org/x/sys v0.28.0 h1:Fksou7UEQUWlKvIdsqzJmUmCX3cZuD2+P3XyyzwMhlA=
+golang.org/x/sys v0.28.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+golang.org/x/sys v0.39.0 h1:CvCKL8MeisomCi6qNZ+wbb0DN9E5AATixKsvNtMoMFk=
+golang.org/x/sys v0.39.0/go.mod h1:OgkHotnGiDImocRcuBABYBEXf8A9a87e/uXjp9XT3ks=
+golang.org/x/text v0.17.0 h1:XtiM5bkSOt+ewxlOE/aE/AKEHibwj/6gvWMl9Rsh0Qc=
+golang.org/x/text v0.17.0/go.mod h1:BuEKDfySbSR4drPmRPG/7iBdf8hvFMuRexcpahXilzY=
+golang.org/x/text v0.32.0 h1:ZD01bjUt1FQ9WJ0ClOL5vxgxOI/sVCNgX1YtKwcY0mU=
+golang.org/x/text v0.32.0/go.mod h1:o/rUWzghvpD5TXrTIBuJU77MTaN0ljMWE47kxGJQ7jY=
+google.golang.org/genproto/googleapis/rpc v0.0.0-20240814211410-ddb44dafa142 h1:e7S5W7MGGLaSu8j3YjdezkZ+m1/Nm0uRVRMEMGk26Xs=
+google.golang.org/genproto/googleapis/rpc v0.0.0-20240814211410-ddb44dafa142/go.mod h1:UqMtugtsSgubUsoxbuAoiCXvqvErP7Gf0so0mK9tHxU=
+google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217 h1:gRkg/vSppuSQoDjxyiGfN4Upv/h/DQmIR10ZU8dh4Ww=
+google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217/go.mod h1:7i2o+ce6H/6BluujYR+kqX3GKH+dChPTQU19wjRPiGk=
+google.golang.org/grpc v1.67.3 h1:OgPcDAFKHnH8X3O4WcO4XUc8GRDeKsKReqbQtiCj7N8=
+google.golang.org/grpc v1.67.3/go.mod h1:YGaHCc6Oap+FzBJTZLBzkGSYt/cvGPFTPxkn7QfSU8s=
+google.golang.org/grpc v1.79.3 h1:sybAEdRIEtvcD68Gx7dmnwjZKlyfuc61Dyo9pGXXkKE=
+google.golang.org/grpc v1.79.3/go.mod h1:KmT0Kjez+0dde/v2j9vzwoAScgEPx/Bw1CYChhHLrHQ=
+google.golang.org/protobuf v1.34.2 h1:6xV6lTsCfpGD21XK49h7MhtcApnLqkfYgPcdHftf6hg=
+google.golang.org/protobuf v1.34.2/go.mod h1:qYOHts0dSfpeUzUFpOMr/WGzszTmLH+DiWniOlNbLDw=
+google.golang.org/protobuf v1.36.10 h1:AYd7cD/uASjIL6Q9LiTjz8JLcrh/88q5UObnmY3aOOE=
+google.golang.org/protobuf v1.36.10/go.mod h1:HTf+CrKn2C3g5S8VImy6tdcUvCska2kB7j23XfzDpco=
+-- b/go.mod --
+module example.com/repro/b
+
+go 1.27.0
+
+require (
+ golang.org/x/net v0.48.0 // indirect
+ golang.org/x/sys v0.39.0 // indirect
+ golang.org/x/text v0.32.0 // indirect
+ google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217 // indirect
+ google.golang.org/grpc v1.79.3 // indirect
+ google.golang.org/protobuf v1.36.10 // indirect
+)
+-- b/go.sum --
+golang.org/x/net v0.48.0 h1:zyQRTTrjc33Lhh0fBgT/H3oZq9WuvRR5gPC70xpDiQU=
+golang.org/x/net v0.48.0/go.mod h1:+ndRgGjkh8FGtu1w1FGbEC31if4VrNVMuKTgcAAnQRY=
+golang.org/x/sys v0.39.0 h1:CvCKL8MeisomCi6qNZ+wbb0DN9E5AATixKsvNtMoMFk=
+golang.org/x/sys v0.39.0/go.mod h1:OgkHotnGiDImocRcuBABYBEXf8A9a87e/uXjp9XT3ks=
+golang.org/x/text v0.32.0 h1:ZD01bjUt1FQ9WJ0ClOL5vxgxOI/sVCNgX1YtKwcY0mU=
+golang.org/x/text v0.32.0/go.mod h1:o/rUWzghvpD5TXrTIBuJU77MTaN0ljMWE47kxGJQ7jY=
+google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217 h1:gRkg/vSppuSQoDjxyiGfN4Upv/h/DQmIR10ZU8dh4Ww=
+google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217/go.mod h1:7i2o+ce6H/6BluujYR+kqX3GKH+dChPTQU19wjRPiGk=
+google.golang.org/grpc v1.79.3 h1:sybAEdRIEtvcD68Gx7dmnwjZKlyfuc61Dyo9pGXXkKE=
+google.golang.org/grpc v1.79.3/go.mod h1:KmT0Kjez+0dde/v2j9vzwoAScgEPx/Bw1CYChhHLrHQ=
+google.golang.org/protobuf v1.36.10 h1:AYd7cD/uASjIL6Q9LiTjz8JLcrh/88q5UObnmY3aOOE=
+google.golang.org/protobuf v1.36.10/go.mod h1:HTf+CrKn2C3g5S8VImy6tdcUvCska2kB7j23XfzDpco=
+ 
+
+### What did you see happen?
+
+When I run `go list -m github.com/pmezard/go-difflib` in workspace mode, I get `v1.0.1-0.20181226105442-5d4384ee4fb2`. According to `go mod graph`, this version seems to come from `go.opentelemetry.io/contrib/detectors/gcp@v1.39.0`, which is a requirement of `google.golang.org/grpc@v1.79.3`. So this version seems to be coming from a transitive test dependency, 3 hops out on the graph.
+
+When I run `GOWORK=off github.com/pmezard/go-difflib` in `a`, I get `v1.0.0`. That matches my expectations.
+
+If I upgrade `a` to `google.golang.org/grpc@v1.79.3` (same as b), then I get `v1.0.0` again. That also matches my expectations, but it's weird that it's different than before. It seems to matter that both root modules have the same required version.
+
+### What did you expect to see?
+
+I expect to get `github.com/pmezard/go-difflib@v1.0.0` in workspace mode because that's the highest required version in the root `go.mod` files and in the `go.mod` files for the immediately required modules. I expect the edge from `google.golang.org/grpc` to `go.opentelemetry.io/contrib/detectors/gcp` to be pruned at either version.
+
+It seems like a larger part of the module graph is expanded in workspace mode when there are requirements on the same module at different versions. I'd kind of expect this to be treated as if that module were only required at the highest version found in the root modules.
+
+I remember this code being incredibly complicated and subtle, so I wouldn't be surprised if this were working-as-intended with a good reason. If that's the case, please consider this a documentation bug: [URL] explains graph pruning in single module mode, and [URL] doesn't say how it should behave differently in workspace mode.",0,0,0,0,0,1,0
+"Title: Slow compilation when importing TerminalEmulator
+
+Body: Please attach complete go env output and reproduction project.",0,0,0,0,0,1,0
+"Title: x/playground: update to Go 1.25
+
+Body: It’s been two weeks since Go 1.25 was released, but the list of supported versions for the Go playground still hasn’t been updated, with no Go 1.25.0 version listed.",0,0,0,0,0,1,0
+"Title: net/http:nethttpomithttp2: TestMaxBytesHandler/max_size_100_request_size_1000000/h3 failures
+
+Body: [CODE_BLOCK] #!watchflakes
+default <- pkg == ""net/http:nethttpomithttp2"" && test == ""TestMaxBytesHandler/max_size_100_request_size_1000000/h3""
+ [/CODE_BLOCK] 
+
+Issue created automatically to collect these failures.
+
+Example (log):
+
+ === RUN TestMaxBytesHandler/max_size_100_request_size_1000000/h3
+ serve_test.go:7395: set RST avoidance delay to 1ms
+ serve_test.go:6486: retrying after error with duration 1ms: unexpected read error: context canceled
+ serve_test.go:7395: set RST avoidance delay to 5ms
+ serve_test.go:6486: retrying after error with duration 5ms: unexpected read error: context canceled
+ serve_test.go:7395: set RST avoidance delay to 10ms
+ serve_test.go:6486: retrying after error with duration 10ms: unexpected connection error: Post ""[URL] writing request body: write to reset stream
+ serve_test.go:7395: set RST avoidance delay to 50ms
+ serve_test.go:6486: retrying after error with duration 50ms: unexpected connection error: Post ""[URL] writing request body: write to reset stream
+ serve_test.go:7395: set RST avoidance delay to 100ms
+ serve_test.go:6486: retrying after error with duration 100ms: unexpected read error: context canceled
+ serve_test.go:7395: set RST avoidance delay to 500ms
+ serve_test.go:6486: retrying after error with duration 500ms: unexpected read error: context canceled
+ serve_test.go:7395: set RST avoidance delay to 1s
+ serve_test.go:6486: retrying after error with duration 1s: unexpected read error: context canceled
+ serve_test.go:7395: set RST avoidance delay to 5s
+ serve_test.go:6484: failed with duration 5s: unexpected connection error: Post ""[URL] writing request body: write to reset stream
+ --- FAIL: TestMaxBytesHandler/max_size_100_request_size_1000000/h3 (0.76s)
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: Build fails with strange error message
+
+Body: Please attach complete go env output and reproduction project.",0,0,0,0,0,1,0
+"Title: cmd/compile: regalloc inserts redundant register swap in strings.Fields hot loop
+
+Body: ### Go version
+
+go1.28-devel_e0badabf4a Tue Aug 25 17:51:39 2026 -0700
+
+### Output of `go env` in your module/workspace:
+
+ [CODE_BLOCK] AR='ar'
+CC='gcc'
+CGO_CFLAGS='-O2 -g'
+CGO_CPPFLAGS=''
+CGO_CXXFLAGS='-O2 -g'
+CGO_ENABLED='1'
+CGO_FFLAGS='-O2 -g'
+CGO_LDFLAGS='-O2 -g'
+CXX='g++'
+GCCGO='gccgo'
+GO111MODULE=''
+GOAMD64='v1'
+GOARCH='amd64'
+GOAUTH='netrc'
+GOBIN='/home/aravinda/go/bin'
+GOCACHE='/home/aravinda/.cache/go-build'
+GOCACHEPROG=''
+GODEBUG=''
+GOENV='/home/aravinda/.config/go/env'
+GOEXE=''
+GOEXPERIMENT=''
+GOFIPS140='off'
+GOFLAGS=''
+GOGCCFLAGS='-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build3992845761=/tmp/go-build -gno-record-gcc-switches'
+GOHOSTARCH='amd64'
+GOHOSTOS='linux'
+GOINSECURE=''
+GOMOD='/dev/null'
+GOMODCACHE='/home/aravinda/go/pkg/mod'
+GONOPROXY=''
+GONOSUMDB=''
+GOOS='linux'
+GOPACKAGESDRIVER=''
+GOPATH='/home/aravinda/go'
+GOPRIVATE=''
+GOPROXY='[URL]
+GOROOT='/home/aravinda/upstream/go'
+GOSUMDB='sum.golang.org'
+GOTELEMETRY='local'
+GOTELEMETRYDIR='/home/aravinda/.config/go/telemetry'
+GOTMPDIR=''
+GOTOOLCHAIN='auto'
+GOTOOLDIR='/home/aravinda/upstream/go/pkg/tool/linux_amd64'
+GOVCS=''
+GOVERSION='go1.28-devel_e0badabf4a Tue Aug 25 17:51:39 2026 -0700'
+GOWORK=''
+PKG_CONFIG='pkg-config'
+ [/CODE_BLOCK] 
+
+### What did you do?
+
+ On tip (go1.28-devel and also 1.27rc2), the register allocator emits a 3-instruction register swap on every iteration of the scan loop in strings.Fields (and FieldsFunc), where none is needed. The values are already in registers and stay in registers — the swap is pure wasted motion, not due to spilling. 
+
+The following reproducer is taken from the Fields function.
+
+ [CODE_BLOCK] package ssa_test
+ 
+var isDelim = [256]uint8{' ': 1, ',': 1}
+
+//go:noinline
+func ScanWords(s string, lens []int) int {
+ n := 0
+ start := 0
+ i := 0
+ for i start {
+ lens[n] = i - start
+ n++
+ }
+ i++
+ start = i
+ }
+ if i > start {
+ lens[n] = i - start
+ n++
+ }
+ return n
+}
+ [/CODE_BLOCK] 
+Running go tool compile -S phicycle_test.go we will see a pattern similar to the following 
+``` INCQ DX ; i++
+ MOVQ DX, R9 ; \
+ MOVQ R8, DX ; } swap DX R8
+ MOVQ R9, R8 ; /
+ [CODE_BLOCK] — 6 extra MOVQs per non-delimiter byte.
+Similar pattern can be seen in ARM64 too 
+Edge shuffling seems to cause swapping on the hot path because of regs being flipped while allocating for the two phi vars i, start causing an extra 6 MOV instructions generated every iteration 
+
+Could be related to what is being worked on in [URL]
+
+But since the pattern is a bit different and occurs in Fields function, was not sure if it was the right thing to add it to 80201 hence opening an issue to track 
+
+Other variation of pattern where this is visible
+ [/CODE_BLOCK] 
+package ssa_test
+
+var lookup = [256]uint8{' ': 1, '\t': 1, '\n': 1}
+
+//go:noinline
+func ScanWords2(s string, lens []int) int {
+ n := 0
+ start := 0
+ i := 0
+ for i start {
+ lens[n] = i - start
+ n++
+ }
+ i++
+ start = i
+ // no continue here — falls through to loop header
+ }
+ if i > start {
+ lens[n] = i - start
+ n++
+ }
+ return n
+}
+
+// Try a version with two explicit continues from different paths
+//
+//go:noinline
+func ScanWords3(s string, lens []int) int {
+ n := 0
+ start := 0
+ i := 0
+ for i start {
+ lens[n] = i - start
+ n++
+ i++
+ start = i
+ continue // back-edge 2: cold path with word
+ }
+ i++
+ start = i
+ // back-edge 3: cold path without word (falls through)
+ }
+ if i > start {
+ lens[n] = i - start
+ n++
+ }
+ return n
+}
+
+```
+ 
+
+### What did you see happen?
+
+swaps being generated in a hot loop 
+
+### What did you expect to see?
+
+Ideally the swaps should not be generated especially in a hot loop",0,0,0,0,0,1,0
+"Title: text/template: fatal stack overflow parsing deeply nested {{if}}/{{with}} — control structures left out of the maxStackDepth guard
+
+Body: # text/template: fatal stack overflow parsing deeply nested {{if}}/{{with}} — control structures left out of the maxStackDepth guard
+
+## Summary
+
+`text/template.Parse` (and `html/template.Parse`) crashes the whole process on deeply
+nested control structures:
+
+ [CODE_BLOCK] tmpl := strings.Repeat(""{{if true}}"", 1500000) + ""x"" + strings.Repeat(""{{end}}"", 1500000)
+template.Parse("""", tmpl) // fatal error: stack overflow
+ [/CODE_BLOCK] 
+
+Verified on go1.23.3 and go1.27.0 (current stable). `{{with}}` behaves identically.
+Threshold: 1M nesting parses (11 MB template), 1.5M (16.5 MB) kills the process.
+
+ [CODE_BLOCK] runtime: goroutine stack exceeds 1000000000-byte limit
+fatal error: stack overflow
+text/template/parse.(*Tree).parseControl (parse.go:531)
+ → itemList → textOrAction → action → ifControl → parseControl ...
+ [/CODE_BLOCK] 
+
+## Root cause / gap in the existing fix
+
+Nested **parentheses** in expressions were capped by CL 671755 (PR #73670, fixing
+#71201): `maxStackDepth = 10000`, enforced in `term()` at the `itemLeftParen` case
+(master `parse.go:51,820`). Control structures recurse through a different chain —
+`parseControl → itemList → textOrAction → action → ifControl/withControl →
+parseControl` — which was left out of that fix; no depth counter guards it at HEAD.
+
+## Impact
+
+Any service that parses user-supplied templates (theme engines, mail-merge, report
+generators, AI-agent frameworks executing model-emitted templates) is process-killed
+by one template. The crash is a fatal runtime error — unrecoverable by the caller.
+
+I'm aware the docs position template authors as trusted (added alongside the parens
+fix), but #71201 — the identical class on the parens path — was accepted and fixed
+with a Security label, and this is the same bug one AST level up.
+
+## Suggested fix
+
+Track control-structure nesting in `parseControl` with the same `maxStackDepth`
+budget (increment on entry, decrement on exit), returning the existing
+""exceeded max nesting depth"" style error. Happy to send the CL/PR — PoCs for both
+text and html variants are ready.
+
+**Go version:** verified on go1.23.3 and go1.27.0 (current stable); master parse.go checked.",0,0,0,0,0,1,0
+"Title: Codespace is not starting.
+
+Body: When i load my cs50 vscode codespace, it starts to load, stops and a point and says stopping codespace. I need help.",0,0,0,0,0,1,0
+"Title: cmd/go: TestScript/cover_atomic_pkgall broken on riscv64
+
+Body: Here's an example of the failure:
+
+ [CODE_BLOCK] > env GO111MODULE=off
+ > go test -coverpkg=all -covermode=atomic x
+ [stdout]
+ FAIL x [build failed]
+ FAIL
+ [stderr]
+ # x.test
+ internal/goarch.init: cannot encode J-type instruction relocation offset for runtime.morestack_noctxt: signed immediate 0x129c58 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.init: cannot encode J-type instruction relocation offset for runtime.morestack_noctxt: signed immediate 0x129b88 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.BoundsDecode: cannot encode J-type instruction relocation offset for runtime.morestack_noctxt: signed immediate 0x129ab6 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.BoundsDecode: cannot encode J-type instruction relocation offset for runtime.gopanic: signed immediate 0x120504 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.Kind.String: cannot encode J-type instruction relocation offset for runtime.morestack_noctxt: signed immediate 0x12993c must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.Kind.String: cannot encode J-type instruction relocation offset for runtime.panicBounds: signed immediate 0x12b110 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.Kind.String: cannot encode J-type instruction relocation offset for runtime.panicBounds: signed immediate 0x12b10c must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.(*Type).NumMethod: cannot encode J-type instruction relocation offset for runtime.morestack_noctxt: signed immediate 0x1293b6 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.Name.IsBlank: cannot encode J-type instruction relocation offset for runtime.morestack_noctxt: signed immediate 0x1292ae must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.Name.Name: cannot encode J-type instruction relocation offset for runtime.morestack_noctxt: signed immediate 0x1290ae must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.Name.Name: cannot encode J-type instruction relocation offset for runtime.panicunsafestringlen: signed immediate 0x10cae2 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.Name.Name: cannot encode J-type instruction relocation offset for runtime.panicunsafestringlen: signed immediate 0x10cade must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.Name.Tag: cannot encode J-type instruction relocation offset for runtime.morestack_noctxt: signed immediate 0x128ec6 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.Name.Tag: cannot encode J-type instruction relocation offset for runtime.panicunsafestringlen: signed immediate 0x10c824 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.Name.Tag: cannot encode J-type instruction relocation offset for runtime.panicunsafestringlen: signed immediate 0x10c820 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.NewName: cannot encode J-type instruction relocation offset for runtime.morestack_noctxt: signed immediate 0x128bf4 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.NewName: cannot encode J-type instruction relocation offset for runtime.makeslice: signed immediate 0x123748 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.NewName: cannot encode J-type instruction relocation offset for runtime.memmove: signed immediate 0x12a2be must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.NewName: cannot encode J-type instruction relocation offset for runtime.memmove: signed immediate 0x12a284 must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.NewName: cannot encode J-type instruction relocation offset for runtime.memmove: signed immediate 0x12a21e must be in range [-0x100000, 0xfffff] (21 bits)
+ internal/abi.NewName: cannot encode J-type instruction relocation offset for runtime.memmove: signed immediate 0x12a1da must be in range [-0x100000, 0xfffff] (21 bits)
+ /home/swarming/.swarming/w/ir/x/w/goroot/pkg/tool/linux_riscv64/link: too many errors
+ script_test.go:165: FAIL: testdata/script/cover_atomic_pkgall.txt:3: go test -coverpkg=all -covermode=atomic x: exit status 1
+ [/CODE_BLOCK]",0,0,0,0,0,1,0
+"Title: archive, image, debug, encoding, x/net/html: DO NOT PANIC
+
+Body: We have a number of packages that implement parsers where a panic might lead to a Denial of Service, but returning an invalid input error instead would be perfectly harmless. We should wrap them all in a `recover()` and prevent the panic from propagating, as a robustness and defense in depth measure.
+
+We need to be careful about preserving documented panic conditions, and about not leaving behind persistent state that might be corrupt following a panic.
+
+Ideas for other packages that can benefit are welcome. Crypto packages were intentionally left out, as we should be confident in their operation. `math/big` has a lot of entry points and persistent state by definition (and we have a plan to drag it out of the security perimeter).
+
+/cc @golang/security",0,0,0,0,0,1,0
+"Title: encoding/json: Decoder.More reports a SyntaxError instead of io.EOF on truncated input under jsonv2
+
+Body: ### Go version
+
+go version go1.27.0 darwin/arm64
+
+### Output of `go env` in your module/workspace:
+
+ [CODE_BLOCK] AR='ar'
+CC='cc'
+CGO_CFLAGS='-O2 -g'
+CGO_CPPFLAGS=''
+CGO_CXXFLAGS='-O2 -g'
+CGO_ENABLED='1'
+CGO_FFLAGS='-O2 -g'
+CGO_LDFLAGS='-O2 -g'
+CXX='c++'
+GCCGO='gccgo'
+GO111MODULE=''
+GOARCH='arm64'
+GOARM64='v8.0'
+GOAUTH='netrc'
+GOBIN='/Users/itchyny/.share/go/bin'
+GOCACHE='/Users/itchyny/Library/Caches/go-build'
+GOCACHEPROG=''
+GODEBUG=''
+GOENV='/Users/itchyny/Library/Application Support/go/env'
+GOEXE=''
+GOEXPERIMENT=''
+GOFIPS140='off'
+GOFLAGS=''
+GOGCCFLAGS='-fPIC -arch arm64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -ffile-prefix-map=/var/folders/_7/77g7msw54l35t9r0_41wcz080000gn/T/go-build2719315618=/tmp/go-build -gno-record-gcc-switches -fno-common'
+GOHOSTARCH='arm64'
+GOHOSTOS='darwin'
+GOINSECURE=''
+GOMODCACHE='/Users/itchyny/.share/go/pkg/mod'
+GONOPROXY=''
+GONOSUMDB=''
+GOOS='darwin'
+GOPACKAGESDRIVER=''
+GOPATH='/Users/itchyny/.share/go'
+GOPRIVATE=''
+GOPROXY='[URL]
+GOROOT='/opt/homebrew/Cellar/go/1.27.0/libexec'
+GOSUMDB='sum.golang.org'
+GOTELEMETRY='local'
+GOTELEMETRYDIR='/Users/itchyny/Library/Application Support/go/telemetry'
+GOTMPDIR=''
+GOTOOLCHAIN='auto'
+GOTOOLDIR='/opt/homebrew/Cellar/go/1.27.0/libexec/pkg/tool/darwin_arm64'
+GOVCS=''
+GOVERSION='go1.27.0'
+GOWORK=''
+PKG_CONFIG='pkg-config'
+ [/CODE_BLOCK] 
+
+### What did you do?
+
+`Decoder.Token` was fixed in #74750 to keep reporting a bare `io.EOF` when the input is a truncated prefix of a valid JSON value, matching v1. That fix is bypassed if `Decoder.More` is called first.
+
+ [CODE_BLOCK] package main
+
+import (
+ ""encoding/json""
+ ""fmt""
+ ""strings""
+)
+
+func main() {
+ for _, callMore := range []bool{false, true} {
+ dec := json.NewDecoder(strings.NewReader(`[1,`))
+ dec.Token() // [
+ dec.Token() // 1
+ if callMore {
+ dec.More()
+ }
+ _, err := dec.Token()
+ fmt.Printf(""More=%-5v err=%#v InputOffset=%d\n"", callMore, err, dec.InputOffset())
+ }
+}
+ [/CODE_BLOCK] 
+
+### What did you see happen?
+
+With jsonv2, which is enabled by default in Go 1.27, the last `Token` call reports a different error and a different `InputOffset` depending on whether `More` was called before it:
+
+ [CODE_BLOCK] More=false err=&errors.errorString{s:""EOF""} InputOffset=3
+More=true err=&json.SyntaxError{msg:""unexpected end of JSON input"", Offset:3} InputOffset=2
+ [/CODE_BLOCK] 
+
+The same divergence occurs at every truncation point that leaves a valid prefix; `{`, `{""a""`, `{""a"":` and `{""a"":1,` all behave like `[1,` above.
+
+### What did you expect to see?
+
+The two rows to agree, as they do with `GOEXPERIMENT=nojsonv2`:
+
+ [CODE_BLOCK] More=false err=&errors.errorString{s:""EOF""} InputOffset=3
+More=true err=&errors.errorString{s:""EOF""} InputOffset=3
+ [/CODE_BLOCK] 
+
+`Decoder.More` is documented only to report whether there is another element in the current array or object. It is not documented to affect the error subsequently reported by `Decoder.Token`, and under the v1 implementation it does not.",0,0,0,0,0,1,0
+"Title: doc/godebug.md: urlstrictcolons description is out of date for Go 1.27
+
+Body: ### Go version
+
+go1.27.0
+
+### What did you do
+
+The `urlstrictcolons` entry in `doc/godebug.md` is unchanged from Go 1.26:
+> Go 1.26 added a new `urlstrictcolons` setting that controls whether `net/url.Parse`
+> allows malformed hostnames containing colons outside of a bracketed IPv6 address.
+> The default `urlstrictcolons=1` rejects URLs such as `[URL] or `[URL]
+
+CL 758900 (""net/url: permit colons in the host subcomponent of non-http/https URLs"", for #78077) limited that validation to http and https, so as of Go 1.27 the setting has no effect on other schemes.
+
+ [CODE_BLOCK] package main
+
+import (
+ ""fmt""
+ ""net/url""
+)
+
+func main() {
+ for _, s := range []string{""[URL] ""ftp://localhost:1:2"", ""mongodb://h:1,h2:2""} {
+ _, err := url.Parse(s)
+ fmt.Printf(""%-24q accepted=%v\n"", s, err == nil)
+ }
+}
+ [/CODE_BLOCK] 
+
+Run with `GODEBUG=urlstrictcolons=1` on go1.27.0:
+
+ [CODE_BLOCK] ""[URL] accepted=false
+""ftp://localhost:1:2"" accepted=true
+""mongodb://h:1,h2:2"" accepted=true
+ [/CODE_BLOCK] 
+
+### What did you see happen
+
+The setting applies only to http and https. The two non-http URLs are accepted whether `urlstrictcolons` is 1, 0, or unset.
+
+### What did you expect to see
+
+The documentation describes the setting as controlling whether `net/url.Parse` allows colons in hostnames, without qualification, so it reads as though it governs colon-bearing hosts generally. Since the scheme restriction is the substance of the Go 1.27 change, it seems worth stating in the entry, and the Go 1.27 release notes do not mention it either.
+
+Happy to send a CL if a wording change is wanted.
+
+***
+
+Found while comparing Go 1.26 and Go 1.27 behaviour with [URL]",0,0,0,0,0,1,0
+"Title: html/template: JS context is not reset when template literal closes
+
+Body: Easiest described by example: [URL]
+
+ [CODE_BLOCK] t1 := template.Must(template.New("""").Parse(
+ "" let x = y/{{.}}/b; \n""))
+t1.Execute(os.Stdout, ""alert`1`"")
+// Template parameter is quoted:
+// let x = y/""alert`1`""/b; 
+
+t2 := template.Must(template.New("""").Parse(
+ "" let x = `a`/{{.}}/b; \n""))
+t2.Execute(os.Stdout, ""alert`1`"")
+// Template parameter is not quoted:
+// let x = `a`/alert`1`/b; 
+ [/CODE_BLOCK] 
+
+This occurs because when the JavaScript template literal ``` `a` ``` closes, the parser remains in the wrong (regexp) context, and the following value is not escaped.
+
+This was reported to us as a potential vulnerability. This is bug, but not something we consider a security bug. JavaScript parsing is highly complex, and html/template implements only a subset of it. We generally recommend not putting template actions in complex JavaScript programs, since contextual escaping bugs of this nature are highly likely.",0,0,0,0,0,1,0
+"Title: runtime: memory corruption on mips builders
+
+Body: [CODE_BLOCK] #!watchflakes
+post <- goarch == ""mips64le"" && (`SIGILL` || log ~ `SIGILL` || `SIGSEGV` || log ~ `SIGSEGV`)
+ [/CODE_BLOCK] 
+
+Issue created automatically to collect these failures.
+
+Example (log):
+
+ === RUN TestDiagnosticErrorInEditedFile/gopackages/default
+ SIGILL: illegal instruction
+ PC=0x120080648 m=12 sigcode=128
+ instruction bytes: 0x2d 0x50 0x4b 0x1 0xf 0x0 0x0 0x0 0x0 0x0 0x4a 0x8d 0xf 0x0 0x0 0x0
+ 
+ goroutine 0 gp=0x6aadbd8a80 m=12 mp=0x6aae6e5008 [idle]:
+ runtime.pMask.read(...)
+ /home/swarming/.swarming/w/ir/x/w/goroot/src/runtime/proc.go:7319
+ runtime.stealWork(0x2eb5c31547c0)
+ /home/swarming/.swarming/w/ir/x/w/goroot/src/runtime/proc.go:3860 +0x2a0 fp=0xff91e9a5c8 sp=0xff91e9a540 pc=0x120080648
+ ...
+ r16 0xff91e9a560 r17 0x6aae6e5008
+ r18 0x0 r19 0x3558
+ r20 0x1aac0 r21 0x121efbcc0
+ r22 0x121e97ed8 r23 0x121f60000
+ r24 0x582b54e6e9cac6e6 r25 0xfffde80360
+ r26 0x0 r27 0x0
+ r28 0x100000000 r29 0xff91e9a540
+ r30 0x6aadbd8a80 r31 0x12008081c
+ pc 0x120080648 link 0x12008081c
+ lo 0x11925196 hi 0x0
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: net/http: Transport should allow disabling Accept-Encoding: gzip on a per-request basis
+
+Body: The net/http `Transport` automatically adds an ""Accept-Encoding: gzip"" header and transparently decompresses any compressed response, except when `Transport.DisableCompression` is set or the user sets `Accept-Encoding` manually.
+
+Setting an empty Accept-Encoding value in the headers map should prevent the `Transport` from adding one, in the same way setting an empty Content-Length value prevents one from being automatically added in various places.
+
+ [CODE_BLOCK] req.Header[""Accept-Encoding""] = nil // prevent Transport from adding ""gzip""
+ [/CODE_BLOCK]",0,0,0,0,0,1,0
+"Title: cmd/link: linkerFlagSupported drops trailing arguments from multi-word CC when probing linker flags
+
+Body: ### Go version
+
+go version go1.28-devel_2117d7cf9f Wed Aug 26 21:30:33 2026 -0700 linux/ppc64le
+
+### Output of `go env` in your module/workspace:
+
+ [CODE_BLOCK] GOARCH='ppc64le'
+GOHOSTARCH='ppc64le'
+GOOS='linux'
+CGO_ENABLED='1'
+CC='gcc'
+CXX='g++'
+GOPPC64='power10'
+GOVERSION='go1.28-devel_2117d7cf9f Wed Aug 26 21:30:33 2026 -0700'
+GOEXPERIMENT=''
+GOFLAGS=''
+GOTOOLCHAIN='local'
+clang version 21.1.8 (Red Hat, Inc. 21.1.8-2.el9)
+Target: ppc64le-redhat-linux-gnu
+ [/CODE_BLOCK] 
+
+### What did you do?
+
+**_This was first observed in the Go CI/CD builder on ppc64le POWER10, and I then reproduced it locally on a POWER10 system using current Go master._** Link
+
+On a ppc64le POWER10 system, I checked out current Go master and ran the full test suite with `GOPPC64=power10`.
+
+The failure reproduces locally in:
+
+ [CODE_BLOCK] TestScript/cgo_path_space_quote
+ [/CODE_BLOCK] 
+
+I then reproduced the test directly with:
+
+ [CODE_BLOCK] GOPPC64=power10 ./bin/go test cmd/go \
+ -run='TestScript/cgo_path_space_quote' \
+ -count=1 -v
+ [/CODE_BLOCK] 
+
+The test sets `CC` to a wrapper executable whose path contains spaces, followed by `clang`, for example:
+
+ [CODE_BLOCK] ""/tmp/.../program files/which cc"" clang
+ [/CODE_BLOCK] 
+
+I also verified independently that the compiler supports the Power10 flag:
+
+ [CODE_BLOCK] clang -m64 -mcpu=power10 /tmp/p10.c -o /tmp/p10
+echo $?
+ [/CODE_BLOCK] 
+
+which returns:
+
+ [CODE_BLOCK] 0
+ [/CODE_BLOCK] 
+
+### What did you see happen?
+
+`TestScript/cgo_path_space_quote` fails during `go run .` with:
+
+ [CODE_BLOCK] # test
+.../pkg/tool/linux_ppc64le/link: The external toolchain does not support -mcpu=power10. This is required to externally link GOPPC64 >= power10
+ [/CODE_BLOCK] 
+
+The test itself successfully preserves the multi-word `CC` value:
+
+ [CODE_BLOCK] ""/tmp/.../program files/which cc"" clang
+ [/CODE_BLOCK] 
+
+To inspect the Power10 capability probe, I temporarily instrumented `linkerFlagSupported`. The failing probe executed:
+
+ [CODE_BLOCK] DEBUG linkerFlagSupported: flag=""-mcpu=power10""
+cmd=[""/tmp/.../program files/which cc""
+ ""-m64""
+ ""-o"" ""...""
+ ""-mcpu=power10""
+ "".../trivial.c""]
+ [/CODE_BLOCK] 
+
+The trailing `clang` argument from `CC` is missing.
+
+The corresponding call site passes only `argv[0]`:
+
+ [CODE_BLOCK] linkerFlagSupported(ctxt.Arch, argv[0], """", ""-mcpu=power10"")
+ [/CODE_BLOCK] 
+
+while `linkerFlagSupported` later executes:
+
+ [CODE_BLOCK] exec.Command(linker, flags...)
+ [/CODE_BLOCK] 
+
+As a result, the wrapper is invoked without the trailing compiler argument, causing the flag probe to return false.
+
+The compiler itself does support the flag:
+
+ [CODE_BLOCK] $ clang -m64 -mcpu=power10 /tmp/p10.c -o /tmp/p10
+$ echo $?
+0
+ [/CODE_BLOCK] 
+
+### What did you expect to see?
+
+`TestScript/cgo_path_space_quote` should pass when `CC` contains a quoted executable path followed by additional arguments.
+
+In this case, the external linker command is effectively:
+
+ [CODE_BLOCK] ""/tmp/.../program files/which cc"" clang
+ [/CODE_BLOCK] 
+
+Flag probing should preserve the complete external linker command, including the trailing `clang` argument.
+
+The Power10 capability probe should therefore invoke the wrapper with `clang` before `-mcpu=power10`, detect that the compiler supports the flag, and allow `go run .` to complete successfully.",0,0,0,0,0,1,0
+"Title: x/pkgsite: request to exclude 55 abandoned pre-release dd-trace-go/v2/contrib/* pseudo-versions from the Directories listing
+
+Body: Following up on #74016, which stalled on an open question. I think we finally have a definitive answer, so a fresh, narrower issue seemed cleaner than reviving that whole thread.
+
+### Background
+
+We restructured our `v2` line so each `contrib` integration is its own module, published at `github.com/DataDog/dd-trace-go/contrib/ /v2` (major-version suffix at the end of the path). Before we landed on that layout, an earlier pre-release arrangement briefly put the same integrations at `github.com/DataDog/dd-trace-go/v2/contrib/ ` instead, with the major version in the middle of the path and no trailing suffix, so those modules never got a version at all. We dropped that layout before our first stable tag and never meant to publish it.
+
+pkg.go.dev had already crawled these modules once, though. Each one is still sitting in the index as a single pseudo-version: the proxy returns an empty `@v/list` and a 404 on `@latest`, but still resolves the exact version directly if you ask for it:
+
+ [CODE_BLOCK] $ curl -s [URL]
+{""Version"":""v0.0.0-20240517154620-1bc2693d3082"", ...}
+ [/CODE_BLOCK] 
+
+The result: [URL] currently lists 55 entries under ""Directories,"" all pointing at these dead, year-and-a-half-old paths. None of it matches how the module is actually laid out today.
+
+### Retraction doesn't help here
+
+I went digging to see if we could fix this ourselves with `retract` directives. We can't, at least not through this code path.
+
+`GetNestedModules` (`internal/postgres/details.go`) reads straight from the `modules` table with no retraction filter at all. That only kicks in later, in the latest-version resolution path (`IsRetracted`, `internal/postgres/version.go`). Retracting would also mean recreating 55 dead `go.mod` files at the old layout just to publish retracting versions for modules nobody should be pulling in anyway. That's a lot of churn for nothing.
+
+### What would actually work
+
+`GetNestedModules` does call `db.IsExcluded(ctx, mi.ModulePath, mi.Version)` on every row before it makes the listing, and `excludes()` (`internal/postgres/excluded.go`) already supports exact `module@version` patterns.
+
+Each of these 55 modules only ever had one pseudo-version published. An exact `module@version` exclusion per module would clear all of them out without touching anything else. Importantly, it wouldn't also match the live `github.com/DataDog/dd-trace-go/v2/contrib` package path, which a plain prefix exclusion would risk doing.
+
+Here's the full list. I walked the ""Directories"" section on the module's current page and matched each entry against its one indexed pseudo-version on the proxy:
+
+ [CODE_BLOCK] github.com/DataDog/dd-trace-go/v2/contrib/99designs/gqlgen@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/IBM/sarama@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/IBM/sarama.v1@v0.0.0-20240223105017-0206562b3b5d
+github.com/DataDog/dd-trace-go/v2/contrib/Shopify/sarama@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/aws@v0.0.0-20231127111504-f9db3ffcbae2
+github.com/DataDog/dd-trace-go/v2/contrib/aws/aws-sdk-go@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/aws/aws-sdk-go-v2@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/bradfitz/gomemcache@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/cloud.google.com/go/pubsub.v1@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/confluentinc/confluent-kafka-go/kafka@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/confluentinc/confluent-kafka-go/kafka.v2@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/database/sql@v0.0.0-20240517155048-532a55a5f1ea
+github.com/DataDog/dd-trace-go/v2/contrib/dimfeld/httptreemux.v5@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/elastic/go-elasticsearch.v6@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/emicklei/go-restful.v3@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/gin-gonic/gin@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/globalsign/mgo@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/go-chi/chi@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/go-chi/chi.v5@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/go-pg/pg.v10@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/go-redis/redis@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/go-redis/redis.v7@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/go-redis/redis.v8@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/go.mongodb.org/mongo-driver@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/gocql/gocql@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/gofiber/fiber.v2@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/gomodule/redigo@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/google.golang.org/api@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/google.golang.org/api/internal/gen_endpoints@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/google.golang.org/grpc@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/gorilla/mux@v0.0.0-20240517155048-532a55a5f1ea
+github.com/DataDog/dd-trace-go/v2/contrib/gorm.io/gorm.v1@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/graph-gophers/graphql-go@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/graphql-go/graphql@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/hashicorp/consul@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/hashicorp/vault@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/jackc/pgx.v5@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/jmoiron/sqlx@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/julienschmidt/httprouter@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/k8s.io/client-go@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/labstack/echo.v4@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/miekg/dns@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/net/http@v0.0.0-20240517154620-1bc2693d3082
+github.com/DataDog/dd-trace-go/v2/contrib/olivere/elastic@v0.0.0-20240223105017-0206562b3b5d
+github.com/DataDog/dd-trace-go/v2/contrib/olivere/elastic.v5@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/redis/go-redis.v9@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/segmentio/kafka-go@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/segmentio/kafka.go.v0@v0.0.0-20240223105017-0206562b3b5d
+github.com/DataDog/dd-trace-go/v2/contrib/sirupsen/logrus@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/syndtr/goleveldb@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/tidwall/buntdb@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/twitchtv/twirp@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/urfave/negroni@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/valyala/fasthttp@v0.0.0-20240516153256-8d6fa2bea61d
+github.com/DataDog/dd-trace-go/v2/contrib/valyala/fasthttp.v1@v0.0.0-20240223105017-0206562b3b5d
+ [/CODE_BLOCK] 
+
+Would it be possible to add these as exact `module@version` exclusion entries? Happy to re-check or regenerate the list if anything about our layout changes before someone gets to this.
+
+Thanks again for all the time spent digging through #74016.",0,0,0,0,0,1,0
+"Title: all: unrecognized failures on `plan9/386`
+
+Body: ```
+#!watchflakes
+default <- goos == ""plan9"" && goarch == ""386""
+```
+
+(attn @golang/plan9)",0,0,0,0,0,1,0
+"Title: Program hangs intermittently
+
+Body: No stack trace provided. Need full logs and OS version to investigate.",0,0,0,0,0,1,0
+"Title: x/build: bot netbsd-arm-bsiegert reported as broken
+
+Body: The bot netbsd-arm-bsiegert has been reported as broken. It is currently in ""dead"" state. Please work to resolve the issue.
+
+@golang/netbsd
+@golang/arm
+ 
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: debug/dwarf: r.Next() returns wrong ent when DWARF5 used.
+
+Body: ### What version of Go are you using (`go version`)?
+
+go 1.19.3
+
+### Does this issue reproduce with the latest release?
+
+yes
+
+### What operating system and processor architecture are you using (`go env`)?
+
+```
+GO111MODULE=""""
+GOARCH=""amd64""
+GOBIN=""""
+GOCACHE=""~/.cache/go-build""
+GOENV=""~/.config/go/env""
+GOEXE=""""
+GOEXPERIMENT=""""
+GOFLAGS=""""
+GOHOSTARCH=""amd64""
+GOHOSTOS=""linux""
+GOINSECURE=""""
+GOMODCACHE=""/x86_64/pkg/mod""
+GONOPROXY=""""
+GONOSUMDB=""""
+GOOS=""linux""
+GOPATH=""/x86_64""
+GOPRIVATE=""""
+GOPROXY=""[URL]
+GOROOT=""/x86_64/go""
+GOSUMDB=""sum.golang.org""
+GOTMPDIR=""""
+GOTOOLDIR=""/x86_64/go/pkg/tool/linux_amd64""
+GOVCS=""""
+GOVERSION=""go1.19""
+GCCGO=""gccgo""
+GOAMD64=""v1""
+AR=""ar""
+CC=""gcc""
+CXX=""g++""
+CGO_ENABLED=""1""
+GOMOD=""/dev/null""
+GOWORK=""""
+CGO_CFLAGS=""-g -O2""
+CGO_CPPFLAGS=""""
+CGO_CXXFLAGS=""-g -O2""
+CGO_FFLAGS=""-g -O2""
+CGO_LDFLAGS=""-g -O2""
+PKG_CONFIG=""pkg-config""
+GOGCCFLAGS=""-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build147440491=/tmp/go-build -gno-record-gcc-switches""
+```
+
+### What did you do?
+```
+0x000142a2: DW_TAG_subprogram
+ DW_AT_low_pc (0xffffffff81002280)
+ DW_AT_high_pc (0xffffffff810022f0)
+ DW_AT_frame_base (DW_OP_reg7 RSP)
+ DW_AT_call_all_calls (true)
+ DW_AT_abstract_origin (0x000160e6 ""rcu_read_unlock"")
+ 
+0x000160e6: DW_TAG_subprogram
+ DW_AT_name (""rcu_read_unlock"")
+ DW_AT_decl_file (""/x86_64/linux/./include/linux/rcupdate.h"")
+ DW_AT_decl_line (765)
+ DW_AT_prototyped (true)
+ DW_AT_inline (DW_INL_inlined)
+```
+Above is extracted from vmlinux (compiled by clang-15) by llvm-dwarfdump-15, when linux kernel compiled with DWARF5 debug info, go debug/dwarf can't decode entry at 0x000160e6 correctly.
+
+Test program
+```
+package main
+
+import (
+ ""fmt""
+ ""debug/dwarf""
+ ""debug/elf""
+)
+
+func main() {
+ file, err := elf.Open(""vmlinux"")
+ if err != nil {
+ return
+ }
+ debugInfo, err := file.DWARF()
+ if err != nil {
+ return
+ }
+
+ ent, _ := getEntryByOffset(debugInfo, 0x000142a2)
+ fmt.Printf(""%v\n"", ent)
+ ent, _ = getEntryByOffset(debugInfo, 0x000160e6)
+ fmt.Printf(""%v\n"", ent)
+}
+
+func getEntryByOffset(debugInfo *dwarf.Data, offset dwarf.Offset) (*dwarf.Entry, error) {
+ r := debugInfo.Reader()
+ r.Seek(offset)
+ return r.Next()
+}
+```
+
+### What did you expect to see?
+The 2nd printf should print ent name as rcu_read_unlock.
+
+### What did you see instead?
+The 2nd printf should print ent name of some other subprogram.",0,0,0,0,0,1,0

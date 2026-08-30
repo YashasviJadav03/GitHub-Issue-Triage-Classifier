@@ -1,0 +1,1756 @@
+text,bug,feature_request,documentation,question,duplicate,needs_more_info,critical
+"Title: Closing as duplicate: race condition in LanguageServer
+
+Body: This panic was already reported and resolved in previous issue. Marking as duplicate bug.",1,0,0,0,1,0,0
+"Title: Duplicate report: Sidebar icons not aligning properly
+
+Body: Duplicate of #5421. Closing this issue to keep discussion consolidated.",0,0,0,0,1,0,0
+"Title: Duplicate report: Sidebar icons not aligning properly
+
+Body: Closing as duplicate since this is already tracked under active milestone.",0,0,0,0,1,0,0
+"Title: Closing as duplicate: race condition in KernelDispatcher
+
+Body: Same crash during resizing panel as previously tracked bug report.",1,0,0,0,1,0,0
+"Title: Same as #5421: font rendering glitch
+
+Body: Duplicate of #5421. Closing this issue to keep discussion consolidated.",0,0,0,0,1,0,0
+"Title: Duplicate of previous report: panic during dynamic graph execution
+
+Body: This panic was already reported and resolved in previous issue. Marking as duplicate bug.",1,0,0,0,1,0,0
+"Title: Main process crashes immediately upon startup on macOS 14.5 Sonoma
+
+Body: After updating to v1.90, VS Code crashes within 2 seconds of launch. Crash reporter output attached below. No extensions loaded. All developers on macOS cannot open workspace.",1,0,0,0,0,0,1
+"Title: Silent data corruption in AutogradEngine matrix multiplication
+
+Body: Gradients computed by AutogradEngine are mathematically incorrect under specific tensor shapes, corrupting weights during backpropagation.",0,0,0,0,0,0,1
+"Title: Memory corruption during saving file in production
+
+Body: Assertion failed: index < capacity in KernelDispatcher. Complete denial of service.",1,0,0,0,0,0,1
+"Title: Severe regression in LanguageServer gradient computation
+
+Body: Critical vulnerability allowing untrusted model weights to execute shell commands.",0,0,0,0,0,0,1
+"Title: Security advisory: Arbitrary code execution in FiberTree deserializer
+
+Body: Gradients computed by FiberTree are mathematically incorrect under specific tensor shapes, corrupting weights during backpropagation.",0,0,0,0,0,0,1
+"Title: Buffer overflow in FiberTree parser causes immediate crash
+
+Body: Executing saving file triggers SIGSEGV crash. Critical blocker affecting all production users.",1,0,0,0,0,0,1
+"Title: Fatal assertion failure in AutogradEngine during concurrent rendering
+
+Body: Executing concurrent state update triggers SIGSEGV crash. Critical blocker affecting all production users.",1,0,0,0,0,0,1
+"Title: How to use VirtualDOM with new concurrent features? Missing docs
+
+Body: Could the team clarify how Server Actions should be configured? The current documentation lacks detailed code examples.",0,0,1,1,0,0,0
+"Title: Is DataLoader num_workers > 0 safe with pin_memory on Windows?
+
+Body: I am experiencing deadlocks when setting num_workers=4 with pin_memory=True on Windows 11. Is multiprocessing fork emulation supported or should I use spawn context?",0,0,0,1,0,0,0
+"Title: Clarification on Type Inference lifecycle and store subscription
+
+Body: Could the team clarify how Type Inference should be configured? The current documentation lacks detailed code examples.",0,0,1,1,0,0,0
+"Title: all: umbrella for flakes on openbsd/ppc64
+
+Body: [CODE_BLOCK] #!watchflakes
+default <- goos == ""openbsd"" && goarch == ""ppc64""
+ [/CODE_BLOCK] 
+
+As with all flake umbrella issues, if this gets notified of a flake that just happens to be on ppc64, but is really about something else, file a specific issue with a ""post"" rule to divert flakes to it instead. (adonovan, Jun 2026)
+
+Example (log):
+
+ === RUN TestMachOBuildVersion
+ === PAUSE TestMachOBuildVersion
+ === CONT TestMachOBuildVersion
+ link_test.go:386: [/home/swarming/.swarming/w/ir/x/w/goroot/bin/go build -ldflags=-linkmode=internal -o /home/swarming/.swarming/w/ir/x/t/TestMachOBuildVersion613685595/001/main /home/swarming/.swarming/w/ir/x/t/TestMachOBuildVersion613685595/001/main.go]: exit status 1:
+ internal/bytealg: /home/swarming/.swarming/w/ir/x/w/goroot/pkg/tool/openbsd_ppc64/asm: fork/exec /home/swarming/.swarming/w/ir/x/w/goroot/pkg/tool/openbsd_ppc64/asm: resource temporarily unavailable
+ --- FAIL: TestMachOBuildVersion (15.67s)
+
+— watchflakes",0,0,0,1,0,1,0
+"Title: What is the recommended timeout for concurrent state update?
+
+Body: Looking for guidance on how to avoid unnecessary re-renders when concurrent state update is triggered.",0,0,0,1,0,0,0
+"Title: What is the recommended timeout for deserializing state?
+
+Body: Looking for guidance on how to avoid unnecessary re-renders when deserializing state is triggered.",0,0,0,1,0,0,0
+"Title: Is it possible to decouple MemoryPool from parent context?
+
+Body: Looking for guidance on how to avoid unnecessary re-renders when resizing panel is triggered.",0,0,0,1,0,0,0
+"Title: Confused about Server Actions behavior in React 18: Documentation needed
+
+Body: How does Scheduler handle error boundaries? We need better documentation for this use case.",0,0,1,1,0,0,0
+"Title: runtime: ""unexpected signal during runtime execution"" during bgscavenge on plan9
+
+Body: ```
+#!watchflakes
+post <- goos == ""plan9"" && log ~ `unexpected signal during runtime execution` && log ~ `runtime\.bgscavenge`
+```
+
+From `plan9-386-0intro` ([URL] a `cmd/vet` test failure that appears to have nothing to do with `cmd/vet`:
+```
+--- FAIL: TestVet (1.94s)
+ --- FAIL: TestVet/assign (0.43s)
+ vet_test.go:162: error check failed: 
+ assign.go:18: missing error ""self-assignment of x to x""
+ assign.go:20: missing error ""self-assignment of s.x to s.x""
+ assign.go:22: missing error ""self-assignment of s.l.0. to s.l.0.""
+ Unmatched Errors:
+ fatal error: unexpected signal during runtime execution
+ [signal sys: trap: fault write code=0x0 addr=0x0 pc=0xa960]
+ goroutine 4 [running]:
+ runtime.throw(0x96394d, 0x2a)
+ /tmp/workdir-gnot/go/src/runtime/panic.go:1106 +0x63 fp=0x11429f44 sp=0x11429f30 pc=0x2e783
+ runtime.sigpanic()
+ /tmp/workdir-gnot/go/src/runtime/os_plan9.go:79 +0x333 fp=0x11429f78 sp=0x11429f44 pc=0x2b033
+ runtime.newobject(0x92d1a0, 0x0)
+ /tmp/workdir-gnot/go/src/runtime/malloc.go:1153 fp=0x11429f7c sp=0x11429f78 pc=0xa960
+ runtime.bgscavenge(0x1143c000)
+ /tmp/workdir-gnot/go/src/runtime/mgcscavenge.go:211 +0x5b fp=0x11429fe8 sp=0x11429f7c pc=0x1d83b
+ runtime.goexit()
+ /tmp/workdir-gnot/go/src/runtime/asm_386.s:1337 +0x1 fp=0x11429fec sp=0x11429fe8 pc=0x573f1
+ created by runtime.gcenable
+ /tmp/workdir-gnot/go/src/runtime/mgc.go:215 +0x6a
+ goroutine 1 [chan receive, locked to thread]:
+ runtime.gopark(0x96ee48, 0x1143c030, 0x1143170e, 0x2)
+ /tmp/workdir-gnot/go/src/runtime/proc.go:304 +0xd8
+ runtime.chanrecv(0x1143c000, 0x0, 0x11400001, 0x1515a)
+ /tmp/workdir-gnot/go/src/runtime/chan.go:563 +0x275
+ runtime.chanrecv1(0x1143c000, 0x0)
+ /tmp/workdir-gnot/go/src/runtime/chan.go:433 +0x1c
+ runtime.gcenable()
+ /tmp/workdir-gnot/go/src/runtime/mgc.go:216 +0x7e
+ runtime.main()
+ /tmp/workdir-gnot/go/src/runtime/proc.go:166 +0x183
+ runtime.goexit()
+ /tmp/workdir-gnot/go/src/runtime/asm_386.s:1337 +0x1
+FAIL
+FAIL cmd/vet 34.760s
+```
+
+CC @aclements @mknyszek @0intro @fhs",0,0,0,1,0,1,0
+"Title: encoding/json/jsontext: audit API for AppendFloat
+
+Body: In [URL] @aclements comments:
+
+> I'm slightly concerned that ""The values NaN, +Inf, and -Inf will be represented as a JSON string with the values ""NaN"", ""Infinity"", and ""-Infinity""."" is a type footgun. I thought we had added an option or a struct tag to control whether non-finite floats were an error, but I'm not finding that now.
+
+@dsnet @ChrisHines @neild @prattmic",0,0,1,0,0,1,0
+"Title: Add architectural diagram for KernelDispatcher internals in documentation
+
+Body: Updating docs to explain memory allocation guarantees during resizing panel.",0,0,1,0,0,0,0
+"Title: Add support for distributed sharding and update API tutorials
+
+Body: We propose adding distributed sharding to improve model efficiency. This should also include full documentation and usage guides in docs/notes.",0,1,1,0,0,0,0
+"Title: Add architectural diagram for WorkspaceWatcher internals in documentation
+
+Body: Updating docs to explain memory allocation guarantees during saving file.",0,0,1,0,0,0,0
+"Title: Update DistributedDataParallel tutorial with FSDP best practices
+
+Body: The existing guide in docs/source/notes/ddp.rst does not mention modern PyTorch 2.x FullyShardedDataParallel setup or activation checkpointing guidelines.",0,0,1,0,0,0,0
+"Title: Fix broken hyperlinks and typo in Scheduler reference docs
+
+Body: Updating docs to explain memory allocation guarantees during dynamic graph execution.",0,0,1,0,0,0,0
+"Title: Fix broken hyperlinks and typo in TerminalEmulator reference docs
+
+Body: Updating docs to explain memory allocation guarantees during spawning worker process.",0,0,1,0,0,0,0
+"Title: Codex cannot discover the repository's required pr-review skill
+
+Body: Codex cannot discover the `pr-review` skill because it is currently registered only for Claude Code. This prevents Codex users from following the repository’s required PR review workflow, which is why I believe the intended workflow for Codex should be clarified.
+
+> Codex produced the following repository analysis:
+>
+> `CLAUDE.md` requires the `pr-review` skill whenever a pull request is reviewed. The skill currently exists under `.claude/skills/pr-review`, but there is no corresponding skill under `.agents/skills`, where Codex discovers repository-scoped skills.
+>
+> As a result, Codex users cannot invoke the repository's prescribed PR review workflow as a native skill. Could maintainers clarify the intended workflow for Codex users or make the existing skill discoverable by Codex?
+
+cc @ZainRizvi @huydhn",0,1,0,0,0,0,0
+"Title: Allow dynamic shape compilation for WorkspaceWatcher module
+
+Body: Adding vectorized support will significantly accelerate inference throughput for transformer backbones.",0,1,0,0,0,0,0
+"Title: proposal: x/net/http3: add experimental HTTP/3 implementation
+
+Body: This is a proposal to add an HTTP/3 client and server implementation in x/net/http3.
+
+Similarly to the accepted form of #58547 (x/net/quic), this proposal is to add an experimental package with an API subject to change during development. Once we have a complete implementation, we will file a separate proposal for API review.
+
+Initial development will be in an internal package (x/net/internal/http3) until the details are firm enough for external testing. We will then move the package to x/net/http3 and (when we have some confidence the API is right) file the API review proposal.",0,1,0,0,0,0,0
+"Title: Support custom activation functions in AutogradEngine
+
+Body: Adding vectorized support will significantly accelerate inference throughput for transformer backbones.",0,1,0,0,0,0,0
+"Title: set hands free mode to false by default for voice mode
+
+Body:",0,1,0,0,0,0,0
+"Title: proposal: unsafe: add Transmute generic function for convenient type reinterpretation
+
+Body: ### Proposal Details
+
+### Summary
+
+Propose adding a generic `unsafe.TransmuteT, F any T` function to the unsafe package for convenient type reinterpretation.
+
+### Background & Motivation
+
+Currently, performing type casting or memory reinterpretation via unsafe requires verbose and error-prone pointer conversions and dereferences:
+
+ [CODE_BLOCK] // Current approach
+_ = *(*float32)(unsafe.Pointer(&value))
+ [/CODE_BLOCK] 
+
+Similar to how unsafe.SliceData and unsafe.StringData were introduced in Go 1.20 to simplify common unsafe pointer operations and improve ergonomics, a dedicated helper function like unsafe.Transmute would make intentional memory reinterpretation cleaner and easier to read.
+
+This would significantly reduce boilerplate and improve ergonomics for authors of high-performance libraries (such as ECS frameworks, custom serializers, and custom collection types). Instead of forcing library authors to write unsafe pointer acrobatics, unsafe.Transmute provides a clean, standard, and self-documenting primitive for working with generic memory layouts.
+
+Even low-level code should be simple, clear, and readable. Code is read far more often than it is written, and replacing syntactic pointer gymnastics with an explicit function makes the developer's intent crystal clear.
+
+### Proposed API
+
+ [CODE_BLOCK] package unsafe
+
+// Transmute reinterprets the memory of value as type T.
+func TransmuteT, F any (to T)
+ [/CODE_BLOCK] 
+
+### Use Case
+
+In low-level systems, components are often stored in untyped or raw memory buffers.
+
+ [CODE_BLOCK] // Before
+value := *(*T)(unsafe.Pointer(&raw))
+
+// After
+value := unsafe.TransmuteT
+ [/CODE_BLOCK] 
+
+### Alternatives Considered
+
+Keeping the explicit `*(*T)(unsafe.Pointer(&value))` pattern. However, explicit generic primitives in `unsafe` significantly improve readability and reduce syntax clutter.",0,1,0,0,0,1,0
+"Title: Cursor Follow Outline
+
+Body: Just looking at the function/symbol name might not be good enough in the outline, and so it might be useful if the cursor in a file automatically moved to the declaration/definition of the symbol in reaction to scrolling in the outline view (the small box on the left). This way I do not have to press enter at every object in the outline to see what is going on there.
+
+This would practically be the inverse of ""follow cursor"" as shown here:
+[URL]
+
+Thanks!",0,1,0,0,0,0,0
+"Title: Allow dynamic shape compilation for WorkspaceWatcher module
+
+Body: It would be very helpful to expose customizable forward hooks in WorkspaceWatcher.",0,1,0,0,0,0,0
+"Title: Allow dynamic shape compilation for KernelDispatcher module
+
+Body: Adding vectorized support will significantly accelerate inference throughput for transformer backbones.",0,1,0,0,0,0,0
+"Title: Add vectorized batch implementation for MemoryPool
+
+Body: It would be very helpful to expose customizable forward hooks in MemoryPool.",0,1,0,0,0,0,0
+"Title: Proposal: Built-in optimistic UI update hook useOptimistic for action handlers
+
+Body: Managing optimistic updates manually requires complex reducer logic and state rollbacks. We should introduce a native hook that accepts initial state and an update reducer to automatically revert on error.",0,1,0,0,0,0,0
+"Title: Intermittent rendering glitch in FiberTree
+
+Body: The UI becomes unresponsive after deserializing state. Please provide extension bisect logs and system information.",1,0,0,0,0,1,0
+"Title: tf.unique_with_counts fails under jit_compile=True with no registered XLA_CPU_JIT kernel, while eager execution and autoclustering both succeed [Original/StarCoder]
+
+Body: ### Issue type
+
+Bug
+
+### Have you reproduced the bug with TensorFlow Nightly?
+
+No
+
+### Source
+
+source
+
+### TensorFlow version
+
+2.14.0 (built from source, snapshot from May 2023)
+
+### Custom code
+
+Yes
+
+### OS platform and distribution
+
+Ubuntu 24.04.4 LTS (x86_64)
+
+### Mobile device
+
+_No response_
+
+### Python version
+
+3.10.20
+
+### Bazel version
+
+5.3.0
+
+### GCC/compiler version
+
+clang 17.0.6
+
+### CUDA/cuDNN version
+
+CPU only environment
+
+### GPU model and memory
+
+CPU only environment
+
+### Current behavior?
+
+`tf.unique_with_counts` runs normally under eager execution and under autoclustered graph execution. Under jit_compile=True, compilation refuses to start:
+
+ [CODE_BLOCK] eager : [1 2 3]
+xla : FAILED: Detected unsupported operations when trying to compile graph ... on XLA_CPU_JIT: UniqueWithCounts (No registered 'UniqueWithCounts' OpKernel for XLA_CPU_JIT devices compatible with node {{node UniqueWithCounts}})
+ac : [1 2 3]
+ [/CODE_BLOCK] 
+
+This is the same class of gap as #126007 (missing XLA_CPU_JIT kernels for tf.print, tf.unravel_index and tf.linalg.eig), but UniqueWithCounts isn't one of those three ops and isn't mentioned there. I searched for ""UniqueWithCounts XLA_CPU_JIT"" and didn't find an existing issue.
+
+I would expect tf.unique_with_counts under jit_compile=True to either run correctly, matching eager and autoclustering, or fail with a message that points at the missing kernel specifically, rather than the current behavior being indistinguishable from a general ""graph too complex to compile"" failure unless you read the full error text.
+
+### Standalone code to reproduce the issue
+
+ [CODE_BLOCK] import tensorflow as tf
+print(""tf:"", tf.__version__)
+
+y = tf.constant([1, 2, 2, 3, 3, 3], dtype=tf.int32)
+
+def call(y):
+ u, idx, counts = tf.unique_with_counts(y)
+ return u
+
+try:
+ print(""eager :"", call(y).numpy())
+except Exception as e:
+ print(""eager : FAILED:"", str(e).strip().splitlines()[-1])
+
+try:
+ print(""xla :"", tf.function(call, jit_compile=True)(y).numpy())
+except Exception as e:
+ print(""xla : FAILED:"", str(e).strip().splitlines()[0][:300])
+
+try:
+ print(""ac :"", tf.function(call)(y).numpy()) # run with TF_XLA_FLAGS=--tf_xla_auto_jit=2
+except Exception as e:
+ print(""ac : FAILED:"", str(e).strip().splitlines()[-1])
+ [/CODE_BLOCK] 
+
+### Relevant log output
+
+ [CODE_BLOCK] tf: 2.14.0
+eager : [1 2 3]
+xla : FAILED: Detected unsupported operations when trying to compile graph __inference_call_23[_XlaMustCompile=true,config_proto=3175580994766145631,executor_type=11160318154034397263] on XLA_CPU_JIT: UniqueWithCounts (No registered 'UniqueWithCounts' OpKernel for XLA_CPU_JIT devices compatible with node {{node UniqueWithCounts}})
+ac : [1 2 3]
+ [/CODE_BLOCK]",1,0,0,0,0,0,0
+"Title: Unexpected error thrown during resizing panel
+
+Body: The UI becomes unresponsive after resizing panel. Please provide extension bisect logs and system information.",1,0,0,0,0,1,0
+"Title: Unable to use outline with search editor
+
+Body: Does this issue occur when all extensions are disabled?: Yes/No
+
+ 
+ Report Issue' dialog can assist with this. -->
+Version: 1.68.1
+Commit: 30d9c6cd9483b2cc586687151bcbcd635f373630
+Date: 2022-06-14T12:52:13.188Z
+Electron: 17.4.7
+Chromium: 98.0.4758.141
+Node.js: 16.13.0
+V8: 9.8.177.13-electron.0
+OS: Darwin x64 19.6.0
+
+Steps to Reproduce:
+
+1. Search in files, and search something
+2. Click 'Open in editor' to open search editor
+3. When search editor is the current editor, click item in the outline panel
+4. New search editor with name '.' is open, with an error message in the middle of that editor: ""The editor could not be opened due to an unexpected error: Unable to resolve resource search-editor:#0.908....""",1,0,0,0,0,0,0
+"Title: Incorrect syntax highlighting in VirtualDOM for template literals
+
+Body: When dynamic graph execution occurs, the file explorer fails to reflect updated disk contents.",1,0,0,0,0,0,0
+"Title: File tree does not refresh automatically after saving file
+
+Body: When saving file occurs, the file explorer fails to reflect updated disk contents.",1,0,0,0,0,0,0
+"Title: runtime: unknown GOEXPERIMENT spinbitmutex
+
+Body: ### Go version
+
+go version go1.25.0 linux/arm64
+
+### Output of `go env` in your module/workspace:
+
+ [CODE_BLOCK] AR='ar'
+CC='gcc'
+CGO_CFLAGS='-O2 -g'
+CGO_CPPFLAGS=''
+CGO_CXXFLAGS='-O2 -g'
+CGO_ENABLED='1'
+CGO_FFLAGS='-O2 -g'
+CGO_LDFLAGS='-O2 -g'
+CXX='g++'
+GCCGO='gccgo'
+GO111MODULE=''
+GOARCH='arm64'
+GOARM64='v8.0'
+GOAUTH='netrc'
+GOBIN=''
+GOCACHE='/root/.cache/go-build'
+GOCACHEPROG=''
+GODEBUG=''
+GOENV='/root/.config/go/env'
+GOEXE=''
+GOEXPERIMENT='nospinbitmutex'
+GOFIPS140='off'
+GOFLAGS=''
+GOGCCFLAGS='-fPIC -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build767931946=/tmp/go-build -gno-record-gcc-switches'
+GOHOSTARCH='arm64'
+GOHOSTOS='linux'
+GOINSECURE=''
+GOMOD='/go/src/xxxx.xxxx.xxxx/y/z/tools/abc/go.mod'
+GOMODCACHE='/go/pkg/mod'
+GONOPROXY='none'
+GONOSUMDB='xxxx.xxxx.xxxx'
+GOOS='linux'
+GOPATH='/go'
+GOPRIVATE='xxxx.xxxx.xxxx'
+GOPROXY='xxxx.xxxx.xxxx|proxy.golang.org|direct'
+GOROOT='/usr/local/go'
+GOSUMDB='sum.golang.org'
+GOTELEMETRY='local'
+GOTELEMETRYDIR='/root/.config/go/telemetry'
+GOTMPDIR=''
+GOTOOLCHAIN='local'
+GOTOOLDIR='/usr/local/go/pkg/tool/linux_arm64'
+GOVCS=''
+GOVERSION='go1.25.0'
+GOWORK=''
+PKG_CONFIG='pkg-config'
+ [/CODE_BLOCK] 
+
+### What did you do?
+
+/workspace # go version
+go version go1.25.0 linux/arm64
+/workspace # export GOEXPERIMENT=nospinbitmutex
+/workspace # go version
+go: unknown GOEXPERIMENT spinbitmutex
+
+### What did you see happen?
+
+go: unknown GOEXPERIMENT spinbitmutex
+
+### What did you expect to see?
+
+Should be fine, as the 1.24 release notes mention the new GOEXPERIMENT=nospinbitmutex. In 1.25, there are no release notes that mention the removal of this experiment. However, in the goexperiment standard library, it has been removed - comparing 1.25 to 1.24. We are using this flag in our production builds for some services due to changes in latency behavior since the mutex implementation changes in 1.24.",1,0,0,0,0,0,0
+"Title: Agent host sessions can show as non-archived despite server-archived state
+
+Body: Agent host sessions have server-authoritative archived state (the `SessionStatus.IsArchived` bit, surfaced as `IChatSessionItem.archived`). However, `AgentSessionsModel.isArchived()` merges that provider value with a locally-persisted view-state overlay and gives the **local** overlay precedence:
+
+ [CODE_BLOCK] private isArchived(session: IInternalAgentSessionData): boolean {
+ return this.resolveStateEntry(session)?.archived ?? Boolean(session.archived);
+}
+ [/CODE_BLOCK] 
+
+Because `??` only falls through on `null`/`undefined`, a persisted local entry with `archived: false` (e.g. from a prior local unarchive) permanently masks the server's `archived: true`. The result: a session the server reports as archived (e.g. an errored + archived session with status `66` = `Error | IsArchived`) stays in the non-archived date sections and never lands in the Archived section.
+
+### Fix
+
+For agent host sessions, ignore the local view-state overlay and use only the server-backed `session.archived`. Non-agent-host providers keep the existing overlay behavior.
+
+### Note / follow-up
+
+The chat sessions viewer's own Archive/Unarchive actions only write the local model state (`session.setArchived(...)`); the `IChatSessionItemController` has no archive method, so they never dispatch to the agent host. With this fix, those local writes no longer affect an agent-host session's displayed archived state — only the Agents window path (`baseAgentHostSessionsProvider.archiveSession`) dispatches `SessionIsArchivedChanged` to the server. If those viewer buttons should work for agent-host sessions, they need to be routed to the server separately.",1,0,0,0,0,0,0
+"Title: Cursor jump bug when typing fast in AutogradEngine
+
+Body: When hot reloading occurs, the file explorer fails to reflect updated disk contents.",1,0,0,0,0,0,0
+"Title: Unexpected error thrown during deserializing state
+
+Body: Error message appeared once but cannot reproduce consistently. Need reproduction repo.",1,0,0,0,0,1,0
+"Title: After toggling the side pane it can render borders above each other
+
+Body:",1,0,0,0,0,0,0
+"Title: Incorrect syntax highlighting in FiberTree for template literals
+
+Body: When deserializing state occurs, the file explorer fails to reflect updated disk contents.",1,0,0,0,0,0,0
+"Title: cmd/compile: archsimd load isn't treated as read only for string → []byte elision
+
+Body: ### Go version
+
+go version go1.28-devel_9ea81f5213 Tue Aug 25 00:07:53 2026 -0700 linux/amd64
+
+### Output of `go env` in your module/workspace:
+
+ [CODE_BLOCK] AR='ar'
+CC='gcc'
+CGO_CFLAGS='-O2 -g'
+CGO_CPPFLAGS=''
+CGO_CXXFLAGS='-O2 -g'
+CGO_ENABLED='1'
+CGO_FFLAGS='-O2 -g'
+CGO_LDFLAGS='-O2 -g'
+CXX='g++'
+GCCGO='gccgo'
+GO111MODULE=''
+GOAMD64='v3'
+GOARCH='amd64'
+GOAUTH='netrc'
+GOBIN='/home/hugo/go/bin'
+GOCACHE='/tmp/go-build/'
+GOCACHEPROG=''
+GODEBUG=''
+GOENV='/home/hugo/.config/go/env'
+GOEXE=''
+GOEXPERIMENT='simd'
+GOFIPS140='off'
+GOFLAGS=''
+GOGCCFLAGS='-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build661455473=/tmp/go-build -gno-record-gcc-switches'
+GOHOSTARCH='amd64'
+GOHOSTOS='linux'
+GOINSECURE=''
+GOMOD='/home/hugo/k/go/src/go.mod'
+GOMODCACHE='/home/hugo/go/pkg/mod'
+GONOPROXY=''
+GONOSUMDB=''
+GOOS='linux'
+GOPACKAGESDRIVER=''
+GOPATH='/home/hugo/go'
+GOPRIVATE=''
+GOPROXY='[URL]
+GOROOT='/home/hugo/k/go'
+GOSUMDB='sum.golang.org'
+GOTELEMETRY='local'
+GOTELEMETRYDIR='/home/hugo/.config/go/telemetry'
+GOTMPDIR=''
+GOTOOLCHAIN='local'
+GOTOOLDIR='/home/hugo/k/go/pkg/tool/linux_amd64'
+GOVCS=''
+GOVERSION='go1.28-devel_9ea81f5213 Tue Aug 25 00:07:53 2026 -0700'
+GOWORK=''
+PKG_CONFIG='pkg-config'
+ [/CODE_BLOCK] 
+
+### What did you do?
+
+Compile:
+ [CODE_BLOCK] package a
+
+import ""simd/archsimd""
+
+func f(x string) archsimd.Uint8x16 {
+ return archsimd.LoadUint8x16([]byte(x))
+}
+ [/CODE_BLOCK] 
+
+### What did you see happen?
+
+Call to `stringtoslicebyte`
+
+### What did you expect to see?
+
+An XMM load from the string's backing array.",0,0,0,0,0,1,0
+"Title: os,internal/poll: reads from closed pipes sometimes do not unblock on darwin
+
+Body: ```
+#!watchflakes
+post <- goos == ""darwin"" && log ~ `os/exec\.\(\*Cmd\)\.awaitGoroutines` && log ~ `internal/poll\.\(\*pollDesc\)\.waitRead` &&
+ !(builder ~ `(gotip|go1\.\d\d)-` && date < ""2024-01-18"")
+```
+
+We have been tracking a long-running bug on macOS (`darwin`) in [URL] That issue title doesn't accurately capture the widespread nature of the problem, nor its defining symptom or suspected root cause; so, I am filing a new issue for it.
+
+On macOS, we see a pattern of test failures with the following characteristics:
+- A goroutine is blocked on a `read` operation on a pipe.
+- The pipe is known to be closed, because the process on the other end has either terminated (most often) or explicitly closed the pipe (less frequent, but sometimes seen in cases like #57369).
+
+Many of these bugs have been worked around by explicitly canceling (or adding a timeout to) the stuck read.
+
+The issues with this symptom have included:
+- #60099
+- #54461
+- #61073
+- #61128
+
+A few other issues may be related but don't (or didn't) include goroutine dumps for the stuck process: they may or may not be due to this failure mode.
+- #56231
+- #57369
+- #59657
+- #61595
+- #61779
+- #63258
+- #63731
+- #64110
+- #64269
+- #64700
+- #64959
+
+Given the symptoms, it seems likely to me that this is either a bug in `internal/poll`, or a bug in the macOS platform that we have somehow started to trigger.
+
+Note that #61779 was bisected specifically to [URL]",0,0,0,0,0,1,0
+"Title: crypto/rsa: TestRSAPSSSignaturesWycheproof failures
+
+Body: [CODE_BLOCK] #!watchflakes
+default <- pkg == ""crypto/rsa"" && test == ""TestRSAPSSSignaturesWycheproof""
+ [/CODE_BLOCK] 
+
+Issue created automatically to collect these failures.
+
+Example (log):
+
+ === RUN TestRSAPSSSignaturesWycheproof
+ fetchmodule.go:44: fetching github.com/c2sp/wycheproof@v0.0.0-20260625212325-ee7b4f7e6119
+ fetchmodule.go:51: failed to download github.com/c2sp/wycheproof@v0.0.0-20260625212325-ee7b4f7e6119: exit status 1
+ stdout:
+ {
+ ""Path"": ""github.com/c2sp/wycheproof"",
+ ""Version"": ""v0.0.0-20260625212325-ee7b4f7e6119"",
+ ""Error"": ""github.com/c2sp/wycheproof@v0.0.0-20260625212325-ee7b4f7e6119: verifying go.mod: github.com/c2sp/wycheproof@v0.0.0-20260625212325-ee7b4f7e6119/go.mod: initializing sumdb.Client: checking tree#60545686: Get \""[URL] dial tcp 172.253.122.141:443: connect: operation timed out"",
+ ""Info"": ""/Volumes/Work/s/w/ir/x/t/TestRSAPSSSignaturesWycheproof1569115947/001/cache/download/github.com/c2sp/wycheproof/@v/v0.0.0-20260625212325-ee7b4f7e6119.info"",
+ ""Origin"": {
+ ""VCS"": ""git"",
+ ""URL"": ""[URL]
+ ""Hash"": ""ee7b4f7e611928cbe163dc6f5e54527bfd166f34""
+ }
+ }
+ 
+ stderr:
+ 
+ --- FAIL: TestRSAPSSSignaturesWycheproof (8.39s)
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: App breaks when clicking submit button
+
+Body: My button doesn't work. Please fix it. It was working yesterday and now it gives an error on click. Please help quickly.",0,0,0,0,0,1,0
+"Title: net/http: TestTimeoutHandlerSuperfluousLogs/h1/return_after_timeout failures
+
+Body: [CODE_BLOCK] #!watchflakes
+default <- pkg == ""net/http"" && test == ""TestTimeoutHandlerSuperfluousLogs/h1/return_after_timeout""
+ [/CODE_BLOCK] 
+
+Issue created automatically to collect these failures.
+
+Example (log):
+
+ === RUN TestTimeoutHandlerSuperfluousLogs/h1/return_after_timeout
+ serve_test.go:7105: Server logs count mismatch
+ got 1, want 3
+ 
+ Got
+ [
+ """"
+ ]
+ --- FAIL: TestTimeoutHandlerSuperfluousLogs/h1/return_after_timeout (0.03s)
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: Copilot completion feedback
+
+Body: Type: Bug 
+
+## Copilot Completion Feedback
+### Describe the issue, feedback, or steps to reproduce it:
+
+### Completion text:
+ [CODE_BLOCK] std::string name;
+ std::cout 
+ Diagnostics 
+
+## Copilot Extension
+
+- Version: 0.55.0
+- Editor: vscode 1.127.0
+
+ 
+
+VS Code version: Code 1.127.0 (4fe60c8b1cdac1c4c174f2fb180d0d758272d713, 2026-06-30T10:52:33+02:00)
+OS version: Windows_NT x64 10.0.26200
+Modes:
+
+ 
+ System Info 
+
+|Item|Value|
+|---|---|
+|CPUs|AMD Ryzen 7 7730U with Radeon Graphics (16 x 1996)|
+|GPU Status|2d_canvas: enabled GPU0: VENDOR= 0x1002, DEVICE=0x15e7 [AMD Radeon (TM) Graphics], DRIVER_VENDOR=AMD, DRIVER_VERSION=31.0.21914.59 *ACTIVE* GPU1: VENDOR= 0x1414, DEVICE=0x008c [Microsoft Basic Render Driver], DRIVER_VERSION=10.0.26100.8737 Machine model name: Machine model version: direct_rendering_display_compositor: disabled_off_ok gpu_compositing: enabled multiple_raster_threads: enabled_on opengl: enabled_on rasterization: enabled raw_draw: disabled_off_ok skia_graphite: disabled_off trees_in_viz: disabled_off video_decode: enabled video_encode: enabled webgl: enabled webgpu: enabled webnn: disabled_off|
+|Load (avg)|undefined|
+|Memory (System)|15.38GB (7.59GB free)|
+|Process Argv|--crash-reporter-id b4cef465-2af1-408a-b924-e2f289a20bfd|
+|Screen Reader|no|
+|VM|0%|
+ Extensions (5) 
+
+Name|Identifier|Author|Version
+---|---|---|---
+Code Runner|formulahendry.code-runner|formulahendry|0.12.2
+CMake Tools|ms-vscode.cmake-tools|ms-vscode|1.23.52
+C/C++ DevTools|ms-vscode.cpp-devtools|ms-vscode|0.5.13
+C/C++|ms-vscode.cpptools|ms-vscode|1.32.2
+C/C++ Extension Pack|ms-vscode.cpptools-extension-pack|ms-vscode|1.5.1
+
+ 
+ A/B Experiments 
+
+ [CODE_BLOCK] vsliv368cf:30146710
+binariesv615:30325510
+nativeloc1:31344060
+dwcopilot:31170013
+dwoutputs:31242946
+copilot_t_ci:31333650
+e5gg6876:31282496
+pythonrdcb7:31342333
+6518g693:31463988
+aj953862:31281341
+6abeh943:31336334
+envsactivate1:31538736
+gh487529:31544284
+cloudbuttont:31379625
+42190218_ostrepl:31403339
+56b7f661:31457055
+ddidtcf:31399634
+ec5jj548:31422691
+cp_cls_t_966_ss:31526232
+4je02754:31466945
+8hhj4413:31478653
+38bie571_auto:31426784
+cp_cls_c_1081:31454833
+conptydll_true:31498968
+ia-use-proxy-models-svc:31452481
+e9c30283:31461165
+test_treatment2:31471001
+c9b86496:31447327
+capi_a_098a3278:31544979
+idci7584:31464702
+e3e4d672:31494082
+ei9d7968:31496641
+chat:31457767
+8hig5102:31480529
+89g7j272:31518289
+7e187181:31503455
+i2gc6536:31499202
+52612955:31516516
+ghj88844:31499326
+ddid_c:31478207
+hmra_i5g22:31518061
+7df3h592:31512476
+cp_cls_t_1082:31535311
+logging_enabled_new:31498466
+j0d79568:31499440
+jb_cp_cls_t_632:31543129
+56dj4588:31512888
+32d76977:31512328
+ha629193:31508444
+cdk-lw-on:31524445
+f9bf7985:31543584
+31fi7170_t:31522396
+a1ije391_t:31540920
+8hfba999:31537718
+jbcp_cls_pctr_t:31531130
+61138546:31518536
+cp_intellij_t_nes:31533504
+gf14b233:31526830
+nes-curr-leftover-1500:31538366
+h561g132:31533256
+sessions_3:31532893
+ihg5j128:31534457
+jh7i3328:31546038
+9gg7f176:31542112
+nes-ex-cf-euporie-03:31542868
+nes-nc-rv-1k:31544186
+
+ [/CODE_BLOCK]",0,0,0,0,0,1,0
+"Title: simd: bridge.LoadFloat32sPart ... are not shape types
+
+Body: ### Go version
+
+go version go1.27rc2 darwin/arm64
+
+### Output of `go env` in your module/workspace:
+
+ [CODE_BLOCK] AR='ar'
+CC='clang'
+CGO_CFLAGS='-O2 -g'
+CGO_CPPFLAGS=''
+CGO_CXXFLAGS='-O2 -g'
+CGO_ENABLED='1'
+CGO_FFLAGS='-O2 -g'
+CGO_LDFLAGS='-O2 -g'
+CXX='clang++'
+GCCGO='gccgo'
+GO111MODULE=''
+GOARCH='arm64'
+GOARM64='v8.0'
+GOAUTH='netrc'
+GOBIN='/Users/rschio/go/bin'
+GOCACHE='/Users/rschio/Library/Caches/go-build'
+GOCACHEPROG=''
+GODEBUG=''
+GOENV='/Users/rschio/Library/Application Support/go/env'
+GOEXE=''
+GOEXPERIMENT='simd'
+GOFIPS140='off'
+GOFLAGS=''
+GOGCCFLAGS='-fPIC -arch arm64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -ffile-prefix-map=/var/folders/rq/0fx96ptn7w5357fdm_qzflhh0000gn/T/go-build2766455738=/tmp/go-build -gno-record-gcc-switches -fno-common'
+GOHOSTARCH='arm64'
+GOHOSTOS='darwin'
+GOINSECURE=''
+GOMOD='/tmp/report_bug/go.mod'
+GOMODCACHE='/Users/rschio/go/pkg/mod'
+GONOPROXY='github.com/rschio/*,buf.build/gen/go'
+GONOSUMDB='github.com/rschio/*,buf.build/gen/go'
+GOOS='darwin'
+GOPACKAGESDRIVER=''
+GOPATH='/Users/rschio/go'
+GOPRIVATE='github.com/rschio/*,buf.build/gen/go'
+GOPROXY='[URL]
+GOROOT='/Users/rschio/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27rc2.darwin-arm64'
+GOSUMDB='sum.golang.org'
+GOTELEMETRY='on'
+GOTELEMETRYDIR='/Users/rschio/Library/Application Support/go/telemetry'
+GOTMPDIR=''
+GOTOOLCHAIN='go1.27rc2'
+GOTOOLDIR='/Users/rschio/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27rc2.darwin-arm64/pkg/tool/darwin_arm64'
+GOVCS=''
+GOVERSION='go1.27rc2'
+GOWORK=''
+PKG_CONFIG='pkg-config'
+ [/CODE_BLOCK] 
+
+### What did you do?
+
+I run this program:
+
+ [CODE_BLOCK] package main
+
+import (
+ ""math""
+ ""simd""
+)
+
+func main() {
+ XYToRGB_SIMD(0, 1, 0)
+}
+
+// XY represents a XY color in CIE color space.
+// This type is adapted to work Philips Hue bulbs color gamut.
+type XY struct {
+ X, Y float32
+ Bri uint8
+}
+
+var (
+ coeR, _ = simd.LoadFloat32sPart([]float32{1.6564920, -0.354851, -0.255038})
+ coeG, _ = simd.LoadFloat32sPart([]float32{-0.707196, 1.6553970, 0.0361520})
+ coeB, _ = simd.LoadFloat32sPart([]float32{0.0517130, -0.121364, 1.0115300})
+)
+
+func XYToRGB_SIMD(x, y float32, bri uint8) (uint8, uint8, uint8) {
+ if y == 0 {
+ return 0, 0, 0
+ }
+
+ z := 1 - x - y
+ Y := float32(bri) / 254
+ X := (Y / y) * x
+ Z := (Y / y) * z
+
+ xyz, _ := simd.LoadFloat32sPart([]float32{X, Y, Z})
+
+ var (
+ rs [3]float32
+ gs [3]float32
+ bs [3]float32
+ )
+ coeR.Mul(xyz).StorePart(rs[:])
+ coeG.Mul(xyz).StorePart(gs[:])
+ coeB.Mul(xyz).StorePart(bs[:])
+
+ r := sum(rs[:])
+ g := sum(gs[:])
+ b := sum(bs[:])
+
+ r = xyToRGBGamma(r)
+ g = xyToRGBGamma(g)
+ b = xyToRGBGamma(b)
+
+ return to8(r), to8(g), to8(b)
+}
+
+func sum(fs []float32) float32 {
+ var total float32
+ for _, f := range fs {
+ total += f
+ }
+ return total
+}
+
+func xyToRGBGamma(c float32) float32 {
+ if c <= 0.0031308 {
+ return 12.92 * c
+ }
+ return float32(1.055*math.Pow(float64(c), 1/2.4) - 0.055)
+}
+
+func to8(v float32) uint8 {
+ v = max(v, 0)
+ v = min(v, 1)
+ return uint8(v*0xff + 0.5)
+}
+ [/CODE_BLOCK] 
+
+### What did you see happen?
+
+I got this output:
+# report_bug
+/Users/rschio/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27rc2.darwin-arm64/src/simd/internal/bridge/simd_emulated.go:2467:6: internal compiler error: bridge.LoadFloat32sPart (type func([]float32) (bridge.Float32s, int)) and func([]float32) (simd.Float32s, int) are not shape types
+
+Please file a bug report including a short program that triggers the error.
+[URL]
+
+### What did you expect to see?
+
+I expected to see no bug.",0,0,0,0,0,1,0
+"Title: net/http: TestTransportBodyReadError/h3 failures
+
+Body: [CODE_BLOCK] #!watchflakes
+default <- pkg == ""net/http"" && test == ""TestTransportBodyReadError/h3""
+ [/CODE_BLOCK] 
+
+Issue created automatically to collect these failures.
+
+Example (log):
+
+ === RUN TestTransportBodyReadError/h3
+ === PAUSE TestTransportBodyReadError/h3
+ === CONT TestTransportBodyReadError/h3
+ client_test.go:2088: close calls = 0; want 1
+ --- FAIL: TestTransportBodyReadError/h3 (0.09s)
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: Slow compilation when importing TerminalEmulator
+
+Body: No stack trace provided. Need full logs and OS version to investigate.",0,0,0,0,0,1,0
+"Title: cmd/go/internal/verylongtest: TestScript/mod_proxy_https failures
+
+Body: [CODE_BLOCK] #!watchflakes
+default env GOPROXY=proxy.golang.org
+ > env GOSUMDB=
+ > go list -versions -m golang.org/x/text
+ [stderr]
+ go: loading module retractions for golang.org/x/text@v0.1.0: verifying go.mod: golang.org/x/text@v0.41.0/go.mod: initializing sumdb.Client: checking tree#60602679: Get ""[URL] dial tcp 172.253.122.141:443: connect: operation timed out
+ run.go:276: FAIL: testdata/script/mod_proxy_https.txt:14: go list -versions -m golang.org/x/text: exit status 1
+ --- FAIL: TestScript/mod_proxy_https (8.93s)
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: x/crypto/acme: invalid Retry-After values can stop retries or cause tight polling
+
+Body: The x/crypto/acme package does not safely handle malformed or expired Retry-After header values.
+
+A negative delay-seconds value such as:
+
+ Retry-After: -1
+
+is accepted by strconv.Atoi and converted to a negative duration. In the default retry path, adding the existing jitter still produces a non-positive duration, causing the retry loop to stop with ""no more retries"".
+
+An expired HTTP-date can also produce a negative duration. WaitOrder and WaitAuthorization only check for d == 0, so a negative duration is passed to time.NewTimer and causes immediate polling, potentially resulting in a tight request loop.
+
+The default backoff path also indexes the header value directly. A response containing:
+
+ http.Header{""Retry-After"": nil}
+
+can therefore panic.
+
+Expected behavior:
+
+- reject negative and overflowing delay-seconds values;
+- ignore malformed and expired Retry-After values;
+- fall back to the default backoff when the value is unusable;
+- avoid indexing a possibly empty header slice.",0,0,0,0,0,1,0
+"Title: encoding/json/v2: unmarshaling is rejected when an embedded type implements marshal methods
+
+Body: ### Go version
+
+go version go1.27.0 darwin/arm64
+
+### What did you do?
+
+When using `encoding/json/v2` to marshal and unmarshal an instance of a type that contains an embedded field, if the type of the field implements marshal methods such as `encoding.TextAppender`, marshaling succeeds but unmarshaling fails. I find it confusing because the unmarshaling behavior is affected by a marshal method. The following is an example code snippet:
+
+ [CODE_BLOCK] package main
+
+import (
+ ""encoding""
+ ""encoding/json/v2""
+ ""fmt""
+)
+
+var _ encoding.TextAppender = (*Base)(nil)
+
+type Base struct {
+ ID string
+}
+
+func (b *Base) AppendText(buf []byte) ([]byte, error) {
+ return append(buf, b.ID...), nil
+}
+
+type Container struct {
+ Base
+}
+
+func main() {
+ b := &Container{ID: ""id_for_marshal""}
+ if buf, err := json.Marshal(b); err != nil {
+ fmt.Println(""marshal error:"", err)
+ } else {
+ fmt.Printf(""marshal success: %s\n"", buf)
+ }
+
+ b = new(Container)
+ if err := json.Unmarshal([]byte(`{""ID"":""id_for_unmarshal""}`), b); err != nil {
+ fmt.Println(""unmarshal error:"", err)
+ } else {
+ fmt.Printf(""unmarshal success: %#v\n"", b)
+ }
+}
+ [/CODE_BLOCK] 
+
+### What did you see happen?
+
+ [CODE_BLOCK] marshal success: ""id_for_marshal""
+
+unmarshal error: json: cannot unmarshal JSON object into Go main.Container: embedded Go struct field Base of type main.Base must not implement marshal or unmarshal methods
+ [/CODE_BLOCK] 
+
+### What did you expect to see?
+
+- **Option 1 (most expected)**: Marshaling succeeds and unmarshaling succeeds.
+ - Rationale: Marshal methods should not affect unmarshaling behavior.
+- **Option 2**: Marshaling fails and unmarshaling fails.
+ - Rationale: `encoding/json/v2` rejects all embedded fields of types that implement custom marshal or unmarshal methods.
+- **Option 3**: Marshaling fails and unmarshaling succeeds.
+ - Rationale: Similar to Option 2, but marshal methods only affect marshaling behavior.",0,0,0,0,0,1,0
+"Title: x/tools/cmd/deadcode: Test failures on plan9
+
+Body: [CODE_BLOCK] #!watchflakes
+default <- pkg == ""golang.org/x/tools/cmd/deadcode"" && test == ""Test""
+ [/CODE_BLOCK] 
+
+Issue created automatically to collect these failures.
+
+Example (log):
+
+ === RUN Test
+ deadcode_test.go:27: go tool not available: exec: ""go"": executable file not found in $path
+ --- FAIL: Test (0.14s)
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: os,internal/poll: NewFile on an inherited overlapped stdout pipe hangs a sibling's WriteFile (Windows)
+
+Body: ### Go version
+
+go version go1.26.0 windows/amd64
+
+### Output of `go env` in your module/workspace:
+
+ [CODE_BLOCK] set AR=ar
+set CC=gcc
+set CGO_CFLAGS=-O2 -g
+set CGO_CPPFLAGS=
+set CGO_CXXFLAGS=-O2 -g
+set CGO_ENABLED=0
+set CGO_FFLAGS=-O2 -g
+set CGO_LDFLAGS=-O2 -g
+set CXX=g++
+set GCCGO=gccgo
+set GO111MODULE=
+set GOAMD64=v1
+set GOARCH=amd64
+set GOAUTH=netrc
+set GOBIN=
+set GOCACHE=C:\Users\me\AppData\Local\go-build
+set GOCACHEPROG=
+set GODEBUG=
+set GOENV=C:\Users\me\AppData\Roaming\go\env
+set GOEXE=.exe
+set GOEXPERIMENT=
+set GOFIPS140=off
+set GOFLAGS=
+set GOGCCFLAGS=-m64 -fno-caret-diagnostics -Qunused-arguments -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=C:\Users\me\AppData\Local\Temp\go-build=/tmp/go-build -gno-record-gcc-switches
+set GOHOSTARCH=amd64
+set GOHOSTOS=windows
+set GOINSECURE=
+set GOMOD=NUL
+set GOMODCACHE=C:\Users\me\go\pkg\mod
+set GONOPROXY=
+set GONOSUMDB=
+set GOOS=windows
+set GOPATH=C:\Users\me\go
+set GOPRIVATE=
+set GOPROXY=[URL]
+set GOROOT=C:\Program Files\Go
+set GOSUMDB=sum.golang.org
+set GOTELEMETRY=local
+set GOTELEMETRYDIR=C:\Users\me\AppData\Roaming\go\telemetry
+set GOTMPDIR=
+set GOTOOLCHAIN=auto
+set GOTOOLDIR=C:\Program Files\Go\pkg\tool\windows_amd64
+set GOVCS=
+set GOVERSION=go1.26.0
+set GOWORK=
+set PKG_CONFIG=pkg-config
+ [/CODE_BLOCK] 
+
+### What did you do?
+
+On Windows, a parent process starts two children that share an inherited, overlapped named-pipe handle as stdout. One child is a Go program; the other is a non-Go program that writes to the pipe with a synchronous WriteFile. The launcher here is OpenSSH Server, but anything that hands children an inherited overlapped pipe as stdout will do.
+
+The Go program does nothing itself. A blank import of os is enough: os package initialization builds os.Stdout via `os.NewFile` before main runs. (Any import that pulls in os, e.g. fmt, triggers it too.)
+
+`test.go`
+ [CODE_BLOCK] package main
+import (
+ _ ""os""
+)
+func main() {
+}
+ [/CODE_BLOCK] 
+
+`writefile.cpp`, a synchronous writer to STD_OUTPUT_HANDLE. It writes the same buffer twice. The payload is larger than the pipe buffer (0x1142 bytes > 4096) so each write takes the STATUS_PENDING path rather than completing inline:
+
+ [CODE_BLOCK] #include 
+#include 
+char buffer[0x1142];
+int main()
+{
+ DWORD dw;
+ memset(buffer, 'X', sizeof(buffer)-2);
+ buffer[sizeof(buffer)-2] = '\n';
+ buffer[sizeof(buffer)-1] = 0;
+ HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+ // do this 2 times (hangs in the 2nd WriteFile())
+ if (!WriteFile(h, buffer, sizeof(buffer), &dw, NULL)) {
+ fprintf(stderr, ""ERROR:WriteFile:%u\n"", GetLastError());
+ return 1;
+ }
+ fprintf(stderr, ""INFO: 1st WriteFile() completed\n"");
+ if (!WriteFile(h, buffer, sizeof(buffer), &dw, NULL)) {
+ fprintf(stderr, ""ERROR:WriteFile:%u\n"", GetLastError());
+ return 1;
+ }
+ fprintf(stderr, ""INFO: 2nd WriteFile() completed\n"");
+ return 0;
+}
+
+ [/CODE_BLOCK] 
+
+`repro.bat` runs the Go program first (so os init associates the inherited stdout pipe with the runtime completion port), then the C writer on that same handle:
+
+ [CODE_BLOCK] test.exe
+writefile.exe
+
+ [/CODE_BLOCK] 
+
+Save the three files to a local path (e.g. C:\repro\), build both (gcc writefile.cpp -o writefile.exe; go build test.go), then run them under the SSH server so they inherit the same overlapped stdout pipe. Use an absolute path; the sshd session's logon context resolves relative paths against its own home dir and may not see mapped network drives:
+
+`ssh localhost C:\repro\repro.bat`
+
+Note, OpenSSH Server has to be running locally. On a stock Windows box it ships as an optional feature and starts out stopped:
+
+ [CODE_BLOCK] Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0 # if not already present
+Start-Service sshd
+Set-Service -Name sshd -StartupType Automatic
+
+ [/CODE_BLOCK] 
+
+### What did you see happen?
+
+The sibling (non-Go) process's synchronous WriteFile never completes. It blocks in NtWaitForSingleObject inside WriteFile, waiting on a completion event that never fires. The Go process is the cause, not the victim; it does not itself hang. writefile.exe prints its first status line and hangs before the second:
+
+ [CODE_BLOCK] INFO: 1st WriteFile() completed
+ 
+
+ [/CODE_BLOCK] 
+
+Rebuilding only test.exe with an older toolchain, keeping the C writer and run steps identical, makes it go away, so the Go version is the only variable:
+
+ | `test.exe` built with | 1st `WriteFile` | 2nd `WriteFile` | result |
+ |---|---|---|---|
+ | go1.24.6 | completes | completes | no hang |
+ | go1.26.0 | completes | never returns | sibling hangs |
+
+(Confirmed the toolchain baked into each binary with `go version -m test.exe.`)
+
+This needs no special code to trigger. os initialization runs NewFile on the inherited stdout/stderr before main, so any Go binary that imports `os`, directly or transitively (e.g. via `fmt`), sets it off. Any launcher that shares an overlapped pipe across its children, such as a CI runner, build orchestrator, or SSH-based test harness, can end up with a non-Go process's writes silently hanging.
+
+### What did you expect to see?
+
+The sibling's synchronous WriteFile completes normally, as it does under go1.24 and earlier. `os.NewFile` on an inherited handle should adopt it passively and not change the completion behavior of a handle shared with another process.
+
+### Analysis
+The regression bisects to the overlapped-NewFile work in go1.25 (CL 662236, commit 7e60bdd, closing #19098). Under this change `os.NewFile` associates an inherited overlapped stdout/stderr pipe with the runtime's I/O completion handling before main runs. As part of this it calls the WINAPI `SetFileCompletionNotificationModes()` on the handle. That call alters the behavior of the underlying kernel file object, which is shared by every process that inherited the handle, not just the Go program's instance. After it runs, a sibling process's synchronous WriteFile on that same handle no longer completes. Removing that association for the inherited handle stops the hang.
+
+This looks related to #76391 (NewFile blocking on a busy handle), but that is about a Go process's own I/O; here the Go process is fine and a separate process's write on a shared inherited handle hangs.
+
+We have a local candidate fix that extends the existing Stdin exemption in os/file_windows.go to Stdout/Stderr:
+
+ [CODE_BLOCK] // See go.dev/issue/75949 and go.dev/issue/76391.
+if kind == kindNewFile && h != syscall.Stdin && h != syscall.Stdout && h != syscall.Stderr {
+ nonBlocking, _ = windows.IsNonblock(h)
+}
+
+ [/CODE_BLOCK] 
+
+It resolves the reproducer and passes our validation testing.",0,0,0,0,0,1,0
+"Title: x/crypto/chacha20poly1305: pure Go AVX2 vectorization using Go 1.27 archsimd
+
+Body: Summary 
+ This
+proposal presents an optimization and modernisation path for
+ golang.org/x/crypto/chacha20poly1305 
+by replacing the legacy hand-written Plan 9 assembly
+( chacha20_amd64.s ,
+ poly1305_amd64.s )
+with 100% Pure Go AVX2 vectorization powered by the native
+ simd/archsimd 
+package introduced in Go 1.27 ( GOEXPERIMENT=simd ). 
+ 
+ 
+
+ 
+ Motivation 
+ 1. Eliminating Legacy Plan 9 Assembly 
+ The
+current production kernels in golang.org/x/crypto 
+rely on hand-maintained Plan 9 assembly files written several years
+ago. While fast, assembly implementations: 
+ 
+• Cannot be inlined into caller loops by the Go compiler. 
+ 
+• Impose function call prologue/epilogue overhead on small chunks. 
+ 
+• Are difficult to audit, maintain, and fuzz across architectures. 
+ 2. Pure Go Safety and Inlining 
+ With
+Go 1.27's simd/archsimd 
+intrinsics, double-block 256-bit AVX2 operations are written directly
+in Go: 
+ 
+• The Go SSA compiler manages register allocation globally. 
+ 
+• Bounds check elimination (BCE) and inlining function seamlessly
+across package boundaries. 
+ 3. Robust Runtime CPU Detection and
+Cross-Platform Fallback 
+ The
+implementation features a dynamic runtime CPU feature check: 
+ 
+• Uses archsimd.X86.AVX2() 
+to dispatch vector instructions only when supported by the host CPU. 
+ 
+• Automatically falls back to pure scalar Go on older hardware and
+non-x86 architectures ( arm64 ,
+ riscv64 ). 
+ 
+ 
+
+ 
+ Reference Implementation &amp; Open Source Proof
+of Concept 
+ A
+complete, working reference implementation conforming strictly to the
+RFC 8439 standard ( crypto/cipher.AEAD )
+is publicly available and tested: 
+ 
+• Repository: [URL] 
+ 
+• Target Subpackage: 
+[URL] 
+ 
+ 
+
+ 
+ Correctness &amp; Security Verification 
+ 
+• RFC 8439 Compliance: Validated bit-exact against standard
+IETF test vectors and C reference test suites. 
+ 
+• Differential Fuzzing: Tested with over 960,000 randomized
+executions ( go
+test -fuzz ) against
+ golang.org/x/crypto/chacha20poly1305 
+with zero discrepancies. 
+ 
+• Zero Allocations: Measured 0 B/op and 0 allocs/op 
+on both Seal 
+and Open 
+operations across all payload sizes. 
+ 
+• Memory Hygiene: Constant-time arithmetic and automatic
+zeroing of internal buffers via native clear() . 
+ 
+ 
+
+ 
+ Benchmark Results (Intel Core i9-14900K,
+linux/amd64) 
+ Standardized
+benchmark results measured under GOTOOLCHAIN=go1.27rc3 
++ GOEXPERIMENT=simd : 
+
+Payload Size | Pure Go AVX2 Throughput | Memory Allocations | Speedup / Status
+-- | -- | -- | --
+64 Bytes | 218.54 MB/s | 0 B/op (0 allocs) | Zero Heap Allocation
+1 KB | 861.25 MB/s | 0 B/op (0 allocs) | Zero Heap Allocation
+64 KB | 985.15 MB/s | 0 B/op (0 allocs) | Zero Heap Allocation
+1 MB | 995.43 MB/s | 0 B/op (0 allocs) | Zero Heap Allocation
+
+ 
+
+ 
+ 
+ 
+
+ 
+ Next Steps 
+ We
+are ready to submit a formal Gerrit Change List (CL) to
+ go-review.googlesource.com 
+under standard Google CLA guidelines for review by the Go
+cryptography team.",0,0,0,0,0,1,0
+"Title: encoding/json: fmt.Print representation of json.RawMessage changed in Go 1.27
+
+Body: ### Go version
+
+go version go1.27.0 linux/amd64
+
+### Output of `go env` in your module/workspace:
+
+ 
+ go env 
+
+ [CODE_BLOCK] AR='ar'
+CC='gcc'
+CGO_CFLAGS='-O2 -g'
+CGO_CPPFLAGS=''
+CGO_CXXFLAGS='-O2 -g'
+CGO_ENABLED='1'
+CGO_FFLAGS='-O2 -g'
+CGO_LDFLAGS='-O2 -g'
+CXX='g++'
+GCCGO='gccgo'
+GO111MODULE=''
+GOAMD64='v1'
+GOARCH='amd64'
+GOAUTH='netrc'
+GOBIN='/home/adamroyjones/.local/share/go/bin'
+GOCACHE='/home/adamroyjones/.cache/go-build'
+GOCACHEPROG=''
+GODEBUG=''
+GOENV='/home/adamroyjones/.config/go/env'
+GOEXE=''
+GOEXPERIMENT=''
+GOFIPS140='off'
+GOFLAGS=''
+GOGCCFLAGS='-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build19368907=/tmp/go-build -gno-record-gcc-switches'
+GOHOSTARCH='amd64'
+GOHOSTOS='linux'
+GOINSECURE=''
+GOMOD='/tmp/reprex/go.mod'
+GOMODCACHE='/home/adamroyjones/.local/share/go/pkg/mod'
+GONOPROXY='github.com/unravelin'
+GONOSUMDB='github.com/unravelin'
+GOOS='linux'
+GOPACKAGESDRIVER=''
+GOPATH='/home/adamroyjones/.local/share/go'
+GOPRIVATE='github.com/unravelin'
+GOPROXY='[URL]
+GOROOT='/home/adamroyjones/.local/share/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.0.linux-amd64'
+GOSUMDB='sum.golang.org'
+GOTELEMETRY='local'
+GOTELEMETRYDIR='/home/adamroyjones/.config/go/telemetry'
+GOTMPDIR=''
+GOTOOLCHAIN='go1.27.0'
+GOTOOLDIR='/home/adamroyjones/.local/share/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.0.linux-amd64/pkg/tool/linux_amd64'
+GOVCS=''
+GOVERSION='go1.27.0'
+GOWORK=''
+PKG_CONFIG='pkg-config'
+ [/CODE_BLOCK] 
+
+ 
+
+### What did you do?
+
+Consider the following program:
+
+ [CODE_BLOCK] package main
+
+import (
+ ""bytes""
+ ""encoding/json""
+ ""fmt""
+)
+
+type T struct {
+ X json.RawMessage `json:""x""`
+ Y []byte `json:""y""`
+}
+
+func main() {
+ if err := run(); err != nil {
+ panic(err)
+ }
+}
+
+func run() error {
+ j := `{}`
+ dec := json.NewDecoder(bytes.NewBufferString(j))
+
+ var t T
+ if err := dec.Decode(&t); err != nil {
+ return err
+ }
+
+ fmt.Printf(""%+v\n"", t)
+ return nil
+}
+ [/CODE_BLOCK] 
+
+### What did you see happen?
+
+ [CODE_BLOCK] $ GOTOOLCHAIN=go1.26.7 go run .
+{X:[] Y:[]}
+
+$ GOTOOLCHAIN=go1.27.0 go run .
+{X:null Y:[]}
+ [/CODE_BLOCK] 
+
+### What did you expect to see?
+
+ [CODE_BLOCK] $ GOTOOLCHAIN=go1.26.7 go run .
+{X:[] Y:[]}
+
+$ GOTOOLCHAIN=go1.27.0 go run .
+{X:[] Y:[]}
+ [/CODE_BLOCK] 
+
+**I'm not necessarily suggesting that encoding/json ought to change**; it is just a minuscule difference between encoding/json before and after the release of Go 1.27 that I thought was worth mentioning.",0,0,0,0,0,1,0
+"Title: build: build failure on x_text-gotip-linux-mips64le
+
+Body: [CODE_BLOCK] #!watchflakes
+default <- builder == ""x_text-gotip-linux-mips64le"" && repo == ""text"" && mode == ""build""
+ [/CODE_BLOCK] 
+
+Issue created automatically to collect these failures.
+
+Example (log):
+
+ Use of LUCI is subject to the Google Terms of Service and Privacy Policy
+ 
+ [I2026-08-05T14:19:03.820405+08:00 64827 0 sink.go:371] SinkServer: warm-up started
+ [I2026-08-05T14:19:03.820558+08:00 64827 0 sink.go:454] SinkServer: starting HTTP server...
+ [I2026-08-05T14:19:03.825207+08:00 64827 0 sink.go:376] SinkServer: warm-up ended
+ [I2026-08-05T14:19:03.825844+08:00 64827 0 cmd_stream.go:577] rdb-stream: starting the test command - [""/home/swarming/.swarming/w/ir/cache/tools/bin/result_adapter"" ""go"" ""-v=false"" ""-dump-json"" ""/home/swarming/.swarming/w/ir/x/w/go.testjson"" ""--"" ""/home/swarming/.swarming/w/ir/x/w/goroot/bin/go"" ""test"" ""-json"" ""-short"" ""./...""]
+ ok golang.org/x/text/cases 0.684s
+ ok golang.org/x/text/collate 0.055s
+ ok golang.org/x/text/collate/build 0.009s
+ ok golang.org/x/text/currency 0.020s
+ ...
+ [I2026-08-05T14:33:59.021976+08:00 64827 0 sink.go:457] SinkServer: HTTP server stopped with ""http: Server closed""
+ [I2026-08-05T14:33:59.022027+08:00 64827 0 sink_server.go:93] SinkServer: draining TestResult channel started
+ [I2026-08-05T14:34:33.289871+08:00 64827 0 sink_server.go:95] SinkServer: draining TestResult channel ended
+ [I2026-08-05T14:34:33.290045+08:00 64827 0 sink_server.go:97] SinkServer: draining Artifact channel started
+ [I2026-08-05T14:34:33.290157+08:00 64827 0 sink_server.go:99] SinkServer: draining Artifact channel ended
+ [I2026-08-05T14:34:33.290186+08:00 64827 0 sink_server.go:101] SinkServer: draining TestExoneration channel started
+ [I2026-08-05T14:34:33.290231+08:00 64827 0 sink_server.go:103] SinkServer: draining TestExoneration channel ended
+ [I2026-08-05T14:34:33.290289+08:00 64827 0 sink.go:482] SinkServer: shutdown completed successfully
+ [E2026-08-05T14:34:33.290331+08:00 64827 0 cmd_stream.go:482] rdb-stream: failed to run the test command: rpc error: code = Internal desc = prpc: sending request: Post ""[URL] EOF
+ rpc error: code = Internal desc = prpc: sending request: Post ""[URL] EOF
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: runtime/pprof: TestEmptyCallStack failures
+
+Body: [CODE_BLOCK] #!watchflakes
+default <- pkg == ""runtime/pprof"" && test == ""TestEmptyCallStack""
+ [/CODE_BLOCK] 
+
+Issue created automatically to collect these failures.
+
+Example (log):
+
+ === RUN TestEmptyCallStack
+ === PAUSE TestEmptyCallStack
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: x/build/maintner/godata: TestCorpusCheck failures
+
+Body: [CODE_BLOCK] #!watchflakes
+default <- pkg == ""golang.org/x/build/maintner/godata"" && test == ""TestCorpusCheck""
+ [/CODE_BLOCK] 
+
+Issue created automatically to collect these failures.
+
+Example (log):
+
+ === RUN TestCorpusCheck
+ 2026/08/27 07:40:23 Loading data from log *maintner.netMutSource ...
+ 2026/08/27 07:40:23 Downloading 16777045 bytes of [URL] ...
+ 2026/08/27 07:40:32 wrote /Users/swarming/.swarming/w/ir/x/w/xdgcache/golang-maintner/0000.6897fab4d3afcda332424b2a2a1a4469021074282bc7be5606aaa221.mutlog
+ 2026/08/27 07:40:32 Downloading 16776148 bytes of [URL] ...
+ 2026/08/27 07:40:35 wrote /Users/swarming/.swarming/w/ir/x/w/xdgcache/golang-maintner/0001.c977ed89f9001f5c1b401259738bc8c2cbe619a47b04b2e1200c829e.mutlog
+ 2026/08/27 07:40:35 Downloading 16776160 bytes of [URL] ...
+ 2026/08/27 07:40:36 wrote /Users/swarming/.swarming/w/ir/x/w/xdgcache/golang-maintner/0002.e911825bdddbfb1a1cd4a4dfa48a7b138914f524c3aab58f2988c8ea.mutlog
+ 2026/08/27 07:40:36 Downloading 16763211 bytes of [URL] ...
+ 2026/08/27 07:40:36 wrote /Users/swarming/.swarming/w/ir/x/w/xdgcache/golang-maintner/0003.6424e8ee971c9d2c5bebccbb6a5f28b4ef3173949dcdeacb1c09f935.mutlog
+ ...
+ 2026/08/27 07:49:56 in commit 54038887e6f6296b52c3b72e5339086621e1624d, unrecognized line ""change-id sowpumowxtrtyxnwmuyupzqzsyvknpyo""
+ 2026/08/27 07:49:56 in commit 282d10be171ee96fb80360856fd761751f29cbce, unrecognized line ""change-id qswlpmuvlzxnonrtovrrnvvtnqmurykr""
+ 2026/08/27 07:49:56 in commit 5145864ca0a09746a64a46a6d8072e866b4c1e48, unrecognized line ""change-id qswlpmuvlzxnonrtovrrnvvtnqmurykr""
+ 2026/08/27 07:49:56 in commit c4a9f0b95028492feadc8d16a288475ad289d2b3, unrecognized line ""change-id mtvmqtulvqtzvkqrtyoqoruousokzqxt""
+ 2026/08/27 07:49:56 in commit d799e3e706126b0847915e8a1d48a633d3daa7eb, unrecognized line ""change-id mplmvppvqvluzxnmsmnlopowqusnkpxv""
+ 2026/08/27 07:49:56 in commit 766d95fcf6d2f9f072cbffe2ad15e88de2773f3a, unrecognized line ""change-id ovmwtyovuypsxquoyrsulkupyzmvkmlx""
+ 2026/08/27 07:49:56 in commit 252466b393ceab324c0bfc2d0ba26e616665e3d1, unrecognized line ""change-id zotlxmnsstkzlkrumwlluqszmtzzyklu""
+ 2026/08/27 07:50:02 Reloaded data from log *maintner.netMutSource.
+ godata_test.go:60: gerrit: go.googlesource.com/tools: 1 missing commits
+ --- FAIL: TestCorpusCheck (579.59s)
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: x/website/_content/tour: in the Ukrainian translation, on the right side of the screen the code panel is empty and no code is displayed
+
+Body: Context: [URL]",0,0,0,0,0,1,0
+"Title: Slow compilation when importing AutogradEngine
+
+Body: No stack trace provided. Need full logs and OS version to investigate.",0,0,0,0,0,1,0
+"Title: cmd/compile: malformed linker symbol for generic method with a receiver that is an alias to a pointer
+
+Body: ### Go version
+
+go version go1.27.0 linux/amd64
+
+### Output of `go env` in your module/workspace:
+
+ [CODE_BLOCK] AR='ar'
+CC='gcc'
+CGO_CFLAGS='-O2 -g'
+CGO_CPPFLAGS=''
+CGO_CXXFLAGS='-O2 -g'
+CGO_ENABLED='1'
+CGO_FFLAGS='-O2 -g'
+CGO_LDFLAGS='-O2 -g'
+CXX='g++'
+GCCGO='gccgo'
+GO111MODULE='auto'
+GOAMD64='v1'
+GOARCH='amd64'
+GOAUTH='netrc'
+GOBIN='/data/DevelopmentRoot/GoLang/bin'
+GOCACHE='/data/Volumes/CacheSlow/golang'
+GOCACHEPROG=''
+GODEBUG=''
+GOENV='/root/.config/go/env'
+GOEXE=''
+GOEXPERIMENT=''
+GOFIPS140='off'
+GOFLAGS=''
+GOGCCFLAGS='-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/golang/go-build1023568466=/tmp/go-build -gno-record-gcc-switches'
+GOHOSTARCH='amd64'
+GOHOSTOS='linux'
+GOINSECURE=''
+GOMOD='/data/DevelopmentRoot/github.com/gongt/go/go.mod'
+GOMODCACHE='/data/Volumes/CacheSlow/golang.mod'
+GONOPROXY=''
+GONOSUMDB=''
+GOOS='linux'
+GOPACKAGESDRIVER=''
+GOPATH='/data/DevelopmentRoot/GoLang'
+GOPRIVATE=''
+GOPROXY='[URL]
+GOROOT='/opt/go'
+GOSUMDB='sum.golang.org'
+GOTELEMETRY='local'
+GOTELEMETRYDIR='/root/.config/go/telemetry'
+GOTMPDIR=''
+GOTOOLCHAIN='auto'
+GOTOOLDIR='/opt/go/pkg/tool/linux_amd64'
+GOVCS=''
+GOVERSION='go1.27.0'
+GOWORK=''
+PKG_CONFIG='pkg-config'
+ [/CODE_BLOCK] 
+
+### What did you do?
+
+go build main.go
+
+ [CODE_BLOCK] package main
+
+import ""fmt""
+
+type someType struct{}
+type Alias = *someType
+
+//go:noinline
+func (tm Alias) FailedLinkT any {
+ fmt.Println(v)
+}
+
+//go:noinline
+func (tm *someType) SuccessLinkT any {
+ fmt.Println(v)
+}
+
+func main() {
+ var value someType
+ value.SuccessLink(42)
+ value.FailedLink(42)
+}
+ [/CODE_BLOCK] 
+
+### What did you see happen?
+
+> main.main: relocation target main.(*someType).FailedLink[go.shape.int] not defined
+
+### What did you expect to see?
+
+It should compile",0,0,0,0,0,1,0
+"Title: crypto/internal/fips140test: TestCMACWycheproof failures
+
+Body: [CODE_BLOCK] #!watchflakes
+default <- pkg == ""crypto/internal/fips140test"" && test == ""TestCMACWycheproof""
+ [/CODE_BLOCK] 
+
+Issue created automatically to collect these failures.
+
+Example (log):
+
+ === RUN TestCMACWycheproof
+ fetchmodule.go:44: fetching github.com/c2sp/wycheproof@v0.0.0-20260625212325-ee7b4f7e6119
+ fetchmodule.go:51: failed to download github.com/c2sp/wycheproof@v0.0.0-20260625212325-ee7b4f7e6119: exit status 1
+ stdout:
+ {
+ ""Path"": ""github.com/c2sp/wycheproof"",
+ ""Version"": ""v0.0.0-20260625212325-ee7b4f7e6119"",
+ ""Error"": ""github.com/c2sp/wycheproof@v0.0.0-20260625212325-ee7b4f7e6119: verifying go.mod: github.com/c2sp/wycheproof@v0.0.0-20260625212325-ee7b4f7e6119/go.mod: initializing sumdb.Client: checking tree#60545686: Get \""[URL] dial tcp 172.253.122.141:443: connect: operation timed out"",
+ ""Info"": ""/Volumes/Work/s/w/ir/x/t/TestCMACWycheproof1858448608/001/cache/download/github.com/c2sp/wycheproof/@v/v0.0.0-20260625212325-ee7b4f7e6119.info"",
+ ""Origin"": {
+ ""VCS"": ""git"",
+ ""URL"": ""[URL]
+ ""Hash"": ""ee7b4f7e611928cbe163dc6f5e54527bfd166f34""
+ }
+ }
+ 
+ stderr:
+ 
+ --- FAIL: TestCMACWycheproof (8.38s)
+
+— watchflakes",0,0,0,0,0,1,0
+"Title: x/net/webdav: fatal stack overflow parsing deeply nested XML — internal/xml fork never got the Decoder.Skip fix (CVE-2022-28131)
+
+Body: # webdav/internal/xml: Decoder.Skip still recursive — fatal stack overflow from deeply nested XML in LOCK/PROPFIND/PROPPATCH
+
+## Summary
+
+`webdav/internal/xml` is a fork of `encoding/xml` frozen in 2015 (per its own README,
+pending namespace-behavior changes that have long since landed). `Decoder.Skip()` still
+recurses once per nested element:
+
+ [CODE_BLOCK] // webdav/internal/xml/read.go:673
+func (d *Decoder) Skip() error {
+ for {
+ tok, err := d.Token()
+ ...
+ case StartElement:
+ if err := d.Skip(); err != nil { // recursion depth = XML nesting depth
+ [/CODE_BLOCK] 
+
+The standard library had this exact bug — fixed in Go 1.19 by making `Skip` iterative
+(golang/go#53614, CVE-2022-28131) — but the fix was never backported to the fork. The
+fork's commit history since 2015 is cosmetic only (gofmt, comments, `min` builtin).
+
+## Impact
+
+An unauthenticated HTTP request kills the whole server process:
+
+- `LOCK` → `readLockInfo` (xml.go:54)
+- `PROPFIND` → `readPropfind` (xml.go:180)
+- `PROPPATCH` → `readProppatch` (xml.go:498)
+
+Any element in the request body that matches no struct field goes through `Skip()`.
+With ~20M nested elements (a ~140 MB body; no body-size limit is enforced by the
+handler), the goroutine stack hits the 1 GB limit:
+
+ [CODE_BLOCK] runtime: goroutine stack exceeds 1000000000-byte limit
+fatal error: stack overflow
+ golang.org/x/net/webdav/internal/xml.(*Decoder).getc(...)
+ ...
+ [/CODE_BLOCK] 
+
+This is a **fatal runtime error**, not a panic — `recover()` and net/http's
+per-connection panic handling cannot intercept it; the process dies. Measured: 15M
+nesting survives, 20M crashes, in seconds.
+
+Fuzzers can't catch this: x/net has no webdav fuzz targets, and govulncheck can't map
+CVE-2022-28131 onto the fork because the module and symbol paths differ.
+
+## Fix
+
+Backport the standard library fix — track depth with a counter instead of recursing
+(mirrors golang/go@8e11e7d). One-function change plus a regression test; happy to send
+the PR (I have it ready, all webdav + internal/xml tests pass).
+
+Note: I'm aware the package README scopes security issues to RCE and escaping `Dir`,
+with crashes treated as ordinary bugs — filing as a security-relevant stdlib-lag bug
+either way, since deployments embed this handler widely and the fix is trivial.",0,0,0,0,0,1,0
+"Title: go/types: staticcheck started crashing on us with Go 1.27 generic methods
+
+Body: We just started converting Tailscale's internal codebase to use Go 1.27's generic methods and a few rounds of conversion went well, and then we hit CI failures with staticcheck crashing on us:
+
+ [CODE_BLOCK] panic: runtime error: index out of range [1] with length 1
+
+goroutine 2938 [running]:
+honnef.co/go/tools/analysis/facts/nilness.(*Result).Nilness(0x13ab31d515b0, 0x13ab2daf6480, 0x1)
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.0-rc.1/analysis/facts/nilness/nilness.go:77 +0x10f
+honnef.co/go/tools/staticcheck/sa4023.run(0x13ab352e2e00)
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.0-rc.1/staticcheck/sa4023/sa4023.go:181 +0x6bf
+honnef.co/go/tools/lintcmd/runner.(*analyzerRunner).do(0x13ab3b1122d0, {0xee2f70?, 0x13ab3b108be0})
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.0-rc.1/lintcmd/runner/runner.go:989 +0x722
+honnef.co/go/tools/lintcmd/runner.genericHandle({0xee2f70, 0x13ab3b108be0}, {0xee2f70?, 0x13ab27e12be0?}, 0x13ab382ed6c0, 0x0, 0x13ab3b5594d0)
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.0-rc.1/lintcmd/runner/runner.go:814 +0x111
+honnef.co/go/tools/lintcmd/runner.(*subrunner).runAnalyzers(0x13ab270e68a0, 0x13ab27262b40, 0x13ab36be0280)
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.0-rc.1/lintcmd/runner/runner.go:1062 +0x73d
+honnef.co/go/tools/lintcmd/runner.(*subrunner).doUncached(0x13ab270e68a0, 0x13ab27262b40)
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.0-rc.1/lintcmd/runner/runner.go:717 +0x22d
+honnef.co/go/tools/lintcmd/runner.(*subrunner).do(0x13ab270e68a0, {0xee2fb8?, 0x13ab27262b40})
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.0-rc.1/lintcmd/runner/runner.go:574 +0xa72
+honnef.co/go/tools/lintcmd/runner.(*Runner).Run.func2({0xee2fb8?, 0x13ab27262b40?})
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.0-rc.1/lintcmd/runner/runner.go:1224 +0x2a
+honnef.co/go/tools/lintcmd/runner.genericHandle({0xee2fb8, 0x13ab27262b40}, {0xee2fb8?, 0x13ab28b54120?}, 0x13ab26faa230, 0x13ab272ba158, 0x13ab26fa4700)
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.0-rc.1/lintcmd/runner/runner.go:814 +0x111
+created by honnef.co/go/tools/lintcmd/runner.(*Runner).Run in goroutine 1
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.0-rc.1/lintcmd/runner/runner.go:1223 +0x41f
+ [/CODE_BLOCK] 
+
+I noticed we'd been using an old version (`v0.8.0-rc.1`) so I figured it might already be fixed in a newer one. I had to put the kids to bed so I told my trusty agent to bump staticcheck and see if that fixes it.
+
+Instead, I came back to my computer and found it made this diagnosis & minimal repro: [URL]
+
+ [CODE_BLOCK] $ git clone [URL]
+$ cd bug-go127-staticcheck-crash
+$ go tool staticcheck ./...
+panic: runtime error: index out of range [1] with length 1
+
+goroutine 169 [running]:
+honnef.co/go/tools/analysis/facts/nilness.(*Result).Nilness(0x3f1e0842a220, 0x3f1e07ea1620, 0x1)
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.1/analysis/facts/nilness/nilness.go:77 +0x10f
+honnef.co/go/tools/staticcheck/sa4023.run(0x3f1e0873d5e0)
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.1/staticcheck/sa4023/sa4023.go:181 +0x6bf
+honnef.co/go/tools/lintcmd/runner.(*analyzerRunner).do(0x3f1e08017d70, {0xedfd38?, 0x3f1e0849bc20})
+ /home/ubuntu/go/pkg/mod/honnef.co/go/tools@v0.8.1/lintcmd/runner/runner.go:989 +0x722
+...
+ [/CODE_BLOCK] 
+
+Something seems unhappy in the export data or go/types or their interaction with the new generic methods.
+
+But for now we have to choose between using staticcheck and using generic methods.
+
+/cc @golang/compiler @golang/tools-team @dominikh",0,0,0,0,0,1,0
