@@ -1,5 +1,6 @@
 # GitHub Issue Triage Classifier
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_App-6366f1.svg?logo=render&logoColor=white)](https://github-issue-triage-api.onrender.com/)
 [![CI Pipeline](https://github.com/YashasviJadav03/GitHub-Issue-Triage-Classifier/actions/workflows/ci.yml/badge.svg)](https://github.com/YashasviJadav03/GitHub-Issue-Triage-Classifier/actions/workflows/ci.yml)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C.svg?logo=pytorch&logoColor=white)](https://pytorch.org)
@@ -8,6 +9,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 An end-to-end multi-label machine learning system for automated GitHub issue classification and priority triage. The architecture fine-tunes a transformer backbone (`distilbert-base-uncased`) using **Parameter-Efficient Fine-Tuning (PEFT / LoRA)** paired with **independent per-label decision threshold calibration** to simultaneously classify multi-category issue types and predict priority tiers.
+
+> **Try it live:** [https://github-issue-triage-api.onrender.com](https://github-issue-triage-api.onrender.com/) | **API Docs:** [/docs](https://github-issue-triage-api.onrender.com/docs)
 
 ---
 
