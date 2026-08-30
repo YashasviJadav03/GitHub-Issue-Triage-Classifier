@@ -33,15 +33,16 @@ wheels/
 *.swp
 *.swo
 
-# Data & Models (ignore large raw artifacts, keep sample / processed if needed or keep .gitkeep)
+# Data & Models (ignore training checkpoints, keep final models)
 data/raw/*.json
 !data/raw/.gitkeep
-models/lora-adapter/checkpoint-*
-models/lora-adapter/adapter_model.bin
-models/lora-adapter/adapter_model.safetensors
+models/lora-adapter/checkpoint*
+models/lora-adapter/checkpoints/
+models/checkpoints/
+!models/lora-adapter/adapter_model.safetensors
+!models/fused-model/model.safetensors
 *.pt
 *.bin
-*.safetensors
 
 # Logs & cache
 *.log

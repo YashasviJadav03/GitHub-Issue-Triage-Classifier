@@ -60,12 +60,14 @@ def clean_text_input(title: str, body: str) -> str:
 
 
 def load_model_and_thresholds():
-    """Load tokenizer, PEFT LoRA adapter, and per-label tuned thresholds."""
+    """Load tokenizer, model weights (fused or LoRA), and per-label tuned thresholds."""
+    fused_dir = config.MODELS_DIR / "fused-model"
     adapter_dir = config.LORA_ADAPTER_DIR
     thresholds_file = config.THRESHOLDS_PATH
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     state["device"] = device
+    torch.set_num_threads(1)  # Restrict multi-threading memory spikes on 512MB instances
 
     logger.info(f"Initializing model on device: {device}")
 
@@ -81,7 +83,18 @@ def load_model_and_thresholds():
 
     # 2. Load tokenizer and model
     try:
-        if adapter_dir.exists() and (adapter_dir / "adapter_config.json").exists():
+        if fused_dir.exists() and (fused_dir / "model.safetensors").exists():
+            logger.info(f"Loading standalone fused model from {fused_dir} (low memory mode)...")
+            tokenizer = AutoTokenizer.from_pretrained(str(fused_dir))
+            model = AutoModelForSequenceClassification.from_pretrained(
+                str(fused_dir),
+                num_labels=config.NUM_LABELS,
+                problem_type="multi_label_classification",
+                id2label=config.ID2LABEL,
+                label2id=config.LABEL2ID,
+                low_cpu_mem_usage=True,
+            )
+        elif adapter_dir.exists() and (adapter_dir / "adapter_config.json").exists():
             from peft import PeftModel
 
             logger.info(f"Loading LoRA adapter from {adapter_dir}...")
@@ -92,10 +105,11 @@ def load_model_and_thresholds():
                 problem_type="multi_label_classification",
                 id2label=config.ID2LABEL,
                 label2id=config.LABEL2ID,
+                low_cpu_mem_usage=True,
             )
             model = PeftModel.from_pretrained(base_model, str(adapter_dir))
         else:
-            logger.warning(f"LoRA adapter not found at {adapter_dir}. Loading base model as fallback.")
+            logger.warning(f"Adapter not found. Loading base model as fallback.")
             tokenizer = AutoTokenizer.from_pretrained(config.BASE_MODEL_NAME)
             model = AutoModelForSequenceClassification.from_pretrained(
                 config.BASE_MODEL_NAME,
@@ -103,6 +117,7 @@ def load_model_and_thresholds():
                 problem_type="multi_label_classification",
                 id2label=config.ID2LABEL,
                 label2id=config.LABEL2ID,
+                low_cpu_mem_usage=True,
             )
 
         model.eval()

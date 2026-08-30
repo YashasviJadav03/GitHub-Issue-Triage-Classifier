@@ -1,0 +1,2 @@
+models/fused-model/model.safetensors filter=lfs diff=lfs merge=lfs -text
+models/lora-adapter/adapter_model.safetensors filter=lfs diff=lfs merge=lfs -text
