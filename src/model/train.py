@@ -2,10 +2,11 @@
 
 Fine-tunes a pretrained transformer (distilbert-base-uncased) with LoRA parameter-efficient
 adapters for multi-label GitHub issue classification using BCEWithLogitsLoss and Sigmoid activation.
-Tracks Micro-F1 and Macro-F1 per epoch and saves the trained adapter to models/lora-adapter/.
+Tracks Micro-F1 and Macro-F1 per epoch, persists adapters, and logs experiment runs to results/experiment_log.csv.
 """
 
 import argparse
+from datetime import datetime
 import json
 import logging
 import sys
@@ -23,7 +24,6 @@ from transformers import (
     AutoTokenizer,
     DataCollatorWithPadding,
     Trainer,
-    TrainerCallback,
     TrainingArguments,
     set_seed,
 )
@@ -82,11 +82,9 @@ def compute_multilabel_metrics(eval_pred, threshold: float = 0.5) -> Dict[str, f
     """Compute Micro-F1, Macro-F1, Precision, and Recall for multi-label predictions."""
     logits, labels = eval_pred
 
-    # If logits is a tuple (e.g. model output), extract the primary tensor
     if isinstance(logits, tuple):
         logits = logits[0]
 
-    # Sigmoid activation to transform logits to [0, 1] probabilities
     probs = 1.0 / (1.0 + np.exp(-logits))
     preds = (probs >= threshold).astype(int)
     labels = labels.astype(int)
@@ -110,7 +108,6 @@ def compute_multilabel_metrics(eval_pred, threshold: float = 0.5) -> Dict[str, f
         "macro_recall": float(macro_rec),
     }
 
-    # Per-label F1 scores
     for idx, label_name in enumerate(config.TARGET_LABELS):
         f1 = f1_score(labels[:, idx], preds[:, idx], zero_division=0)
         metrics[f"f1_{label_name}"] = float(f1)
@@ -118,7 +115,21 @@ def compute_multilabel_metrics(eval_pred, threshold: float = 0.5) -> Dict[str, f
     return metrics
 
 
+def log_experiment_to_csv(entry: Dict[str, Any], log_path: Path = config.EXPERIMENT_LOG_PATH) -> None:
+    """Append experiment hyperparameter and performance metrics to CSV."""
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    df_new = pd.DataFrame([entry])
+    if log_path.exists():
+        df_existing = pd.read_csv(log_path)
+        df_combined = pd.concat([df_existing, df_new], ignore_index=True)
+    else:
+        df_combined = df_new
+    df_combined.to_csv(log_path, index=False)
+    logger.info(f"Appended run result to experiment log -> {log_path}")
+
+
 def train(
+    run_id: Optional[str] = None,
     model_name: str = config.BASE_MODEL_NAME,
     train_csv: Path = config.TRAIN_CSV_PATH,
     val_csv: Path = config.VAL_CSV_PATH,
@@ -137,6 +148,9 @@ def train(
     set_seed(seed)
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    if not run_id:
+        run_id = f"lora_r{lora_r}_lr{lr}_ep{epochs}_{datetime.now().strftime('%H%M%S')}"
 
     logger.info(f"Loading tokenizer for base model: {model_name}...")
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -157,7 +171,6 @@ def train(
         label2id=config.LABEL2ID,
     )
 
-    # Configure LoRA PEFT adapter
     peft_config = LoraConfig(
         task_type=TaskType.SEQ_CLS,
         r=lora_r,
@@ -171,10 +184,9 @@ def train(
     model = get_peft_model(base_model, peft_config)
     model.print_trainable_parameters()
 
-    # Training arguments
     training_args = TrainingArguments(
         output_dir=str(output_dir / "checkpoints"),
-        evaluation_strategy="epoch",
+        eval_strategy="epoch",
         save_strategy="epoch",
         learning_rate=lr,
         per_device_train_batch_size=batch_size,
@@ -206,13 +218,12 @@ def train(
     )
 
     logger.info(
-        f"Starting training run: epochs={epochs}, lr={lr}, batch_size={batch_size}, "
+        f"Starting training run '{run_id}': epochs={epochs}, lr={lr}, batch_size={batch_size}, "
         f"LoRA(r={lora_r}, alpha={lora_alpha}, dropout={lora_dropout})"
     )
 
     train_result = trainer.train()
 
-    # Evaluate best model on validation set
     logger.info("Evaluating fine-tuned model on validation set...")
     eval_metrics = trainer.evaluate()
     logger.info(
@@ -221,13 +232,13 @@ def train(
         f"Loss: {eval_metrics.get('eval_loss', 0):.4f}"
     )
 
-    # Save LoRA adapter and tokenizer
     logger.info(f"Saving LoRA adapter to {output_dir}...")
     model.save_pretrained(str(output_dir))
     tokenizer.save_pretrained(str(output_dir))
 
-    # Save training configuration and final metrics
     run_summary = {
+        "run_id": run_id,
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "model_name": model_name,
         "epochs": epochs,
         "batch_size": batch_size,
@@ -236,23 +247,24 @@ def train(
         "lora_alpha": lora_alpha,
         "lora_dropout": lora_dropout,
         "max_length": max_length,
-        "eval_micro_f1": eval_metrics.get("eval_micro_f1"),
-        "eval_macro_f1": eval_metrics.get("eval_macro_f1"),
-        "eval_loss": eval_metrics.get("eval_loss"),
-        "train_runtime_sec": train_result.metrics.get("train_runtime"),
-        "train_samples_per_second": train_result.metrics.get("train_samples_per_second"),
+        "eval_micro_f1": round(float(eval_metrics.get("eval_micro_f1", 0)), 4),
+        "eval_macro_f1": round(float(eval_metrics.get("eval_macro_f1", 0)), 4),
+        "eval_loss": round(float(eval_metrics.get("eval_loss", 0)), 4),
+        "train_runtime_sec": round(float(train_result.metrics.get("train_runtime", 0)), 2),
     }
 
     summary_file = output_dir / "training_summary.json"
     with open(summary_file, "w", encoding="utf-8") as f:
         json.dump(run_summary, f, indent=2)
 
+    log_experiment_to_csv(run_summary)
     logger.info(f"Training complete! Summary saved to {summary_file}")
     return run_summary
 
 
 def main():
     parser = argparse.ArgumentParser(description="Fine-tune DistilBERT with LoRA for multi-label issue triage.")
+    parser.add_argument("--run-id", type=str, default=None, help="Identifier for experiment run")
     parser.add_argument("--model-name", type=str, default=config.BASE_MODEL_NAME, help="Pretrained model name")
     parser.add_argument("--train-csv", type=str, default=str(config.TRAIN_CSV_PATH), help="Train CSV path")
     parser.add_argument("--val-csv", type=str, default=str(config.VAL_CSV_PATH), help="Validation CSV path")
@@ -269,6 +281,7 @@ def main():
     args = parser.parse_args()
 
     train(
+        run_id=args.run_id,
         model_name=args.model_name,
         train_csv=Path(args.train_csv),
         val_csv=Path(args.val_csv),
