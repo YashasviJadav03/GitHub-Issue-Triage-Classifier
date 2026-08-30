@@ -1,0 +1,91 @@
+{
+  "optimal_thresholds": {
+    "bug": 0.4,
+    "feature_request": 0.4,
+    "documentation": 0.45,
+    "question": 0.35,
+    "duplicate": 0.2,
+    "needs_more_info": 0.4,
+    "critical": 0.15
+  },
+  "summary": {
+    "baseline_0.5_macro_f1": 0.299,
+    "tuned_macro_f1": 0.7222,
+    "macro_f1_gain": 0.4232,
+    "baseline_0.5_micro_f1": 0.5578,
+    "tuned_micro_f1": 0.7368,
+    "micro_f1_gain": 0.179
+  },
+  "per_label_details": {
+    "bug": {
+      "optimal_threshold": 0.4,
+      "tuned_f1": 0.7368,
+      "tuned_precision": 0.8235,
+      "tuned_recall": 0.6667,
+      "baseline_0.5_f1": 0.6857,
+      "baseline_0.5_precision": 0.8571,
+      "baseline_0.5_recall": 0.5714,
+      "f1_improvement": 0.0511
+    },
+    "feature_request": {
+      "optimal_threshold": 0.4,
+      "tuned_f1": 0.6829,
+      "tuned_precision": 0.56,
+      "tuned_recall": 0.875,
+      "baseline_0.5_f1": 0.6667,
+      "baseline_0.5_precision": 0.8182,
+      "baseline_0.5_recall": 0.5625,
+      "f1_improvement": 0.0163
+    },
+    "documentation": {
+      "optimal_threshold": 0.45,
+      "tuned_f1": 0.6667,
+      "tuned_precision": 0.7143,
+      "tuned_recall": 0.625,
+      "baseline_0.5_f1": 0.0,
+      "baseline_0.5_precision": 0.0,
+      "baseline_0.5_recall": 0.0,
+      "f1_improvement": 0.6667
+    },
+    "question": {
+      "optimal_threshold": 0.35,
+      "tuned_f1": 0.8,
+      "tuned_precision": 1.0,
+      "tuned_recall": 0.6667,
+      "baseline_0.5_f1": 0.0,
+      "baseline_0.5_precision": 0.0,
+      "baseline_0.5_recall": 0.0,
+      "f1_improvement": 0.8
+    },
+    "duplicate": {
+      "optimal_threshold": 0.2,
+      "tuned_f1": 0.7778,
+      "tuned_precision": 0.6364,
+      "tuned_recall": 1.0,
+      "baseline_0.5_f1": 0.0,
+      "baseline_0.5_precision": 0.0,
+      "baseline_0.5_recall": 0.0,
+      "f1_improvement": 0.7778
+    },
+    "needs_more_info": {
+      "optimal_threshold": 0.4,
+      "tuned_f1": 0.8197,
+      "tuned_precision": 0.8065,
+      "tuned_recall": 0.8333,
+      "baseline_0.5_f1": 0.7407,
+      "baseline_0.5_precision": 0.8333,
+      "baseline_0.5_recall": 0.6667,
+      "f1_improvement": 0.0789
+    },
+    "critical": {
+      "optimal_threshold": 0.15,
+      "tuned_f1": 0.5714,
+      "tuned_precision": 0.4286,
+      "tuned_recall": 0.8571,
+      "baseline_0.5_f1": 0.0,
+      "baseline_0.5_precision": 0.0,
+      "baseline_0.5_recall": 0.0,
+      "f1_improvement": 0.5714
+    }
+  }
+}

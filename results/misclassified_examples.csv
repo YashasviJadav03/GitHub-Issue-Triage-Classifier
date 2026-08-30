@@ -1,0 +1,126 @@
+sample_index,hamming_errors,true_labels,predicted_labels,confidence_scores,issue_text
+49,3,"bug, needs_more_info","bug, duplicate, critical","{""bug"": 0.6555, ""feature_request"": 0.0433, ""documentation"": 0.0417, ""question"": 0.0692, ""duplicate"": 0.2921, ""needs_more_info"": 0.3798, ""critical"": 0.1912}","Title: Unexpected error thrown during deserializing state
+
+Body: Error message appeared once but cannot reproduce consistently. Need reproduction repo."
+22,2,"documentation, needs_more_info",none,"{""bug"": 0.0704, ""feature_request"": 0.33, ""documentation"": 0.0806, ""question"": 0.093, ""duplicate"": 0.0136, ""needs_more_info"": 0.324, ""critical"": 0.0199}","Title: encoding/json/jsontext: audit API for AppendFloat
+
+Body: In [URL] @aclements comments:
+
+> I'm slightly concerned that ""The values NaN, +Inf, and -Inf will be represented as a JSON string with the values ""NaN"", ""Infinity"", and ""-Infinity""."" is a type footgun. I thought we had added an option or a struct tag to control whether non-finite floats were an error, but I'm not finding that now.
+
+@d..."
+46,2,bug,needs_more_info,"{""bug"": 0.1501, ""feature_request"": 0.0744, ""documentation"": 0.0176, ""question"": 0.0306, ""duplicate"": 0.0185, ""needs_more_info"": 0.8806, ""critical"": 0.0173}","Title: runtime: unknown GOEXPERIMENT spinbitmutex
+
+Body: ### Go version
+
+go version go1.25.0 linux/arm64
+
+### Output of `go env` in your module/workspace:
+
+ [CODE_BLOCK] AR='ar'
+CC='gcc'
+CGO_CFLAGS='-O2 -g'
+CGO_CPPFLAGS=''
+CGO_CXXFLAGS='-O2 -g'
+CGO_ENABLED='1'
+CGO_FFLAGS='-O2 -g'
+CGO_LDFLAGS='-O2 -g'
+CXX='g++'
+GCCGO='gccgo'
+GO111MODULE=''
+GOARCH='arm64'
+GOARM64='v8.0'
+GOAUTH='netrc'
+GOBIN=''
+GOCAC..."
+66,2,needs_more_info,feature_request,"{""bug"": 0.0537, ""feature_request"": 0.5887, ""documentation"": 0.2778, ""question"": 0.1709, ""duplicate"": 0.0211, ""needs_more_info"": 0.1117, ""critical"": 0.0439}","Title: x/crypto/chacha20poly1305: pure Go AVX2 vectorization using Go 1.27 archsimd
+
+Body: Summary 
+ This
+proposal presents an optimization and modernisation path for
+ golang.org/x/crypto/chacha20poly1305 
+by replacing the legacy hand-written Plan 9 assembly
+( chacha20_amd64.s ,
+ poly1305_amd64.s )
+with 100% Pure Go AVX2 vectorization powered by the native
+ simd/archsimd 
+package introduced in Go ..."
+2,2,duplicate,"bug, duplicate, critical","{""bug"": 0.6435, ""feature_request"": 0.0602, ""documentation"": 0.0525, ""question"": 0.0808, ""duplicate"": 0.3828, ""needs_more_info"": 0.3461, ""critical"": 0.2076}","Title: Duplicate report: Sidebar icons not aligning properly
+
+Body: Closing as duplicate since this is already tracked under active milestone."
+41,2,bug,needs_more_info,"{""bug"": 0.2809, ""feature_request"": 0.0593, ""documentation"": 0.0153, ""question"": 0.0267, ""duplicate"": 0.0211, ""needs_more_info"": 0.7503, ""critical"": 0.0223}","Title: tf.unique_with_counts fails under jit_compile=True with no registered XLA_CPU_JIT kernel, while eager execution and autoclustering both succeed [Original/StarCoder]
+
+Body: ### Issue type
+
+Bug
+
+### Have you reproduced the bug with TensorFlow Nightly?
+
+No
+
+### Source
+
+source
+
+### TensorFlow version
+
+2.14.0 (built from source, snapshot from May 2023)
+
+### Custom code
+
+Yes
+
+### OS platform and ..."
+17,2,question,"feature_request, documentation, question","{""bug"": 0.0946, ""feature_request"": 0.4679, ""documentation"": 0.5321, ""question"": 0.4209, ""duplicate"": 0.0742, ""needs_more_info"": 0.0836, ""critical"": 0.1045}","Title: What is the recommended timeout for concurrent state update?
+
+Body: Looking for guidance on how to avoid unnecessary re-renders when concurrent state update is triggered."
+43,2,bug,needs_more_info,"{""bug"": 0.1688, ""feature_request"": 0.1205, ""documentation"": 0.037, ""question"": 0.0491, ""duplicate"": 0.0258, ""needs_more_info"": 0.4008, ""critical"": 0.0248}","Title: Unable to use outline with search editor
+
+Body: Does this issue occur when all extensions are disabled?: Yes/No
+
+ 
+ Report Issue' dialog can assist with this. -->
+Version: 1.68.1
+Commit: 30d9c6cd9483b2cc586687151bcbcd635f373630
+Date: 2022-06-14T12:52:13.188Z
+Electron: 17.4.7
+Chromium: 98.0.4758.141
+Node.js: 16.13.0
+V8: 9.8.177.13-electron.0
+OS: Darwin x64 19.6.0
+
+Steps to Reproduce:
+
+1. Sea..."
+18,2,question,"feature_request, documentation, question","{""bug"": 0.1012, ""feature_request"": 0.438, ""documentation"": 0.5198, ""question"": 0.4333, ""duplicate"": 0.0795, ""needs_more_info"": 0.0825, ""critical"": 0.1098}","Title: What is the recommended timeout for deserializing state?
+
+Body: Looking for guidance on how to avoid unnecessary re-renders when deserializing state is triggered."
+1,2,duplicate,"bug, duplicate, critical","{""bug"": 0.4682, ""feature_request"": 0.0952, ""documentation"": 0.1065, ""question"": 0.1242, ""duplicate"": 0.3801, ""needs_more_info"": 0.2015, ""critical"": 0.1993}","Title: Duplicate report: Sidebar icons not aligning properly
+
+Body: Duplicate of #5421. Closing this issue to keep discussion consolidated."
+28,2,documentation,feature_request,"{""bug"": 0.1315, ""feature_request"": 0.4028, ""documentation"": 0.375, ""question"": 0.2635, ""duplicate"": 0.0626, ""needs_more_info"": 0.0694, ""critical"": 0.1212}","Title: Fix broken hyperlinks and typo in TerminalEmulator reference docs
+
+Body: Updating docs to explain memory allocation guarantees during spawning worker process."
+47,2,bug,needs_more_info,"{""bug"": 0.2871, ""feature_request"": 0.1131, ""documentation"": 0.0236, ""question"": 0.0347, ""duplicate"": 0.0199, ""needs_more_info"": 0.5091, ""critical"": 0.0329}","Title: Agent host sessions can show as non-archived despite server-archived state
+
+Body: Agent host sessions have server-authoritative archived state (the `SessionStatus.IsArchived` bit, surfaced as `IChatSessionItem.archived`). However, `AgentSessionsModel.isArchived()` merges that provider value with a locally-persisted view-state overlay and gives the **local** overlay precedence:
+
+ [CODE_BLOCK..."
+27,2,documentation,feature_request,"{""bug"": 0.1198, ""feature_request"": 0.4318, ""documentation"": 0.4057, ""question"": 0.2731, ""duplicate"": 0.0591, ""needs_more_info"": 0.068, ""critical"": 0.1174}","Title: Fix broken hyperlinks and typo in Scheduler reference docs
+
+Body: Updating docs to explain memory allocation guarantees during dynamic graph execution."
+50,2,bug,"bug, duplicate, critical","{""bug"": 0.4063, ""feature_request"": 0.1627, ""documentation"": 0.0858, ""question"": 0.1304, ""duplicate"": 0.2016, ""needs_more_info"": 0.2196, ""critical"": 0.1579}","Title: After toggling the side pane it can render borders above each other
+
+Body:"
+21,1,"question, needs_more_info",needs_more_info,"{""bug"": 0.2808, ""feature_request"": 0.0395, ""documentation"": 0.0126, ""question"": 0.0281, ""duplicate"": 0.0317, ""needs_more_info"": 0.8353, ""critical"": 0.0267}","Title: runtime: ""unexpected signal during runtime execution"" during bgscavenge on plan9
+
+Body: ```
+#!watchflakes
+post <- goos == ""plan9"" && log ~ `unexpected signal during runtime execution` && log ~ `runtime\.bgscavenge`
+```
+
+From `plan9-386-0intro` ([URL] a `cmd/vet` test failure that appears to have nothing to do with `cmd/vet`:
+```
+--- FAIL: TestVet (1.94s)
+ --- FAIL: TestVet/assign (0.43s)
+ v..."

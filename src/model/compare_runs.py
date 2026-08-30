@@ -55,7 +55,7 @@ def compare_experiments(log_path: Path = config.EXPERIMENT_LOG_PATH) -> pd.DataF
     formatted_df = df_sorted[avail_cols].copy()
     print(formatted_df.to_string(index=False))
     print("=" * 90)
-    print(f"🏆 BEST CONFIGURATION (by Macro-F1): {best_run['run_id']}")
+    print(f"[BEST CONFIGURATION by Macro-F1]: {best_run['run_id']}")
     print(f"   - LoRA Rank (r):       {best_run.get('lora_r')}")
     print(f"   - LoRA Alpha:          {best_run.get('lora_alpha')}")
     print(f"   - Learning Rate:       {best_run.get('learning_rate')}")
@@ -64,7 +64,7 @@ def compare_experiments(log_path: Path = config.EXPERIMENT_LOG_PATH) -> pd.DataF
     print(f"   - Val Micro-F1:        {best_run.get('eval_micro_f1'):.4f}")
     print(f"   - Val BCE Loss:        {best_run.get('eval_loss'):.4f}")
     print("=" * 90)
-    print("💡 Note: Macro-F1 is our primary selection metric because it weights all 7 categories")
+    print("Note: Macro-F1 is our primary selection metric because it weights all 7 categories")
     print("   equally, preventing frequent labels (e.g. bug) from masking poor recall on rare labels.")
     print("=" * 90 + "\n")
 
