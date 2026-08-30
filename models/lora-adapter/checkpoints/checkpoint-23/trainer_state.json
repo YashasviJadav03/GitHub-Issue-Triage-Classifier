@@ -1,0 +1,70 @@
+{
+  "best_global_step": 23,
+  "best_metric": 0.0,
+  "best_model_checkpoint": "D:\\GitHub-Issue-Triage-Classifier\\models\\lora-adapter\\checkpoints\\checkpoint-23",
+  "epoch": 1.0,
+  "eval_steps": 500,
+  "global_step": 23,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 0.43478260869565216,
+      "grad_norm": 0.6703435778617859,
+      "learning_rate": 0.00018,
+      "loss": 0.6565775394439697,
+      "step": 10
+    },
+    {
+      "epoch": 0.8695652173913043,
+      "grad_norm": 0.564237654209137,
+      "learning_rate": 0.00016949152542372882,
+      "loss": 0.4658297061920166,
+      "step": 20
+    },
+    {
+      "epoch": 1.0,
+      "eval_f1_bug": 0.0,
+      "eval_f1_critical": 0.0,
+      "eval_f1_documentation": 0.0,
+      "eval_f1_duplicate": 0.0,
+      "eval_f1_feature_request": 0.0,
+      "eval_f1_needs_more_info": 0.0,
+      "eval_f1_question": 0.0,
+      "eval_loss": 0.433679461479187,
+      "eval_macro_f1": 0.0,
+      "eval_macro_precision": 0.0,
+      "eval_macro_recall": 0.0,
+      "eval_micro_f1": 0.0,
+      "eval_micro_precision": 0.0,
+      "eval_micro_recall": 0.0,
+      "eval_runtime": 8.1458,
+      "eval_samples_per_second": 9.453,
+      "eval_steps_per_second": 0.614,
+      "eval_weighted_f1": 0.0,
+      "step": 23
+    }
+  ],
+  "logging_steps": 10,
+  "max_steps": 69,
+  "num_input_tokens_seen": 0,
+  "num_train_epochs": 3,
+  "save_steps": 500,
+  "stateful_callbacks": {
+    "TrainerControl": {
+      "args": {
+        "should_epoch_stop": false,
+        "should_evaluate": false,
+        "should_log": false,
+        "should_save": true,
+        "should_training_stop": false
+      },
+      "attributes": {}
+    }
+  },
+  "total_flos": 24570018296832.0,
+  "train_batch_size": 16,
+  "trial_name": null,
+  "trial_params": null
+}
