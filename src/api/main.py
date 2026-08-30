@@ -19,6 +19,7 @@ import numpy as np
 import torch
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
@@ -179,17 +180,11 @@ app.add_middleware(
 )
 
 
-@app.get("/", tags=["General"])
+@app.get("/", response_class=HTMLResponse, tags=["General"])
 async def root():
-    return {
-        "service": "GitHub Issue Triage API",
-        "description": "Multi-label classification of GitHub issues into categories & priority tiers",
-        "endpoints": {
-            "health": "/health",
-            "triage": "/triage (POST)",
-            "docs": "/docs",
-        },
-    }
+    """Serve the interactive web dashboard."""
+    html_path = Path(__file__).parent / "index.html"
+    return HTMLResponse(content=html_path.read_text(encoding="utf-8"), status_code=200)
 
 
 @app.get("/health", response_model=HealthResponse, tags=["Health"])

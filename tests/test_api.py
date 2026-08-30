@@ -11,9 +11,8 @@ client = TestClient(app)
 def test_root_endpoint():
     response = client.get("/")
     assert response.status_code == 200
-    data = response.json()
-    assert "GitHub Issue Triage API" in data["service"]
-    assert "endpoints" in data
+    assert "text/html" in response.headers["content-type"]
+    assert "GitHub Issue Triage" in response.text
 
 
 def test_health_endpoint():

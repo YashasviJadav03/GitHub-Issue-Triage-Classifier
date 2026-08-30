@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issue Triage Classifier</title>
+    <meta name="description" content="Multi-label GitHub Issue Classifier powered by DistilBERT + LoRA. Automatically categorize issues into bug, feature request, documentation, question, duplicate, needs more info, and critical.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #111827;
+            --bg-card: #1a2035;
+            --bg-input: #0f1629;
+            --border: #1e293b;
+            --border-focus: #6366f1;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --success: #22c55e;
+            --success-bg: rgba(34, 197, 94, 0.1);
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Ambient glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -40%;
+            left: -20%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(ellipse, rgba(99,102,241,0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            right: -20%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(ellipse, rgba(139,92,246,0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(99,102,241,0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+        .header-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+            50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+        }
+        .header h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+        .header p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* Model Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            text-align: center;
+            transition: border-color var(--transition);
+        }
+        .info-card:hover { border-color: rgba(99,102,241,0.3); }
+        .info-card .value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+        .info-card .label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+        }
+
+        /* Main Card */
+        .triage-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group { margin-bottom: 1.25rem; }
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+        .form-input, .form-textarea {
+            width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            padding: 12px 16px;
+            transition: border-color var(--transition), box-shadow var(--transition);
+            outline: none;
+        }
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: var(--text-muted);
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 140px;
+            line-height: 1.7;
+        }
+
+        /* Buttons */
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 1.5rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 12px 28px;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            box-shadow: 0 4px 14px rgba(99,102,241,0.3);
+            flex: 1;
+        }
+        .btn-primary:hover:not(:disabled) {
+            box-shadow: 0 6px 20px rgba(99,102,241,0.45);
+            transform: translateY(-1px);
+        }
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover { border-color: var(--text-muted); color: var(--text-primary); }
+
+        .spinner {
+            width: 18px; height: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Results */
+        .results-container {
+            display: none;
+            margin-top: 2rem;
+        }
+        .results-container.visible { display: block; }
+        .results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .results-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+        }
+        .latency-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            background: rgba(34,197,94,0.1);
+            color: var(--success);
+            border-radius: 100px;
+            border: 1px solid rgba(34,197,94,0.15);
+        }
+
+        /* Predicted Labels */
+        .predicted-labels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+        .label-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            border: 1px solid;
+        }
+
+        /* Label Colors */
+        .label-bug { background: rgba(239,68,68,0.1); color: #f87171; border-color: rgba(239,68,68,0.2); }
+        .label-feature_request { background: rgba(59,130,246,0.1); color: #60a5fa; border-color: rgba(59,130,246,0.2); }
+        .label-documentation { background: rgba(168,85,247,0.1); color: #c084fc; border-color: rgba(168,85,247,0.2); }
+        .label-question { background: rgba(34,197,94,0.1); color: #4ade80; border-color: rgba(34,197,94,0.2); }
+        .label-duplicate { background: rgba(245,158,11,0.1); color: #fbbf24; border-color: rgba(245,158,11,0.2); }
+        .label-needs_more_info { background: rgba(236,72,153,0.1); color: #f472b6; border-color: rgba(236,72,153,0.2); }
+        .label-critical { background: rgba(239,68,68,0.15); color: #fca5a5; border-color: rgba(239,68,68,0.3); }
+
+        /* Confidence Bars */
+        .confidence-table { width: 100%; }
+        .confidence-row {
+            display: grid;
+            grid-template-columns: 140px 1fr 70px;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(30,41,59,0.5);
+        }
+        .confidence-row:last-child { border-bottom: none; }
+        .confidence-label {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .confidence-label.active { color: var(--text-primary); font-weight: 600; }
+        .bar-track {
+            height: 8px;
+            background: rgba(30,41,59,0.7);
+            border-radius: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 100px;
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+        }
+        .bar-fill.active { background: linear-gradient(90deg, #6366f1, #8b5cf6); }
+        .bar-fill.inactive { background: rgba(100,116,139,0.3); }
+        .bar-threshold {
+            position: absolute;
+            top: -3px;
+            height: 14px;
+            width: 2px;
+            background: var(--warning);
+            border-radius: 1px;
+            z-index: 2;
+        }
+        .confidence-score {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            text-align: right;
+        }
+        .confidence-score.active { color: var(--accent-light); font-weight: 600; }
+        .confidence-score.inactive { color: var(--text-muted); }
+
+        /* Threshold legend */
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+        .legend-bar { width: 14px; height: 4px; border-radius: 2px; }
+        .legend-bar.active { background: linear-gradient(90deg, #6366f1, #8b5cf6); }
+        .legend-bar.inactive { background: rgba(100,116,139,0.3); }
+        .legend-line { width: 14px; height: 2px; background: var(--warning); }
+
+        /* Error */
+        .error-box {
+            display: none;
+            background: rgba(239,68,68,0.08);
+            border: 1px solid rgba(239,68,68,0.2);
+            border-radius: var(--radius-sm);
+            padding: 14px 18px;
+            color: #fca5a5;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+        .error-box.visible { display: block; }
+
+        /* Example templates */
+        .examples-section {
+            margin-bottom: 1.5rem;
+        }
+        .examples-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .example-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .example-chip {
+            padding: 6px 14px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .example-chip:hover {
+            border-color: var(--accent);
+            color: var(--accent-light);
+            background: var(--accent-glow);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .footer p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        .footer a:hover { text-decoration: underline; }
+        .footer .tech {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .footer .tech span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            padding: 3px 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 1.25rem 1rem 3rem; }
+            .header h1 { font-size: 1.6rem; }
+            .info-grid { grid-template-columns: repeat(2, 1fr); }
+            .confidence-row { grid-template-columns: 110px 1fr 60px; gap: 8px; }
+            .btn-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-badge">
+                <span class="dot" id="statusDot"></span>
+                <span id="statusText">Connecting...</span>
+            </div>
+            <h1>GitHub Issue Triage</h1>
+            <p>AI-powered multi-label classifier that categorizes GitHub issues using a LoRA fine-tuned DistilBERT model with per-label calibrated thresholds.</p>
+        </header>
+
+        <!-- Model Stats -->
+        <div class="info-grid" id="infoGrid">
+            <div class="info-card">
+                <div class="value">7</div>
+                <div class="label">Categories</div>
+            </div>
+            <div class="info-card">
+                <div class="value">0.71</div>
+                <div class="label">Macro-F1</div>
+            </div>
+            <div class="info-card">
+                <div class="value">0.73</div>
+                <div class="label">Micro-F1</div>
+            </div>
+            <div class="info-card">
+                <div class="value" id="deviceBadge">CPU</div>
+                <div class="label">Device</div>
+            </div>
+        </div>
+
+        <!-- Examples -->
+        <div class="examples-section">
+            <div class="examples-title">Try an example</div>
+            <div class="example-chips">
+                <button class="example-chip" data-title="App crashes with NullPointerException on startup" data-body="After updating to version 3.2, the application crashes immediately on launch. Stack trace shows NullPointerException in MainActivityModule.initialize(). Reproducible on Android 14 devices.">Bug Report</button>
+                <button class="example-chip" data-title="Add dark mode support for the settings page" data-body="It would be great to have a dark mode option in the settings panel. Many users have requested this feature for better accessibility during nighttime usage.">Feature Request</button>
+                <button class="example-chip" data-title="How do I configure custom webpack loaders?" data-body="I'm trying to add a custom loader for .mdx files but the documentation doesn't cover this case. Can someone explain the configuration steps?">Question</button>
+                <button class="example-chip" data-title="Database connection pool exhaustion in production" data-body="CRITICAL: All database connections are being consumed within 30 minutes of deployment. This causes a complete service outage. Immediate fix needed. Error: ConnectionPoolExhausted max_connections=100.">Critical Issue</button>
+                <button class="example-chip" data-title="Update API reference docs for v2 endpoints" data-body="The current API docs still reference v1 endpoints. Need to update all examples and parameter descriptions to reflect the v2 changes shipped last sprint.">Documentation</button>
+            </div>
+        </div>
+
+        <!-- Triage Form -->
+        <div class="triage-card">
+            <div class="form-group">
+                <label class="form-label" for="issueTitle">Issue Title</label>
+                <input type="text" class="form-input" id="issueTitle" placeholder="e.g., Crash when opening file with unicode characters" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="issueBody">Issue Body</label>
+                <textarea class="form-textarea" id="issueBody" placeholder="Describe the issue in detail — reproduction steps, expected behavior, error messages, environment info..."></textarea>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn btn-primary" id="triageBtn">
+                    <span id="btnText">Classify Issue</span>
+                    <div class="spinner" id="btnSpinner" style="display:none"></div>
+                </button>
+                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+            </div>
+
+            <div class="error-box" id="errorBox"></div>
+
+            <!-- Results -->
+            <div class="results-container" id="resultsContainer">
+                <div class="results-header">
+                    <span class="results-title">Classification Results</span>
+                    <span class="latency-badge" id="latencyBadge"></span>
+                </div>
+
+                <div class="predicted-labels" id="predictedLabels"></div>
+
+                <div class="confidence-table" id="confidenceTable"></div>
+
+                <div class="legend">
+                    <div class="legend-item"><div class="legend-bar active"></div> Above threshold</div>
+                    <div class="legend-item"><div class="legend-bar inactive"></div> Below threshold</div>
+                    <div class="legend-item"><div class="legend-line"></div> Decision threshold</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Built by <a href="https://github.com/YashasviJadav03" target="_blank" rel="noopener">Yashasvi Jadav</a> &mdash; <a href="https://github.com/YashasviJadav03/GitHub-Issue-Triage-Classifier" target="_blank" rel="noopener">View Source</a> &middot; <a href="/docs" target="_blank" rel="noopener">API Docs</a></p>
+            <div class="tech">
+                <span>DistilBERT</span>
+                <span>LoRA (r=32)</span>
+                <span>FastAPI</span>
+                <span>PyTorch</span>
+                <span>Docker</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const LABEL_ICONS = {
+            bug: '\u{1F41B}',
+            feature_request: '\u{2728}',
+            documentation: '\u{1F4D6}',
+            question: '\u{2753}',
+            duplicate: '\u{1F503}',
+            needs_more_info: '\u{1F50D}',
+            critical: '\u{1F6A8}'
+        };
+        const LABEL_DISPLAY = {
+            bug: 'Bug',
+            feature_request: 'Feature Request',
+            documentation: 'Documentation',
+            question: 'Question',
+            duplicate: 'Duplicate',
+            needs_more_info: 'Needs More Info',
+            critical: 'Critical'
+        };
+
+        const titleInput = document.getElementById('issueTitle');
+        const bodyInput = document.getElementById('issueBody');
+        const triageBtn = document.getElementById('triageBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const clearBtn = document.getElementById('clearBtn');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const predictedLabels = document.getElementById('predictedLabels');
+        const confidenceTable = document.getElementById('confidenceTable');
+        const latencyBadge = document.getElementById('latencyBadge');
+        const errorBox = document.getElementById('errorBox');
+        const statusDot = document.getElementById('statusDot');
+        const statusText = document.getElementById('statusText');
+
+        // Check API health on load
+        async function checkHealth() {
+            try {
+                const res = await fetch('/health');
+                const data = await res.json();
+                if (data.model_loaded) {
+                    statusDot.style.background = '#22c55e';
+                    statusText.textContent = 'Model Ready';
+                    document.getElementById('deviceBadge').textContent = data.device.toUpperCase();
+                } else {
+                    statusDot.style.background = '#f59e0b';
+                    statusText.textContent = 'Initializing...';
+                }
+            } catch {
+                statusDot.style.background = '#ef4444';
+                statusText.textContent = 'Offline';
+            }
+        }
+        checkHealth();
+
+        // Example chips
+        document.querySelectorAll('.example-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                titleInput.value = chip.dataset.title;
+                bodyInput.value = chip.dataset.body;
+                titleInput.focus();
+                resultsContainer.classList.remove('visible');
+                errorBox.classList.remove('visible');
+            });
+        });
+
+        // Clear
+        clearBtn.addEventListener('click', () => {
+            titleInput.value = '';
+            bodyInput.value = '';
+            resultsContainer.classList.remove('visible');
+            errorBox.classList.remove('visible');
+            titleInput.focus();
+        });
+
+        // Triage
+        triageBtn.addEventListener('click', classify);
+        titleInput.addEventListener('keydown', e => { if (e.key === 'Enter') classify(); });
+
+        async function classify() {
+            const title = titleInput.value.trim();
+            if (!title) { titleInput.focus(); return; }
+
+            triageBtn.disabled = true;
+            btnText.textContent = 'Classifying...';
+            btnSpinner.style.display = 'block';
+            errorBox.classList.remove('visible');
+            resultsContainer.classList.remove('visible');
+
+            try {
+                const res = await fetch('/triage', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title, body: bodyInput.value })
+                });
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    throw new Error(err.detail || `HTTP ${res.status}`);
+                }
+
+                const data = await res.json();
+                renderResults(data);
+            } catch (err) {
+                errorBox.textContent = `Classification failed: ${err.message}`;
+                errorBox.classList.add('visible');
+            } finally {
+                triageBtn.disabled = false;
+                btnText.textContent = 'Classify Issue';
+                btnSpinner.style.display = 'none';
+            }
+        }
+
+        function renderResults(data) {
+            // Latency
+            latencyBadge.textContent = `${data.execution_time_ms} ms`;
+
+            // Predicted labels
+            predictedLabels.innerHTML = data.predicted_labels
+                .map(l => `<span class="label-chip label-${l}">${LABEL_ICONS[l] || ''} ${LABEL_DISPLAY[l] || l}</span>`)
+                .join('');
+
+            // Confidence bars sorted by score descending
+            const sorted = Object.entries(data.confidence_scores).sort((a, b) => b[1] - a[1]);
+            confidenceTable.innerHTML = sorted.map(([label, score]) => {
+                const threshold = data.thresholds_applied[label] || 0.5;
+                const isActive = score >= threshold;
+                const pct = Math.max(score * 100, 1);
+                const thPct = threshold * 100;
+                return `
+                    <div class="confidence-row">
+                        <span class="confidence-label ${isActive ? 'active' : ''}">${LABEL_DISPLAY[label] || label}</span>
+                        <div class="bar-track">
+                            <div class="bar-fill ${isActive ? 'active' : 'inactive'}" style="width: ${pct}%"></div>
+                            <div class="bar-threshold" style="left: ${thPct}%" title="Threshold: ${threshold}"></div>
+                        </div>
+                        <span class="confidence-score ${isActive ? 'active' : 'inactive'}">${(score * 100).toFixed(1)}%</span>
+                    </div>`;
+            }).join('');
+
+            resultsContainer.classList.add('visible');
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
